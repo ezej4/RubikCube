@@ -1,0 +1,267 @@
+@font-face {
+  font-family: roboto-regular;
+  src: url('./assets/fonts/Roboto-Regular.ttf');
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate3d(1, 1, 0, 0deg);
+  }
+
+  50% {
+    transform: rotate3d(1, 1, 0, 180deg);
+  }
+
+  100% {
+    transform: rotate3d(1, 1, 0, 360deg);
+  }
+}
+
+@keyframes translate-left {
+  0% {
+    transform: translate3d(0, 0, 0) rotateY(0deg);
+  }
+
+  100% {
+    transform: translate3d(200px, -18px, 0) rotateY(90deg);
+  }
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  font-family: roboto-regular, 'Open Sans', serif;
+  background: black;
+}
+
+.cubic__wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background: #0C120C;
+}
+
+.page__header {
+  text-align: center;
+}
+
+.page__title {
+  margin-top: 32px;
+  font-size: 24px;
+  color: #C7D6D5;
+}
+
+.page__main {
+  display: flex;
+}
+
+.cubic__main {
+  width: 100%;
+  height: 640px;
+  transform: rotateX(-22deg) rotateY(45deg);
+  transform-style: preserve-3d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cubic {
+  position: relative;
+  transform-style: preserve-3d;
+  width: 300px;
+  height: 300px;
+}
+
+.cubic__mini,
+.cubic__face {
+  width: 80px;
+  height: 80px;
+}
+
+.cubic__mini {
+  position: absolute;
+  transform-style: preserve-3d;
+  transition: transform 0.2s linear;
+}
+
+.cubic__face {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  padding: 2px;
+  background: black;
+  box-sizing: border-box;
+  backface-visibility: hidden;
+}
+
+.cubic__face--white {
+  background: white;
+}
+
+.cubic__face--red {
+  background: red;
+
+}
+
+.cubic__face--yellow {
+  background: yellow;
+}
+
+.cubic__face--green {
+  background: green;
+}
+
+.cubic__face--orange {
+  background: orange;
+}
+
+.cubic__face--blue {
+  background: blue;
+}
+
+.cubic__face--front {
+  transform: rotateX(0deg) translateZ(50px) rotateZ(0deg);
+}
+
+.cubic__face--back {
+  transform: rotatey(180deg) translateZ(50px) rotateZ(-90deg);
+}
+
+.cubic__face--left {
+  transform: rotatey(-90deg) translateZ(50px) rotateZ(-90deg);
+}
+
+.cubic__face--right {
+  transform: rotateY(90deg) translateZ(50px) rotateZ(0deg);
+}
+
+.cubic__face--bottom {
+  transform: rotateX(-90deg) translateZ(50px) rotateZ(-90deg);
+}
+
+.cubic__face--top {
+  transform: rotateX(90deg) translateZ(50px) rotateZ(0deg);
+}
+
+
+.cubic--auto-roting {
+  transition: transform 1s;
+}
+
+.cubic__main--grabing:hover {
+  cursor: pointer;
+}
+
+.cubic--spin {
+  animation: rotate 2s linear infinite;
+  top: 90px;
+}
+
+.cubic__piece--blue {
+  background: blue;
+}
+
+.cubic__piece--red {
+  background: red;
+}
+
+.cubic__piece--white {
+  background: white;
+}
+
+.cubic__piece--green {
+  background: green;
+}
+
+.cubic__piece--yellow {
+  background: yellow;
+}
+
+.cubic__piece--orange {
+  background: orange;
+}
+
+.action-bar {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 0;
+  border-radius: 5px;
+  background: #4ea172;
+}
+
+.action-bar__buttons {
+  margin-top: 20px;
+}
+
+.action-bar__animate-button,
+.action-bar__grab-button {
+  width: 160px;
+  padding: 12px;
+  color: white;
+  border: none;
+  margin: 0;
+  border-radius: 4px;
+  background: #1F1A38;
+  transition: all 1s ease;
+  font-family: 'roboto-regular';
+  font-size: 16px;
+}
+
+.action-bar__animate-button:hover,
+.action-bar__grab-button:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.action-bar__grab-button {
+  margin-left: 12px;
+}
+
+.action-bar__rotation-icons i {
+  font-size: 40px;
+  color: white;
+  transition: color .5s;
+}
+
+.action-bar__rotation-icons i:hover {
+  cursor: pointer;
+  color: black;
+}
+
+.action-bar__translate-moves {
+  display: flex;
+  justify-self: center;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.action-bar__move-column {
+  padding-top: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-items: center;
+  margin: 6px 4px;
+  gap: 8px;
+}
+
+.action-bar__move {
+  padding: 6px 10px;
+  color: white;
+  border: none;
+  background: #1F1A38;
+  border-radius: 5px;
+}
+
+.action-bar__move:hover {
+  cursor: pointer;
+}

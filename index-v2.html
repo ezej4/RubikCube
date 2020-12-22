@@ -1,0 +1,371 @@
+<html>
+
+<head>
+    <title>a funny rubik cubic game</title>
+    <link rel=StyleSheet href="./styles-v2.css" type="text/css" media=screen>
+    <script src="https://kit.fontawesome.com/20496c3b97.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header class="page__header">
+        <h1 class="page__title">The Rubik Cube</h1>
+    </header>
+    <section class="page__main">
+        <div class="cubic__main" id="cubic-selected-area">
+            <div class="cubic" id="cubic">
+                <div class="cubic__plain"> </div>
+                <div class="cubic__plain"> </div>
+                <div class="cubi__plainc"> </div>
+                <div class="cubic__plain"> </div>
+            </div>
+
+        </div>
+        <section class="action-bar">
+            <h3 class="action-bar__rotagin-title">Rotate cube</h3>
+            <div class="action-bar__rotation-icons">
+                <i class="fas fa-arrow-circle-left" onclick="rotate('left')"></i>
+                <i class="fas fa-arrow-circle-up" onclick="rotate('top')"></i>
+                <i class="fas fa-arrow-circle-right" onclick="rotate('right')"></i>
+            </div>
+
+            <h3 class="action-bar__translate-title">Translate cube</h3>
+            <div class="action-bar__translate-moves">
+                <div class="action-bar__move-column">
+                    <button class="action-bar__move" onclick="moveCubeHorizontal('firstHorizontal')">F</button>
+                    <button class="action-bar__move" onclick="moveCubeHorizontalInverse('firstHorizontal')">F'</button>
+                </div>
+                <div class="action-bar__move-column">
+                    <button class="action-bar__move" onclick="moveCubeHorizontal('secondHorizontal')">F</button>
+                    <button class="action-bar__move" onclick="moveCubeHorizontalInverse('secondHorizontal')">F'</button>
+                </div>
+                <div class="action-bar__move-column">
+                    <button class="action-bar__move" onclick="moveCubeHorizontal('thirdHorizontal')">F</button>
+                    <button class="action-bar__move" onclick="moveCubeHorizontalInverse('thirdHorizontal')">F'</button>
+                </div>
+                <div class="action-bar__move-column">
+                    <button class="action-bar__move">F</button>
+                    <button class="action-bar__move">F'</button>
+                </div>
+                <div class="action-bar__move-column">
+                    <button class="action-bar__move" onclick="moveCubeY('first')">
+                        <img width="40" src="file:///C:/Users/Ezequiel/Downloads/Captura_preview_rev_1%20(1)%20(1).png" />
+
+                    </button>
+                    <button class="action-bar__move">F'</button>
+                </div>
+
+                <div class="action-bar__move-column">
+                    <button class="action-bar__move" onclick="moveCubeY('second')">
+                        <img width="40" src="file:///C:/Users/Ezequiel/Downloads/Captura_preview_rev_1%20(1)%20(1).png" />
+
+                    </button>
+                    <button class="action-bar__move">F'</button>
+                </div>
+                <div class="action-bar__move-column">
+                    <button class="action-bar__move" onclick="moveCubeY('third')">
+                        <img width="40" src="file:///C:/Users/Ezequiel/Downloads/Captura_preview_rev_1%20(1)%20(1).png" />
+
+                    </button>
+                    <button class="action-bar__move">F'</button>
+                </div>
+            </div>
+
+            <div class="action-bar__buttons">
+                <button id="animate-button" class="action-bar__animate-button">Lets spin!</button>
+                <button id="grab-button" class="action-bar__grab-button">Grab</button>
+            </div>
+        </section>
+    </section>
+
+    <footer>
+
+    </footer>
+</body>
+<script src="./scripts/mathHelper.js"></script>
+<script src="./scripts/globals.js"></script>
+<script src="./scripts/buildCube.js"></script>
+<script src="./scripts/rotateCube.js"></script>
+<script src="./scripts/spiningAnimations.js"></script>
+<script src="./scripts/grabCube.js"></script>
+
+<script>
+    let startPiece;
+    let endPiece;
+
+    const getPosition = (piece) => {
+        return {
+            face: piece.id.split('-')[2],
+            cell: piece.id.split('-')[3]
+        }
+    };
+
+    const findRotation = (startPiece, endPiece) => {
+        const startPosition = getPosition(startPiece);
+        const endPosition = getPosition(endPiece);
+    };
+
+    const logPiece = (event) => {
+        const {
+            type,
+            target
+        } = event;
+        const targetClassNames = Array.from(target.classList);
+
+        if (target && targetClassNames.includes('cubic__piece')) {
+            isRotating = type === 'mousedown';
+            if (isRotating) {
+                startPiece = target;
+            } else {
+                endPiece = target
+                findRotation(startPiece, endPiece)
+            }
+        }
+    };
+
+    selectedArea.addEventListener("mousedown", logPiece, false);
+    selectedArea.addEventListener("mouseup", logPiece, false);
+</script>
+
+<script>
+
+</script>
+<script>
+    let zCustomCount = 0;
+
+    const radiansToDegrees = (radians) => {
+        var pi = Math.PI;
+        return radians * (180 / pi);
+    };
+
+    const degreesToRadians = (degrees) => {
+        var pi = Math.PI;
+        return degrees * (pi / 180);
+    }
+
+    const moveCubeY = (movement) => {
+        const cases = {
+            first: 0,
+            second: 1,
+            third: 2,
+        };
+
+        const movementRow = cases[movement] || 0;
+
+        // depth copy of the main model without references.
+        let miniCubeModelCopy = miniCubeModel.map((arr) => (
+            arr.slice()
+        ));
+
+        let count = 6;
+
+        miniCubeModelCopy[movementRow].forEach((cube, indexCube) => {
+            let actualCube
+            if ([0, 3, 6].includes(indexCube)) {
+                actualCube = { ...miniCubeModel[movementRow][count] }
+            } else if ([1, 4, 7].includes(indexCube)) {
+                actualCube = { ...miniCubeModel[movementRow][count - 4] }
+            } else if ([2, 5, 8].includes(indexCube)) {
+                actualCube = { ...miniCubeModel[movementRow][count - 7] }
+            }
+
+            actualCube.position = cube.position;
+            let newZRotation = actualCube.rotation.z + 90;
+            /*  if (newZRotation > 360) {
+                 newZRotation = newZRotation - 360;
+             } */
+
+            let newXRotation;
+            let newYRotation;
+
+            if (actualCube.rotation.y !== 0 || actualCube.rotation.x !== 0) {
+
+                /* const sinZRotation = MathD.sin(newZRotation);
+
+                switch (sinZRotation) {
+                    case 0: {
+                        newXRotation = 0;
+                        newYRotation = (newZRotation / 4) % 2 == 0 ? 90 : -90;
+                        break
+                    }
+                    case 1: {
+                        newXRotation = -90;
+                        newYRotation = 0;
+                        break
+                    }
+                    case -1: {
+                        newXRotation = 90;
+                        newYRotation = 0;
+                        break
+                    }
+                }
+                */
+                actualCube.rotation = { ...actualCube.rotation, x: actualCube.rotation.x - 90 }
+            } else {
+                actualCube.rotation = { ...actualCube.rotation, z: newZRotation }
+            }
+
+            actualCube.hasToRePaint = true;
+            miniCubeModelCopy[movementRow][indexCube] = actualCube;
+
+
+            if (indexCube % 3 === 0) {
+                count++;
+            }
+        })
+        zCustomCount++;
+        //console.log(zCustomCount)
+
+        miniCubeModel = [...miniCubeModelCopy];
+        rePaintCube();
+    }
+
+
+    const rotateFaces = (miniCubeFaces, movement) => {
+        const implicatedMovementMapper = {
+            horizontal: ["front", "left", "right", "back", ],
+        }
+
+        const implicatedFaces = implicatedMovementMapper[movement];
+        const miniCubeFacesCopy = [...miniCubeFaces]
+        const filteredArrayFaces = miniCubeFacesCopy.filter(face => implicatedFaces.includes(face.label));
+        const arrayDeepCopy = [...filteredArrayFaces];
+
+        filteredArrayFaces.forEach((face, index) => {
+            const isTheLastElement = index + 1 === filteredArrayFaces.length;
+            const nextFaceValue = isTheLastElement ? filteredArrayFaces[0].value : filteredArrayFaces[index + 1].value
+            filteredArrayFaces[index] = { ...face, value: nextFaceValue };
+        })
+
+        filteredArrayFaces.forEach((face, index) => {
+            const IndexFaceToBeReplaced = miniCubeFacesCopy.findIndex(originalFace => originalFace.label === face.label);
+            console.log(IndexFaceToBeReplaced)
+            miniCubeFacesCopy[IndexFaceToBeReplaced] = { ...face };
+        })
+
+        return miniCubeFacesCopy;
+    }
+
+    const moveCubeHorizontal = (movement) => {
+        // depth copy of the main model without references.
+        let miniCubeModelCopy = miniCubeModel.map((arr) => (
+            arr.slice()
+        ));
+        miniCubeModelCopy.forEach((cubesWall, indexWall) => {
+            let wallCustomCounter = 2;
+            cubesWall.forEach((cube, indexCube) => {
+                let actualCube;
+                if (movement === MOVES.firstHorizontal && indexCube < 3) {
+                    actualCube = { ...miniCubeModel[wallCustomCounter][indexWall] }
+                    wallCustomCounter--;
+                    actualCube.position = cube.position;
+                    actualCube.rotation = { ...actualCube.rotation, y: actualCube.rotation.y + 90 }
+                    actualCube.hasToRePaint = true;
+                    actualCube.faces = rotateFaces(actualCube.faces, 'horizontal');
+
+                    miniCubeModelCopy[indexWall][indexCube] = actualCube;
+                } else if (movement === MOVES.secondHorizontal && indexCube >= 3 && indexCube < 6) {
+                    actualCube = { ...miniCubeModel[wallCustomCounter][indexWall + 3] }
+                    wallCustomCounter--;
+                    actualCube.position = cube.position;
+                    actualCube.rotation = { ...actualCube.rotation, y: actualCube.rotation.y + 90 }
+                    actualCube.hasToRePaint = true;
+                    actualCube.faces = rotateFaces(actualCube.faces, 'horizontal');
+
+                    miniCubeModelCopy[indexWall][indexCube] = actualCube;
+                } else if (movement === MOVES.thirdHorizontal && indexCube >= 6) {
+                    actualCube = { ...miniCubeModel[wallCustomCounter][indexWall + 6] }
+                    wallCustomCounter--;
+                    actualCube.position = cube.position;
+                    actualCube.rotation = { ...actualCube.rotation, y: actualCube.rotation.y + 90 }
+                    actualCube.hasToRePaint = true;
+                    actualCube.faces = rotateFaces(actualCube.faces, 'horizontal');
+
+                    miniCubeModelCopy[indexWall][indexCube] = actualCube;
+                }
+            })
+        })
+        miniCubeModel = [...miniCubeModelCopy];
+        rePaintCube();
+    }
+
+    const moveCubeHorizontalInverse = (movement) => {
+        // depth copy of the main model without references.
+        let miniCubeModelCopy = miniCubeModel.map((arr) => (
+            arr.slice()
+        ));
+
+        miniCubeModelCopy.forEach((cubesWall, indexWall) => {
+            cubesWall.forEach((cube, indexCube) => {
+                const invertedWallCounter = miniCubeModelCopy.length - 1 - indexWall
+                let actualCube;
+                if (movement === MOVES.firstHorizontal && indexCube < 3) {
+                    actualCube = { ...miniCubeModel[indexCube][invertedWallCounter] }
+                    actualCube.position = cube.position;
+                    actualCube.rotation = { ...actualCube.rotation, y: actualCube.rotation.y - 90 }
+                    actualCube.hasToRePaint = true;
+                    miniCubeModelCopy[indexWall][indexCube] = actualCube;
+                } else if (movement === MOVES.secondHorizontal && indexCube >= 3 && indexCube < 6) {
+                    actualCube = { ...miniCubeModel[indexCube - 3][invertedWallCounter + 3] }
+                    actualCube.position = cube.position;
+                    actualCube.rotation = { ...actualCube.rotation, y: actualCube.rotation.y - 90 }
+                    actualCube.hasToRePaint = true;
+                    miniCubeModelCopy[indexWall][indexCube] = actualCube;
+                } else if (movement === MOVES.thirdHorizontal && indexCube >= 6) {
+                    actualCube = { ...miniCubeModel[indexCube - 6][invertedWallCounter + 6] }
+                    actualCube.position = cube.position;
+                    actualCube.rotation = { ...actualCube.rotation, y: actualCube.rotation.y - 90 }
+                    actualCube.hasToRePaint = true;
+                    miniCubeModelCopy[indexWall][indexCube] = actualCube;
+                }
+            })
+
+        })
+        miniCubeModel = [...miniCubeModelCopy];
+        rePaintCube();
+    }
+
+
+    const rePaintCube = () => {
+        const unPaintedMiniCubes = miniCubeModel.flat().filter(miniCube => miniCube.hasToRePaint);
+        unPaintedMiniCubes.forEach((miniCube) => {
+            const { x: xTranf, y: yTranf, z: zTranf } = miniCube.position
+            const { x: xRot, y: yRot, z: zRot } = miniCube.rotation
+            miniCube.hasToRePaint = false;
+
+            const $miniCubeElement = document.getElementById(miniCube.name);
+            const newTransformStyle = `translate3d(${xTranf}px,${yTranf}px,${zTranf}px)`
+            $miniCubeElement.style.transform = newTransformStyle;
+
+            // Remove all childs 
+            while ($miniCubeElement.firstChild) $miniCubeElement.removeChild($miniCubeElement.firstChild);
+
+            miniCube.faces.forEach((currentface, index) => {
+                const face = document.createElement('div');
+                //face.innerHTML = indexMiniCube + 1;
+                face.className = `cubic__face cubic__face--${currentface.label}`
+
+                if (currentface.value) {
+                    face.classList.add(`cubic__face--${currentface.value}`)
+                }
+
+                $miniCubeElement.appendChild(face)
+            });
+
+
+
+            /*  if (miniCube.customPaint) {
+                 $miniCubeElement.style.transform += 'rotate3d(1,0,0,-90deg)';
+             } */
+        })
+    }
+
+    /* 
+        const translatingButtonLeft = document.getElementById('translating-button-left');
+        const translatingButtonLeftInverse = document.getElementById('translating-button-left-inverse');
+
+
+        translatingButtonLeft.addEventListener('click', horizontalMove, false)
+        translatingButtonLeftInverse.addEventListener('click', firtsHorizontalMoveInverse, false) */
+</script>
+
+</html>
