@@ -48,7 +48,8 @@
                 </div>
                 <div class="action-bar__move-column">
                     <button class="action-bar__move" onclick="moveCubeY('first')">
-                        <img width="40" src="file:///C:/Users/Ezequiel/Downloads/Captura_preview_rev_1%20(1)%20(1).png" />
+                        <img width="40"
+                            src="file:///C:/Users/Ezequiel/Downloads/Captura_preview_rev_1%20(1)%20(1).png" />
 
                     </button>
                     <button class="action-bar__move">F'</button>
@@ -56,14 +57,16 @@
 
                 <div class="action-bar__move-column">
                     <button class="action-bar__move" onclick="moveCubeY('second')">
-                        <img width="40" src="file:///C:/Users/Ezequiel/Downloads/Captura_preview_rev_1%20(1)%20(1).png" />
+                        <img width="40"
+                            src="file:///C:/Users/Ezequiel/Downloads/Captura_preview_rev_1%20(1)%20(1).png" />
 
                     </button>
                     <button class="action-bar__move">F'</button>
                 </div>
                 <div class="action-bar__move-column">
                     <button class="action-bar__move" onclick="moveCubeY('third')">
-                        <img width="40" src="file:///C:/Users/Ezequiel/Downloads/Captura_preview_rev_1%20(1)%20(1).png" />
+                        <img width="40"
+                            src="file:///C:/Users/Ezequiel/Downloads/Captura_preview_rev_1%20(1)%20(1).png" />
 
                     </button>
                     <button class="action-bar__move">F'</button>
@@ -219,28 +222,52 @@
         rePaintCube();
     }
 
+    const filterAndOrderFaces = (baseArray, orderArray) => {
+        const result = [];
+        let counter = 0;
+        while (result.length < orderArray.length) {
+            const value  = baseArray.find((element) => element.label == orderArray[counter]);
+            result.push(value)
+            counter++;
+        }
+
+        return result;
+        // baseArray.sort((a, b) => {
+        //     if (orderArray.indexOf(a) > orderArray.indexOf(b)) {
+        //         return 1;
+        //     } else {
+        //         return -1;
+        //     }
+
+        // });
+
+        // return baseArray;
+    };
 
     const rotateFaces = (miniCubeFaces, movement) => {
         const implicatedMovementMapper = {
-            horizontal: ["front", "left", "right", "back", ],
+            horizontal: ["front", "right", "back", "left"],
         }
 
         const implicatedFaces = implicatedMovementMapper[movement];
         const miniCubeFacesCopy = [...miniCubeFaces]
-        const filteredArrayFaces = miniCubeFacesCopy.filter(face => implicatedFaces.includes(face.label));
+        const filteredArrayFaces = filterAndOrderFaces(miniCubeFacesCopy, implicatedFaces);
+
+        console.log(filteredArrayFaces);
+
         const arrayDeepCopy = [...filteredArrayFaces];
 
-        filteredArrayFaces.forEach((face, index) => {
-            const isTheLastElement = index + 1 === filteredArrayFaces.length;
-            const nextFaceValue = isTheLastElement ? filteredArrayFaces[0].value : filteredArrayFaces[index + 1].value
-            filteredArrayFaces[index] = { ...face, value: nextFaceValue };
-        })
+        // filteredArrayFaces.forEach((face, index) => {
+        //     const isTheLastElement = index + 1 === filteredArrayFaces.length;
+        //     const nextFaceValue = isTheLastElement ? filteredArrayFaces[0].value : filteredArrayFaces[index + 1].value
+        //     filteredArrayFaces[index] = { ...face, value: nextFaceValue };
+        // })
 
-        filteredArrayFaces.forEach((face, index) => {
-            const IndexFaceToBeReplaced = miniCubeFacesCopy.findIndex(originalFace => originalFace.label === face.label);
-            console.log(IndexFaceToBeReplaced)
-            miniCubeFacesCopy[IndexFaceToBeReplaced] = { ...face };
-        })
+        // filteredArrayFaces.forEach((face, index) => {
+        //     const IndexFaceToBeReplaced = miniCubeFacesCopy.findIndex(originalFace => originalFace.label === face.label);
+        //     console.log(IndexFaceToBeReplaced)
+        //     miniCubeFacesCopy[IndexFaceToBeReplaced] = { ...face };
+        // })
 
         return miniCubeFacesCopy;
     }
@@ -260,6 +287,7 @@
                     actualCube.position = cube.position;
                     actualCube.rotation = { ...actualCube.rotation, y: actualCube.rotation.y + 90 }
                     actualCube.hasToRePaint = true;
+                    console.log(actualCube.name)
                     actualCube.faces = rotateFaces(actualCube.faces, 'horizontal');
 
                     miniCubeModelCopy[indexWall][indexCube] = actualCube;
@@ -343,6 +371,7 @@
                 const face = document.createElement('div');
                 //face.innerHTML = indexMiniCube + 1;
                 face.className = `cubic__face cubic__face--${currentface.label}`
+                face.innerHTML = miniCube.name.replace(/^\D+/g, '');
 
                 if (currentface.value) {
                     face.classList.add(`cubic__face--${currentface.value}`)
@@ -359,7 +388,7 @@
         })
     }
 
-    /* 
+    /*
         const translatingButtonLeft = document.getElementById('translating-button-left');
         const translatingButtonLeftInverse = document.getElementById('translating-button-left-inverse');
 
