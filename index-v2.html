@@ -133,17 +133,49 @@
 
 </script>
 <script>
-    let zCustomCount = 0;
+    const filterAndOrderFaces = (baseArray, orderArray) => {
+        const result = [];
+        let counter = 0;
+        while (result.length < orderArray.length) {
+            const value = baseArray.find((element) => element.label == orderArray[counter]);
+            result.push(value)
+            counter++;
+        }
 
-    const radiansToDegrees = (radians) => {
-        var pi = Math.PI;
-        return radians * (180 / pi);
+        return result;
     };
 
-    const degreesToRadians = (degrees) => {
-        var pi = Math.PI;
-        return degrees * (pi / 180);
+    const rotateFaces = (miniCubeFaces, movement, debug) => {
+        const implicatedMovementMapper = {
+            'U!': ["front", "right", "back", "left"],
+            'U': ["left", "back", "right", "front"],
+            'R': ["bottom", "right", "top", "left"],
+            'R!': ["left", "top", "right", "bottom"],
+        }
+
+        const implicatedFaces = implicatedMovementMapper[movement];
+        const miniCubeFacesCopy = [...miniCubeFaces]
+
+        const filteredArrayFaces = filterAndOrderFaces(miniCubeFacesCopy, implicatedFaces);
+        const filteredArrayFacesCopy = [...filteredArrayFaces];
+
+        filteredArrayFacesCopy.forEach((face, index) => {
+            const amountOfFaces = filteredArrayFacesCopy.length;
+
+            const isTheFirtsElement = index === 0;
+            const nextFaceValue = isTheFirtsElement ? filteredArrayFaces[amountOfFaces - 1].value : filteredArrayFaces[index - 1].value
+            filteredArrayFacesCopy[index] = { ...face, value: nextFaceValue };
+
+        })
+
+        filteredArrayFacesCopy.forEach((face, index) => {
+            const IndexFaceToBeReplaced = miniCubeFacesCopy.findIndex(originalFace => originalFace.label === face.label);
+            miniCubeFacesCopy[IndexFaceToBeReplaced] = { ...face };
+        })
+
+        return miniCubeFacesCopy;
     }
+
 
     const moveCubeY = (movement) => {
         const cases = {
@@ -172,42 +204,9 @@
             }
 
             actualCube.position = cube.position;
-            let newZRotation = actualCube.rotation.z + 90;
-            /*  if (newZRotation > 360) {
-                 newZRotation = newZRotation - 360;
-             } */
-
-            let newXRotation;
-            let newYRotation;
-
-            if (actualCube.rotation.y !== 0 || actualCube.rotation.x !== 0) {
-
-                /* const sinZRotation = MathD.sin(newZRotation);
-
-                switch (sinZRotation) {
-                    case 0: {
-                        newXRotation = 0;
-                        newYRotation = (newZRotation / 4) % 2 == 0 ? 90 : -90;
-                        break
-                    }
-                    case 1: {
-                        newXRotation = -90;
-                        newYRotation = 0;
-                        break
-                    }
-                    case -1: {
-                        newXRotation = 90;
-                        newYRotation = 0;
-                        break
-                    }
-                }
-                */
-                actualCube.rotation = { ...actualCube.rotation, x: actualCube.rotation.x - 90 }
-            } else {
-                actualCube.rotation = { ...actualCube.rotation, z: newZRotation }
-            }
-
             actualCube.hasToRePaint = true;
+            actualCube.faces = rotateFaces(actualCube.faces, 'R!');
+
             miniCubeModelCopy[movementRow][indexCube] = actualCube;
 
 
@@ -215,62 +214,12 @@
                 count++;
             }
         })
-        zCustomCount++;
-        //console.log(zCustomCount)
 
         miniCubeModel = [...miniCubeModelCopy];
         rePaintCube();
     }
 
-    const filterAndOrderFaces = (baseArray, orderArray) => {
-        const result = [];
-        let counter = 0;
-        while (result.length < orderArray.length) {
-            const value  = baseArray.find((element) => element.label == orderArray[counter]);
-            result.push(value)
-            counter++;
-        }
 
-        return result;
-        // baseArray.sort((a, b) => {
-        //     if (orderArray.indexOf(a) > orderArray.indexOf(b)) {
-        //         return 1;
-        //     } else {
-        //         return -1;
-        //     }
-
-        // });
-
-        // return baseArray;
-    };
-
-    const rotateFaces = (miniCubeFaces, movement) => {
-        const implicatedMovementMapper = {
-            horizontal: ["front", "right", "back", "left"],
-        }
-
-        const implicatedFaces = implicatedMovementMapper[movement];
-        const miniCubeFacesCopy = [...miniCubeFaces]
-        const filteredArrayFaces = filterAndOrderFaces(miniCubeFacesCopy, implicatedFaces);
-
-        console.log(filteredArrayFaces);
-
-        const arrayDeepCopy = [...filteredArrayFaces];
-
-        // filteredArrayFaces.forEach((face, index) => {
-        //     const isTheLastElement = index + 1 === filteredArrayFaces.length;
-        //     const nextFaceValue = isTheLastElement ? filteredArrayFaces[0].value : filteredArrayFaces[index + 1].value
-        //     filteredArrayFaces[index] = { ...face, value: nextFaceValue };
-        // })
-
-        // filteredArrayFaces.forEach((face, index) => {
-        //     const IndexFaceToBeReplaced = miniCubeFacesCopy.findIndex(originalFace => originalFace.label === face.label);
-        //     console.log(IndexFaceToBeReplaced)
-        //     miniCubeFacesCopy[IndexFaceToBeReplaced] = { ...face };
-        // })
-
-        return miniCubeFacesCopy;
-    }
 
     const moveCubeHorizontal = (movement) => {
         // depth copy of the main model without references.
@@ -287,8 +236,7 @@
                     actualCube.position = cube.position;
                     actualCube.rotation = { ...actualCube.rotation, y: actualCube.rotation.y + 90 }
                     actualCube.hasToRePaint = true;
-                    console.log(actualCube.name)
-                    actualCube.faces = rotateFaces(actualCube.faces, 'horizontal');
+                    actualCube.faces = rotateFaces(actualCube.faces, 'U!');
 
                     miniCubeModelCopy[indexWall][indexCube] = actualCube;
                 } else if (movement === MOVES.secondHorizontal && indexCube >= 3 && indexCube < 6) {
@@ -297,7 +245,7 @@
                     actualCube.position = cube.position;
                     actualCube.rotation = { ...actualCube.rotation, y: actualCube.rotation.y + 90 }
                     actualCube.hasToRePaint = true;
-                    actualCube.faces = rotateFaces(actualCube.faces, 'horizontal');
+                    actualCube.faces = rotateFaces(actualCube.faces, 'U!');
 
                     miniCubeModelCopy[indexWall][indexCube] = actualCube;
                 } else if (movement === MOVES.thirdHorizontal && indexCube >= 6) {
@@ -306,7 +254,7 @@
                     actualCube.position = cube.position;
                     actualCube.rotation = { ...actualCube.rotation, y: actualCube.rotation.y + 90 }
                     actualCube.hasToRePaint = true;
-                    actualCube.faces = rotateFaces(actualCube.faces, 'horizontal');
+                    actualCube.faces = rotateFaces(actualCube.faces, 'U!');
 
                     miniCubeModelCopy[indexWall][indexCube] = actualCube;
                 }
@@ -331,18 +279,24 @@
                     actualCube.position = cube.position;
                     actualCube.rotation = { ...actualCube.rotation, y: actualCube.rotation.y - 90 }
                     actualCube.hasToRePaint = true;
+                    actualCube.faces = rotateFaces(actualCube.faces, 'U');
+
                     miniCubeModelCopy[indexWall][indexCube] = actualCube;
                 } else if (movement === MOVES.secondHorizontal && indexCube >= 3 && indexCube < 6) {
                     actualCube = { ...miniCubeModel[indexCube - 3][invertedWallCounter + 3] }
                     actualCube.position = cube.position;
                     actualCube.rotation = { ...actualCube.rotation, y: actualCube.rotation.y - 90 }
                     actualCube.hasToRePaint = true;
+                    actualCube.faces = rotateFaces(actualCube.faces, 'U');
+
                     miniCubeModelCopy[indexWall][indexCube] = actualCube;
                 } else if (movement === MOVES.thirdHorizontal && indexCube >= 6) {
                     actualCube = { ...miniCubeModel[indexCube - 6][invertedWallCounter + 6] }
                     actualCube.position = cube.position;
                     actualCube.rotation = { ...actualCube.rotation, y: actualCube.rotation.y - 90 }
                     actualCube.hasToRePaint = true;
+                    actualCube.faces = rotateFaces(actualCube.faces, 'U');
+
                     miniCubeModelCopy[indexWall][indexCube] = actualCube;
                 }
             })
@@ -366,7 +320,6 @@
 
             // Remove all childs 
             while ($miniCubeElement.firstChild) $miniCubeElement.removeChild($miniCubeElement.firstChild);
-
             miniCube.faces.forEach((currentface, index) => {
                 const face = document.createElement('div');
                 //face.innerHTML = indexMiniCube + 1;
