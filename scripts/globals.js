@@ -9,20 +9,25 @@
   const FACE_BY_CUBE = ['front', 'left', 'right', 'back', 'top', 'bottom'];
   const AMOUNT_MINI_CUBES = 27;
   const TRANSLATION_UNITY = 100; /*PX*/
-  const MOVES = {
-      firstHorizontal: 'firstHorizontal',
-      secondHorizontal: 'secondHorizontal',
-      thirdHorizontal: 'thirdHorizontal',
-      firstHorizontalReverse: 'firstHorizontalReverse',
-      secondHorizontalReverse: 'secondHorizontalReverse',
-      thirdHorizontalReverse: 'thirdHorizontalReverse',
-      firstVertical: 'firstVertical',
-      secondVertical: 'secondVertical',
-      thirdVertical: 'thirdVertical',
-      firstVerticalReverse: 'firstVerticalReverse',
-      secondVerticalReverse: 'secondVerticalReverse',
-      thirdVerticalReverse: 'thirdVerticalReverse',
-  }
+ /* /*  const MOVES = {
+      'U!',
+      'U',
+      'E',
+      'E!',
+      'D',
+      'D!',
+      'R',
+      'R!',
+      'M',
+      'M!',
+      'L!',
+      'L',
+      'E!',
+      'E',
+      'E!',
+      'E',
+      'E!', 
+  } */
 
   let matrix = {
       front: Array.from({ length: 9 }).fill(MATRIX_COLORS[0]),

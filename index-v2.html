@@ -28,49 +28,59 @@
                 <i class="fas fa-arrow-circle-right" onclick="rotate('right')"></i>
             </div>
 
-            <h3 class="action-bar__translate-title">Translate cube</h3>
-            <div class="action-bar__translate-moves">
+            <h3 class="action-bar__translate-title">Cube movements</h3>
+            <div class="action-bar__moves-group">
                 <div class="action-bar__move-column">
-                    <button class="action-bar__move" onclick="moveCubeHorizontal('firstHorizontal')">F</button>
-                    <button class="action-bar__move" onclick="moveCubeHorizontalInverse('firstHorizontal')">F'</button>
+                    <button class="action-bar__move" onclick="moveFirtsVariationClockwise('U')">U</button>
+                    <button class="action-bar__move" onclick="moveFirtsVariationInverseClockwise('U!')">U'</button>
                 </div>
                 <div class="action-bar__move-column">
-                    <button class="action-bar__move" onclick="moveCubeHorizontal('secondHorizontal')">F</button>
-                    <button class="action-bar__move" onclick="moveCubeHorizontalInverse('secondHorizontal')">F'</button>
+                    <button class="action-bar__move" onclick="moveFirtsVariationClockwise('E')">E</button>
+                    <button class="action-bar__move" onclick="moveFirtsVariationInverseClockwise('E!')">E'</button>
                 </div>
                 <div class="action-bar__move-column">
-                    <button class="action-bar__move" onclick="moveCubeHorizontal('thirdHorizontal')">F</button>
-                    <button class="action-bar__move" onclick="moveCubeHorizontalInverse('thirdHorizontal')">F'</button>
+                    <button class="action-bar__move" onclick="moveFirtsVariationClockwise('D')">D</button>
+                    <button class="action-bar__move" onclick="moveFirtsVariationInverseClockwise('D!')">D'</button>
                 </div>
-                <div class="action-bar__move-column">
-                    <button class="action-bar__move">F</button>
-                    <button class="action-bar__move">F'</button>
-                </div>
-                <div class="action-bar__move-column">
-                    <button class="action-bar__move" onclick="moveCubeY('first')">
-                        <img width="40"
-                            src="file:///C:/Users/Ezequiel/Downloads/Captura_preview_rev_1%20(1)%20(1).png" />
+            </div>
 
-                    </button>
-                    <button class="action-bar__move">F'</button>
-                </div>
-
+            <div class="action-bar__moves-group">
                 <div class="action-bar__move-column">
-                    <button class="action-bar__move" onclick="moveCubeY('second')">
-                        <img width="40"
-                            src="file:///C:/Users/Ezequiel/Downloads/Captura_preview_rev_1%20(1)%20(1).png" />
-
-                    </button>
-                    <button class="action-bar__move">F'</button>
+                    <button class="action-bar__move" onclick="moveSecondVariationClockwise('R')">R</button>
+                    <button class="action-bar__move" onclick="moveSecondVariationInverseClockwise('R!')">R'</button>
                 </div>
                 <div class="action-bar__move-column">
-                    <button class="action-bar__move" onclick="moveCubeY('third')">
-                        <img width="40"
-                            src="file:///C:/Users/Ezequiel/Downloads/Captura_preview_rev_1%20(1)%20(1).png" />
-
-                    </button>
-                    <button class="action-bar__move">F'</button>
+                    <button class="action-bar__move" onclick="moveSecondVariationClockwise('E')">E</button>
+                    <button class="action-bar__move" onclick="moveSecondVariationInverseClockwise('E!')">E'</button>
                 </div>
+                <div class="action-bar__move-column">
+                    <button class="action-bar__move" onclick="moveSecondVariationClockwise('L')">L</button>
+                    <button class="action-bar__move" onclick="moveSecondVariationInverseClockwise('L!')">L'</button>
+                </div>
+            </div>
+
+            <div class="action-bar__move-column">
+                <button class="action-bar__move" onclick="moveCubeY('first')">
+                    <img width="40" src="file:///C:/Users/Ezequiel/Downloads/Captura_preview_rev_1%20(1)%20(1).png" />
+
+                </button>
+                <button class="action-bar__move">F'</button>
+            </div>
+
+            <div class="action-bar__move-column">
+                <button class="action-bar__move" onclick="moveCubeY('second')">
+                    <img width="40" src="file:///C:/Users/Ezequiel/Downloads/Captura_preview_rev_1%20(1)%20(1).png" />
+
+                </button>
+                <button class="action-bar__move">F'</button>
+            </div>
+            <div class="action-bar__move-column">
+                <button class="action-bar__move" onclick="moveCubeY('third')">
+                    <img width="40" src="file:///C:/Users/Ezequiel/Downloads/Captura_preview_rev_1%20(1)%20(1).png" />
+
+                </button>
+                <button class="action-bar__move">F'</button>
+            </div>
             </div>
 
             <div class="action-bar__buttons">
@@ -177,11 +187,11 @@
     }
 
 
-    const moveCubeY = (movement) => {
+    const moveSecondVariationClockwise = (movement) => {
         const cases = {
-            first: 0,
-            second: 1,
-            third: 2,
+            R: 0,
+            E: 1,
+            L: 2,
         };
 
         const movementRow = cases[movement] || 0;
@@ -219,9 +229,49 @@
         rePaintCube();
     }
 
+    const moveSecondVariationInverseClockwise = (movement) => {
+        const cases = {
+            'R!': 0,
+            'E!': 1,
+            'L!': 2,
+        };
+
+        const movementRow = cases[movement] || 0;
+
+        // depth copy of the main model without references.
+        let miniCubeModelCopy = miniCubeModel.map((arr) => (
+            arr.slice()
+        ));
+
+        let count = 2;
+
+        miniCubeModelCopy[movementRow].forEach((cube, indexCube) => {
+            let actualCube
+            if ([0, 3, 6].includes(indexCube)) {
+                actualCube = { ...miniCubeModel[movementRow][count] }
+            } else if ([1, 4, 7].includes(indexCube)) {
+                actualCube = { ...miniCubeModel[movementRow][count + 4] }
+            } else if ([2, 5, 8].includes(indexCube)) {
+                actualCube = { ...miniCubeModel[movementRow][count + 7] }
+            }
+
+            actualCube.position = cube.position;
+            actualCube.hasToRePaint = true;
+            actualCube.faces = rotateFaces(actualCube.faces, 'R');
+
+            miniCubeModelCopy[movementRow][indexCube] = actualCube;
 
 
-    const moveCubeHorizontal = (movement) => {
+            if (indexCube % 3 === 0) {
+                count--;
+            }
+        })
+
+        miniCubeModel = [...miniCubeModelCopy];
+        rePaintCube();
+    }
+
+    const moveFirtsVariationClockwise = (movement) => {
         // depth copy of the main model without references.
         let miniCubeModelCopy = miniCubeModel.map((arr) => (
             arr.slice()
@@ -230,28 +280,40 @@
             let wallCustomCounter = 2;
             cubesWall.forEach((cube, indexCube) => {
                 let actualCube;
-                if (movement === MOVES.firstHorizontal && indexCube < 3) {
+                if (movement === 'U' && indexCube < 3) {
                     actualCube = { ...miniCubeModel[wallCustomCounter][indexWall] }
+
                     wallCustomCounter--;
+                    // DEPRECATED
                     actualCube.position = cube.position;
+                    // DEPRECATED
                     actualCube.rotation = { ...actualCube.rotation, y: actualCube.rotation.y + 90 }
+
                     actualCube.hasToRePaint = true;
                     actualCube.faces = rotateFaces(actualCube.faces, 'U!');
 
                     miniCubeModelCopy[indexWall][indexCube] = actualCube;
-                } else if (movement === MOVES.secondHorizontal && indexCube >= 3 && indexCube < 6) {
+                } else if (movement === 'E' && indexCube >= 3 && indexCube < 6) {
                     actualCube = { ...miniCubeModel[wallCustomCounter][indexWall + 3] }
+
                     wallCustomCounter--;
+                    // DEPRECATED
                     actualCube.position = cube.position;
+                    // DEPRECATED
+
                     actualCube.rotation = { ...actualCube.rotation, y: actualCube.rotation.y + 90 }
                     actualCube.hasToRePaint = true;
                     actualCube.faces = rotateFaces(actualCube.faces, 'U!');
 
                     miniCubeModelCopy[indexWall][indexCube] = actualCube;
-                } else if (movement === MOVES.thirdHorizontal && indexCube >= 6) {
+                } else if (movement === 'D' && indexCube >= 6) {
                     actualCube = { ...miniCubeModel[wallCustomCounter][indexWall + 6] }
+
                     wallCustomCounter--;
+                    // DEPRECATED
                     actualCube.position = cube.position;
+                    // DEPRECATED
+
                     actualCube.rotation = { ...actualCube.rotation, y: actualCube.rotation.y + 90 }
                     actualCube.hasToRePaint = true;
                     actualCube.faces = rotateFaces(actualCube.faces, 'U!');
@@ -264,7 +326,7 @@
         rePaintCube();
     }
 
-    const moveCubeHorizontalInverse = (movement) => {
+    const moveFirtsVariationInverseClockwise = (movement) => {
         // depth copy of the main model without references.
         let miniCubeModelCopy = miniCubeModel.map((arr) => (
             arr.slice()
@@ -274,7 +336,7 @@
             cubesWall.forEach((cube, indexCube) => {
                 const invertedWallCounter = miniCubeModelCopy.length - 1 - indexWall
                 let actualCube;
-                if (movement === MOVES.firstHorizontal && indexCube < 3) {
+                if (movement === 'U!' && indexCube < 3) {
                     actualCube = { ...miniCubeModel[indexCube][invertedWallCounter] }
                     actualCube.position = cube.position;
                     actualCube.rotation = { ...actualCube.rotation, y: actualCube.rotation.y - 90 }
@@ -282,7 +344,7 @@
                     actualCube.faces = rotateFaces(actualCube.faces, 'U');
 
                     miniCubeModelCopy[indexWall][indexCube] = actualCube;
-                } else if (movement === MOVES.secondHorizontal && indexCube >= 3 && indexCube < 6) {
+                } else if (movement === 'E!' && indexCube >= 3 && indexCube < 6) {
                     actualCube = { ...miniCubeModel[indexCube - 3][invertedWallCounter + 3] }
                     actualCube.position = cube.position;
                     actualCube.rotation = { ...actualCube.rotation, y: actualCube.rotation.y - 90 }
@@ -290,7 +352,7 @@
                     actualCube.faces = rotateFaces(actualCube.faces, 'U');
 
                     miniCubeModelCopy[indexWall][indexCube] = actualCube;
-                } else if (movement === MOVES.thirdHorizontal && indexCube >= 6) {
+                } else if (movement === 'D!' && indexCube >= 6) {
                     actualCube = { ...miniCubeModel[indexCube - 6][invertedWallCounter + 6] }
                     actualCube.position = cube.position;
                     actualCube.rotation = { ...actualCube.rotation, y: actualCube.rotation.y - 90 }

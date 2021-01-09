@@ -244,10 +244,18 @@ body {
   background: rgba(255, 255, 255, 0.4);
 }
 
+.action-bar__moves-group {
+  display: flex;
+  flex-direction: column;
+  background: rgba(0,0,0,0.2);
+  padding: 4px 8px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
 .action-bar__move-column {
   padding-top: 5px;
   display: flex;
-  flex-direction: column;
   justify-self: center;
   align-items: center;
   margin: 6px 4px;
