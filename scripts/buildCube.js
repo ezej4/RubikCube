@@ -104,7 +104,7 @@ miniCubeModel.flat().forEach((curMiniCube, indexMiniCube) => {
 
     curMiniCube.faces.forEach((currentface, index) => {
         const face = document.createElement('div');
-        face.innerHTML = indexMiniCube + 1;
+       /*  face.innerHTML = indexMiniCube + 1; */
         face.className = `cubic__face cubic__face--${currentface.label}`
 
         if (currentface.value) {

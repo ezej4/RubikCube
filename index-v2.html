@@ -59,7 +59,22 @@
                 </div>
             </div>
 
-            <div class="action-bar__move-column">
+            <div class="action-bar__moves-group">
+                <div class="action-bar__move-column">
+                    <button class="action-bar__move" onclick="moveThirdVariationClockwise('F')">F</button>
+                    <button class="action-bar__move" onclick="moveSecondVariationInverseClockwise('R!')">R'</button>
+                </div>
+                <div class="action-bar__move-column">
+                    <button class="action-bar__move" onclick="moveThirdVariationClockwise('S')">S</button>
+                    <button class="action-bar__move" onclick="moveSecondVariationInverseClockwise('E!')">E'</button>
+                </div>  
+                <div class="action-bar__move-column">
+                    <button class="action-bar__move" onclick="moveThirdVariationClockwise('D!')">D'</button>
+                    <button class="action-bar__move" onclick="moveThirdVariationClockwise('L!')">L'</button>
+                </div>
+            </div>
+
+            <!--   <div class="action-bar__move-column">
                 <button class="action-bar__move" onclick="moveCubeY('first')">
                     <img width="40" src="file:///C:/Users/Ezequiel/Downloads/Captura_preview_rev_1%20(1)%20(1).png" />
 
@@ -80,7 +95,7 @@
 
                 </button>
                 <button class="action-bar__move">F'</button>
-            </div>
+            </div> -->
             </div>
 
             <div class="action-bar__buttons">
@@ -94,12 +109,14 @@
 
     </footer>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
 <script src="./scripts/mathHelper.js"></script>
 <script src="./scripts/globals.js"></script>
 <script src="./scripts/buildCube.js"></script>
 <script src="./scripts/rotateCube.js"></script>
 <script src="./scripts/spiningAnimations.js"></script>
 <script src="./scripts/grabCube.js"></script>
+<script src="./scripts/moves.js"></script>
 
 <script>
     let startPiece;
@@ -141,275 +158,6 @@
 
 <script>
 
-</script>
-<script>
-    const filterAndOrderFaces = (baseArray, orderArray) => {
-        const result = [];
-        let counter = 0;
-        while (result.length < orderArray.length) {
-            const value = baseArray.find((element) => element.label == orderArray[counter]);
-            result.push(value)
-            counter++;
-        }
-
-        return result;
-    };
-
-    const rotateFaces = (miniCubeFaces, movement, debug) => {
-        const implicatedMovementMapper = {
-            'U!': ["front", "right", "back", "left"],
-            'U': ["left", "back", "right", "front"],
-            'R': ["bottom", "right", "top", "left"],
-            'R!': ["left", "top", "right", "bottom"],
-        }
-
-        const implicatedFaces = implicatedMovementMapper[movement];
-        const miniCubeFacesCopy = [...miniCubeFaces]
-
-        const filteredArrayFaces = filterAndOrderFaces(miniCubeFacesCopy, implicatedFaces);
-        const filteredArrayFacesCopy = [...filteredArrayFaces];
-
-        filteredArrayFacesCopy.forEach((face, index) => {
-            const amountOfFaces = filteredArrayFacesCopy.length;
-
-            const isTheFirtsElement = index === 0;
-            const nextFaceValue = isTheFirtsElement ? filteredArrayFaces[amountOfFaces - 1].value : filteredArrayFaces[index - 1].value
-            filteredArrayFacesCopy[index] = { ...face, value: nextFaceValue };
-
-        })
-
-        filteredArrayFacesCopy.forEach((face, index) => {
-            const IndexFaceToBeReplaced = miniCubeFacesCopy.findIndex(originalFace => originalFace.label === face.label);
-            miniCubeFacesCopy[IndexFaceToBeReplaced] = { ...face };
-        })
-
-        return miniCubeFacesCopy;
-    }
-
-
-    const moveSecondVariationClockwise = (movement) => {
-        const cases = {
-            R: 0,
-            E: 1,
-            L: 2,
-        };
-
-        const movementRow = cases[movement] || 0;
-
-        // depth copy of the main model without references.
-        let miniCubeModelCopy = miniCubeModel.map((arr) => (
-            arr.slice()
-        ));
-
-        let count = 6;
-
-        miniCubeModelCopy[movementRow].forEach((cube, indexCube) => {
-            let actualCube
-            if ([0, 3, 6].includes(indexCube)) {
-                actualCube = { ...miniCubeModel[movementRow][count] }
-            } else if ([1, 4, 7].includes(indexCube)) {
-                actualCube = { ...miniCubeModel[movementRow][count - 4] }
-            } else if ([2, 5, 8].includes(indexCube)) {
-                actualCube = { ...miniCubeModel[movementRow][count - 7] }
-            }
-
-            actualCube.position = cube.position;
-            actualCube.hasToRePaint = true;
-            actualCube.faces = rotateFaces(actualCube.faces, 'R!');
-
-            miniCubeModelCopy[movementRow][indexCube] = actualCube;
-
-
-            if (indexCube % 3 === 0) {
-                count++;
-            }
-        })
-
-        miniCubeModel = [...miniCubeModelCopy];
-        rePaintCube();
-    }
-
-    const moveSecondVariationInverseClockwise = (movement) => {
-        const cases = {
-            'R!': 0,
-            'E!': 1,
-            'L!': 2,
-        };
-
-        const movementRow = cases[movement] || 0;
-
-        // depth copy of the main model without references.
-        let miniCubeModelCopy = miniCubeModel.map((arr) => (
-            arr.slice()
-        ));
-
-        let count = 2;
-
-        miniCubeModelCopy[movementRow].forEach((cube, indexCube) => {
-            let actualCube
-            if ([0, 3, 6].includes(indexCube)) {
-                actualCube = { ...miniCubeModel[movementRow][count] }
-            } else if ([1, 4, 7].includes(indexCube)) {
-                actualCube = { ...miniCubeModel[movementRow][count + 4] }
-            } else if ([2, 5, 8].includes(indexCube)) {
-                actualCube = { ...miniCubeModel[movementRow][count + 7] }
-            }
-
-            actualCube.position = cube.position;
-            actualCube.hasToRePaint = true;
-            actualCube.faces = rotateFaces(actualCube.faces, 'R');
-
-            miniCubeModelCopy[movementRow][indexCube] = actualCube;
-
-
-            if (indexCube % 3 === 0) {
-                count--;
-            }
-        })
-
-        miniCubeModel = [...miniCubeModelCopy];
-        rePaintCube();
-    }
-
-    const moveFirtsVariationClockwise = (movement) => {
-        // depth copy of the main model without references.
-        let miniCubeModelCopy = miniCubeModel.map((arr) => (
-            arr.slice()
-        ));
-        miniCubeModelCopy.forEach((cubesWall, indexWall) => {
-            let wallCustomCounter = 2;
-            cubesWall.forEach((cube, indexCube) => {
-                let actualCube;
-                if (movement === 'U' && indexCube < 3) {
-                    actualCube = { ...miniCubeModel[wallCustomCounter][indexWall] }
-
-                    wallCustomCounter--;
-                    // DEPRECATED
-                    actualCube.position = cube.position;
-                    // DEPRECATED
-                    actualCube.rotation = { ...actualCube.rotation, y: actualCube.rotation.y + 90 }
-
-                    actualCube.hasToRePaint = true;
-                    actualCube.faces = rotateFaces(actualCube.faces, 'U!');
-
-                    miniCubeModelCopy[indexWall][indexCube] = actualCube;
-                } else if (movement === 'E' && indexCube >= 3 && indexCube < 6) {
-                    actualCube = { ...miniCubeModel[wallCustomCounter][indexWall + 3] }
-
-                    wallCustomCounter--;
-                    // DEPRECATED
-                    actualCube.position = cube.position;
-                    // DEPRECATED
-
-                    actualCube.rotation = { ...actualCube.rotation, y: actualCube.rotation.y + 90 }
-                    actualCube.hasToRePaint = true;
-                    actualCube.faces = rotateFaces(actualCube.faces, 'U!');
-
-                    miniCubeModelCopy[indexWall][indexCube] = actualCube;
-                } else if (movement === 'D' && indexCube >= 6) {
-                    actualCube = { ...miniCubeModel[wallCustomCounter][indexWall + 6] }
-
-                    wallCustomCounter--;
-                    // DEPRECATED
-                    actualCube.position = cube.position;
-                    // DEPRECATED
-
-                    actualCube.rotation = { ...actualCube.rotation, y: actualCube.rotation.y + 90 }
-                    actualCube.hasToRePaint = true;
-                    actualCube.faces = rotateFaces(actualCube.faces, 'U!');
-
-                    miniCubeModelCopy[indexWall][indexCube] = actualCube;
-                }
-            })
-        })
-        miniCubeModel = [...miniCubeModelCopy];
-        rePaintCube();
-    }
-
-    const moveFirtsVariationInverseClockwise = (movement) => {
-        // depth copy of the main model without references.
-        let miniCubeModelCopy = miniCubeModel.map((arr) => (
-            arr.slice()
-        ));
-
-        miniCubeModelCopy.forEach((cubesWall, indexWall) => {
-            cubesWall.forEach((cube, indexCube) => {
-                const invertedWallCounter = miniCubeModelCopy.length - 1 - indexWall
-                let actualCube;
-                if (movement === 'U!' && indexCube < 3) {
-                    actualCube = { ...miniCubeModel[indexCube][invertedWallCounter] }
-                    actualCube.position = cube.position;
-                    actualCube.rotation = { ...actualCube.rotation, y: actualCube.rotation.y - 90 }
-                    actualCube.hasToRePaint = true;
-                    actualCube.faces = rotateFaces(actualCube.faces, 'U');
-
-                    miniCubeModelCopy[indexWall][indexCube] = actualCube;
-                } else if (movement === 'E!' && indexCube >= 3 && indexCube < 6) {
-                    actualCube = { ...miniCubeModel[indexCube - 3][invertedWallCounter + 3] }
-                    actualCube.position = cube.position;
-                    actualCube.rotation = { ...actualCube.rotation, y: actualCube.rotation.y - 90 }
-                    actualCube.hasToRePaint = true;
-                    actualCube.faces = rotateFaces(actualCube.faces, 'U');
-
-                    miniCubeModelCopy[indexWall][indexCube] = actualCube;
-                } else if (movement === 'D!' && indexCube >= 6) {
-                    actualCube = { ...miniCubeModel[indexCube - 6][invertedWallCounter + 6] }
-                    actualCube.position = cube.position;
-                    actualCube.rotation = { ...actualCube.rotation, y: actualCube.rotation.y - 90 }
-                    actualCube.hasToRePaint = true;
-                    actualCube.faces = rotateFaces(actualCube.faces, 'U');
-
-                    miniCubeModelCopy[indexWall][indexCube] = actualCube;
-                }
-            })
-
-        })
-        miniCubeModel = [...miniCubeModelCopy];
-        rePaintCube();
-    }
-
-
-    const rePaintCube = () => {
-        const unPaintedMiniCubes = miniCubeModel.flat().filter(miniCube => miniCube.hasToRePaint);
-        unPaintedMiniCubes.forEach((miniCube) => {
-            const { x: xTranf, y: yTranf, z: zTranf } = miniCube.position
-            const { x: xRot, y: yRot, z: zRot } = miniCube.rotation
-            miniCube.hasToRePaint = false;
-
-            const $miniCubeElement = document.getElementById(miniCube.name);
-            const newTransformStyle = `translate3d(${xTranf}px,${yTranf}px,${zTranf}px)`
-            $miniCubeElement.style.transform = newTransformStyle;
-
-            // Remove all childs 
-            while ($miniCubeElement.firstChild) $miniCubeElement.removeChild($miniCubeElement.firstChild);
-            miniCube.faces.forEach((currentface, index) => {
-                const face = document.createElement('div');
-                //face.innerHTML = indexMiniCube + 1;
-                face.className = `cubic__face cubic__face--${currentface.label}`
-                face.innerHTML = miniCube.name.replace(/^\D+/g, '');
-
-                if (currentface.value) {
-                    face.classList.add(`cubic__face--${currentface.value}`)
-                }
-
-                $miniCubeElement.appendChild(face)
-            });
-
-
-
-            /*  if (miniCube.customPaint) {
-                 $miniCubeElement.style.transform += 'rotate3d(1,0,0,-90deg)';
-             } */
-        })
-    }
-
-    /*
-        const translatingButtonLeft = document.getElementById('translating-button-left');
-        const translatingButtonLeftInverse = document.getElementById('translating-button-left-inverse');
-
-
-        translatingButtonLeft.addEventListener('click', horizontalMove, false)
-        translatingButtonLeftInverse.addEventListener('click', firtsHorizontalMoveInverse, false) */
-</script>
+</script>>
 
 </html>

@@ -92,7 +92,7 @@ body {
   justify-content: center;
   border-radius: 12px;
   padding: 2px;
-  background: black;
+ /*  background: black; */
   box-sizing: border-box;
   backface-visibility: hidden;
 }
