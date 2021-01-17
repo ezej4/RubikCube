@@ -30,8 +30,8 @@
             const amountOfFaces = filteredArrayFacesCopy.length;
 
             const isTheFirtsElement = index === 0;
-            const nextFaceValue = isTheFirtsElement ? filteredArrayFaces[amountOfFaces - 1].value : filteredArrayFaces[index - 1].value
-            filteredArrayFacesCopy[index] = { ...face, value: nextFaceValue };
+            const nextFace = isTheFirtsElement ? filteredArrayFaces[amountOfFaces - 1] : filteredArrayFaces[index - 1]
+            filteredArrayFacesCopy[index] = { ...face, value: nextFace.value };
 
         })
 
@@ -302,18 +302,40 @@
               $miniCubeElement.style.transform = newTransformStyle; */
             //gsap.to($miniCubeElement, { duration: 2.5, x: xTranf, y: yTranf, z: zTranf, rotateX: xRot, rotateY: yRot, rotateZ: zRot, ease: "power4.inOut", });
 
-            gsap.to($miniCubeElement, { duration: .5, x: xTranf, y: yTranf, z: zTranf, ease: "back.out(1.7)",onComplete: () => {
+            gsap.to($miniCubeElement, {
+                duration: 1.5,
+                x: xTranf,
+                y: yTranf,
+                z: zTranf,
+                ease: "back.out(1.7)",
+                onComplete: () => {
 
-            }
-        });
+                }
+            });
+            /*  miniCube.faces.forEach((currentface, index) => {
+                 const { x: xRotFace, y: yRotFace, z: zRotFace } = currentface.rotation
+                 console.log(currentface.rotation)
+                 const $face = document.getElementById(currentface.id);
 
-            // Remove all childs 
+                // $face.style.transform = `rotateX(${xRotFace}deg) rotateY(${yRotFace}deg) rotateZ(${zRotFace}deg) translateZ(50px)`;
+
+                /*   gsap.to($face, {
+                      duration: 4.5,
+                      rotationY: '-=90',
+                      ease: "back.out(1.7)",
+                      onComplete: () => {
+
+                      }
+                  }); 
+             }) */
+
             while ($miniCubeElement.firstChild) $miniCubeElement.removeChild($miniCubeElement.firstChild);
             miniCube.faces.forEach((currentface, index) => {
                 const face = document.createElement('div');
                 //face.innerHTML = indexMiniCube + 1;
                 face.className = `cubic__face cubic__face--${currentface.label}`
-                /*  face.innerHTML = miniCube.name.replace(/^\D+/g, ''); */
+
+                //  face.innerHTML = miniCube.name.replace(/^\D+/g, ''); 
 
                 if (currentface.value) {
                     face.classList.add(`cubic__face--${currentface.value}`)
@@ -324,11 +346,16 @@
 
                 $miniCubeElement.appendChild(face)
             });
-
-
-
-            /*  if (miniCube.customPaint) {
-                 $miniCubeElement.style.transform += 'rotate3d(1,0,0,-90deg)';
-             } */
         })
+
+        // Remove all childs 
+
+
+
+
+
+        /*  if (miniCube.customPaint) {
+             $miniCubeElement.style.transform += 'rotate3d(1,0,0,-90deg)';
+         } */
+
     }

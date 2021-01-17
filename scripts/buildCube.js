@@ -103,9 +103,13 @@ miniCubeModel.flat().forEach((curMiniCube, indexMiniCube) => {
     miniCube.style.transform = `translate3d(${xTranf}px,${yTranf}px,${zTranf}px) rotateX(${xRot}deg) rotateY(${yRot}deg) rotateZ(${zRot}deg)`;
 
     curMiniCube.faces.forEach((currentface, index) => {
+        const { x: xRotFace, y: yRotFace, z: zRotFace } = currentface.rotation
+
         const face = document.createElement('div');
        /*  face.innerHTML = indexMiniCube + 1; */
         face.className = `cubic__face cubic__face--${currentface.label}`
+        
+        //face.style.transform = `rotateX(${xRotFace}deg) rotateY(${yRotFace}deg) rotateZ(${zRotFace}deg) translateZ(50px)`;
 
         if (currentface.value) {
             face.classList.add(`cubic__face--${currentface.value}`)

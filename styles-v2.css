@@ -92,7 +92,7 @@ body {
   justify-content: center;
   border-radius: 12px;
   padding: 2px;
- /*  background: black; */
+  /*  background: black; */
   box-sizing: border-box;
   backface-visibility: hidden;
 }
@@ -123,27 +123,27 @@ body {
 }
 
 .cubic__face--front {
-  transform: rotateX(0deg) translateZ(50px) rotateZ(0deg);
+  transform: rotateX(0deg) rotateZ(0deg) translateZ(50px);
 }
 
 .cubic__face--back {
-  transform: rotatey(180deg) translateZ(50px) rotateZ(-90deg);
+  transform: rotatey(180deg) rotateZ(-90deg) translateZ(50px);
 }
 
 .cubic__face--left {
-  transform: rotatey(-90deg) translateZ(50px) rotateZ(-90deg);
+  transform: rotatey(-90deg) rotateZ(-90deg) translateZ(50px);
 }
 
 .cubic__face--right {
-  transform: rotateY(90deg) translateZ(50px) rotateZ(0deg);
+  transform: rotateY(90deg) rotateZ(0deg) translateZ(50px);
 }
 
 .cubic__face--bottom {
-  transform: rotateX(-90deg) translateZ(50px) rotateZ(-90deg);
+  transform: rotateX(-90deg) rotateZ(-90deg) translateZ(50px);
 }
 
 .cubic__face--top {
-  transform: rotateX(90deg) translateZ(50px) rotateZ(0deg);
+  transform: rotateX(90deg) rotateZ(0deg) translateZ(50px);
 }
 
 
@@ -247,7 +247,7 @@ body {
 .action-bar__moves-group {
   display: flex;
   flex-direction: column;
-  background: rgba(0,0,0,0.2);
+  background: rgba(0, 0, 0, 0.2);
   padding: 4px 8px;
   margin-bottom: 10px;
   border-radius: 8px;
