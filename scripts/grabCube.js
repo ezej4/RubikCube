@@ -25,7 +25,7 @@
           xAngleRotate = ((xEndPosition - xStartPosition) * 2) * Math.PI / 360 + xAngleRotate;
           yAngleRotate = ((yEndPosition - yStartPosition) * 2) * Math.PI / 360 + yAngleRotate;
 
-          cubic.style.transform = `rotateX(${-yAngleRotate}deg) rotateY(${xAngleRotate}deg)`;
+          $cubic.style.transform = `rotateX(${-yAngleRotate}deg) rotateY(${xAngleRotate}deg)`;
       }
   }
 
@@ -35,8 +35,8 @@
 
       if (isGrabbing) {
           // remove transition class
-          if (cubic.classList.contains('cubic--auto-roting')) {
-              cubic.classList.remove('cubic--auto-roting')
+          if ($cubic.classList.contains('cubic--auto-roting')) {
+              $cubic.classList.remove('cubic--auto-roting')
           }
 
           selectedArea.classList.add('cubic__main--grabing');

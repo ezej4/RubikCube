@@ -1,8 +1,8 @@
 const animate = () => {
     if (isSpining) {
-        cubic.classList.remove("cubic--spin");
+        $cubic.classList.remove("cubic--spin");
     } else {
-        cubic.classList.add("cubic--spin");
+        $cubic.classList.add("cubic--spin");
     }
     isSpining = !isSpining
 };

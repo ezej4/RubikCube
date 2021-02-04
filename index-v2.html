@@ -11,14 +11,12 @@
         <h1 class="page__title">The Rubik Cube</h1>
     </header>
     <section class="page__main">
-        <div class="cubic__main" id="cubic-selected-area">
-            <div class="cubic" id="cubic">
-                <div class="cubic__plain"> </div>
-                <div class="cubic__plain"> </div>
-                <div class="cubi__plainc"> </div>
-                <div class="cubic__plain"> </div>
+        <div class="cubic__selected-area" id="cubic-selected-area">
+            <div class="cubic__main">
+                <div class="cubic" id="cubic">
+                    <div id="cubic-plain" class="cubic__plain"> </div>
+                </div>
             </div>
-
         </div>
         <section class="action-bar">
             <h3 class="action-bar__rotagin-title">Rotate cube</h3>
@@ -31,71 +29,47 @@
             <h3 class="action-bar__translate-title">Cube movements</h3>
             <div class="action-bar__moves-group">
                 <div class="action-bar__move-column">
-                    <button class="action-bar__move" onclick="moveFirtsVariationClockwise('U')">U</button>
-                    <button class="action-bar__move" onclick="moveFirtsVariationInverseClockwise('U!')">U'</button>
+                    <button class="action-bar__move" onclick="moveCube('U')">U</button>
+                    <button class="action-bar__move" onclick="moveCube('U!')">U'</button>
                 </div>
                 <div class="action-bar__move-column">
-                    <button class="action-bar__move" onclick="moveFirtsVariationClockwise('E')">E</button>
-                    <button class="action-bar__move" onclick="moveFirtsVariationInverseClockwise('E!')">E'</button>
+                    <button class="action-bar__move" onclick="moveCube('E')">E</button>
+                    <button class="action-bar__move" onclick="moveCube('E!')">E'</button>
                 </div>
                 <div class="action-bar__move-column">
-                    <button class="action-bar__move" onclick="moveFirtsVariationClockwise('D')">D</button>
-                    <button class="action-bar__move" onclick="moveFirtsVariationInverseClockwise('D!')">D'</button>
-                </div>
-            </div>
-
-            <div class="action-bar__moves-group">
-                <div class="action-bar__move-column">
-                    <button class="action-bar__move" onclick="moveSecondVariationClockwise('R')">R</button>
-                    <button class="action-bar__move" onclick="moveSecondVariationInverseClockwise('R!')">R'</button>
-                </div>
-                <div class="action-bar__move-column">
-                    <button class="action-bar__move" onclick="moveSecondVariationClockwise('E')">E</button>
-                    <button class="action-bar__move" onclick="moveSecondVariationInverseClockwise('E!')">E'</button>
-                </div>
-                <div class="action-bar__move-column">
-                    <button class="action-bar__move" onclick="moveSecondVariationClockwise('L')">L</button>
-                    <button class="action-bar__move" onclick="moveSecondVariationInverseClockwise('L!')">L'</button>
+                    <button class="action-bar__move" onclick="moveCube('D')">D</button>
+                    <button class="action-bar__move" onclick="moveCube('D!')">D'</button>
                 </div>
             </div>
 
             <div class="action-bar__moves-group">
                 <div class="action-bar__move-column">
-                    <button class="action-bar__move" onclick="moveThirdVariationClockwise('F')">F</button>
-                    <button class="action-bar__move" onclick="moveSecondVariationInverseClockwise('R!')">R'</button>
+                    <button class="action-bar__move" onclick="moveCube('R')">R</button>
+                    <button class="action-bar__move" onclick="moveCube('R!')">R'</button>
                 </div>
                 <div class="action-bar__move-column">
-                    <button class="action-bar__move" onclick="moveThirdVariationClockwise('S')">S</button>
-                    <button class="action-bar__move" onclick="moveSecondVariationInverseClockwise('E!')">E'</button>
-                </div>  
+                    <button class="action-bar__move" onclick="moveCube('M')">M</button>
+                    <button class="action-bar__move" onclick="moveCube('M!')">M'</button>
+                </div>
                 <div class="action-bar__move-column">
-                    <button class="action-bar__move" onclick="moveThirdVariationClockwise('D!')">D'</button>
-                    <button class="action-bar__move" onclick="moveThirdVariationClockwise('L!')">L'</button>
+                    <button class="action-bar__move" onclick="moveCube('L')">L</button>
+                    <button class="action-bar__move" onclick="moveCube('L!')">L'</button>
                 </div>
             </div>
 
-            <!--   <div class="action-bar__move-column">
-                <button class="action-bar__move" onclick="moveCubeY('first')">
-                    <img width="40" src="file:///C:/Users/Ezequiel/Downloads/Captura_preview_rev_1%20(1)%20(1).png" />
-
-                </button>
-                <button class="action-bar__move">F'</button>
-            </div>
-
-            <div class="action-bar__move-column">
-                <button class="action-bar__move" onclick="moveCubeY('second')">
-                    <img width="40" src="file:///C:/Users/Ezequiel/Downloads/Captura_preview_rev_1%20(1)%20(1).png" />
-
-                </button>
-                <button class="action-bar__move">F'</button>
-            </div>
-            <div class="action-bar__move-column">
-                <button class="action-bar__move" onclick="moveCubeY('third')">
-                    <img width="40" src="file:///C:/Users/Ezequiel/Downloads/Captura_preview_rev_1%20(1)%20(1).png" />
-
-                </button>
-                <button class="action-bar__move">F'</button>
-            </div> -->
+            <div class="action-bar__moves-group">
+                <div class="action-bar__move-column">
+                    <button class="action-bar__move" onclick="moveCube('F')">F</button>
+                    <button class="action-bar__move" onclick="moveCube('F!')">F'</button>
+                </div>
+                <div class="action-bar__move-column">
+                    <button class="action-bar__move" onclick="moveCube('S')">S</button>
+                    <button class="action-bar__move" onclick="moveCube('S!')">S'</button>
+                </div>
+                <div class="action-bar__move-column">
+                    <button class="action-bar__move" onclick="moveCube('B')">B</button>
+                    <button class="action-bar__move" onclick="moveCube('B!')">B'</button>
+                </div>
             </div>
 
             <div class="action-bar__buttons">
@@ -110,7 +84,6 @@
     </footer>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
-<script src="./scripts/mathHelper.js"></script>
 <script src="./scripts/globals.js"></script>
 <script src="./scripts/buildCube.js"></script>
 <script src="./scripts/rotateCube.js"></script>
@@ -141,7 +114,8 @@
         } = event;
         const targetClassNames = Array.from(target.classList);
 
-        if (target && targetClassNames.includes('cubic__piece')) {
+
+        /*   if (target && targetClassNames.includes('cubic__piece')) {
             isRotating = type === 'mousedown';
             if (isRotating) {
                 startPiece = target;
@@ -150,10 +124,11 @@
                 findRotation(startPiece, endPiece)
             }
         }
-    };
+    }; */
+    }
 
     selectedArea.addEventListener("mousedown", logPiece, false);
-    selectedArea.addEventListener("mouseup", logPiece, false);
+    //selectedArea.addEventListener("mouseup", logPiece, false);
 </script>
 
 <script>

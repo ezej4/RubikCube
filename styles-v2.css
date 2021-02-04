@@ -66,6 +66,17 @@ body {
   justify-content: center;
 }
 
+.cubic__selected-area {
+  width: 100%;
+}
+
+.cubic__plain {
+  position: absolute;
+  transform-style: preserve-3d;
+  width: 280px;
+  height: 280px;
+}
+
 .cubic {
   position: relative;
   transform-style: preserve-3d;
@@ -95,6 +106,7 @@ body {
   /*  background: black; */
   box-sizing: border-box;
   backface-visibility: hidden;
+  cursor: pointer;
 }
 
 .cubic__face--white {

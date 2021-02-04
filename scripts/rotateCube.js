@@ -1,5 +1,5 @@
 const getActualRotation = () => {
-    const baseStyle = cubic.style.transform;
+    const baseStyle = $cubic.style.transform;
 
     if (!baseStyle) return {
         x: 0,
@@ -23,8 +23,8 @@ const rotate = (direction) => {
         switchGrabbing();
     }
 
-    if (!cubic.classList.contains('cubic--auto-roting')) {
-        cubic.classList.add('cubic--auto-roting')
+    if (!$cubic.classList.contains('cubic--auto-roting')) {
+        $cubic.classList.add('cubic--auto-roting')
     }
 
     // get the actual rotation 
@@ -54,6 +54,6 @@ const rotate = (direction) => {
     }
 
     if (direction) {
-        cubic.style.transform = rotationStyle;
+        $cubic.style.transform = rotationStyle;
     }
 }
