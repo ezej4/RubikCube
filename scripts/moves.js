@@ -415,7 +415,7 @@ const rePaintCube = () => {
                     //face.innerHTML = indexMiniCube + 1;
                     face.className = `cubic__face cubic__face--${currentface.label}`
 
-                    face.innerHTML = miniCube.name.replace(/^\D+/g, '');
+                    //face.innerHTML = miniCube.name.replace(/^\D+/g, '');
 
                     if (currentface.value) {
                         face.classList.add(`cubic__face--${currentface.value}`)
@@ -441,12 +441,14 @@ const rePaintCube = () => {
 
 }
 
+
+// mouse movements function.
 const getFace = (classList) => {
     const formatedClassList = Array.from(classList)
     const filteredClassList = formatedClassList.filter(className => {
-        return className.includes('cubic__face--')
+        return className.includes('cubic__face--');
     })
-    return filteredClassList[0];
+    return filteredClassList[0].split('--')[1];
 }
 
 const getMiniCubeIndexsById = (id) => {
@@ -474,47 +476,162 @@ const getPosiblesMovements = (indexRow, indexCube) => {
     };
     return result;
 }
+
+const detectMouseMoveDirection = ({ originMousePosition, currentMousePosition }) => {
+    const { pageX: xOrigin, pageY: yOrigin } = originMousePosition;
+    const { pageX: xCurrent, pageY: yCurrent } = currentMousePosition;
+
+    const xDisplacement = xOrigin - xCurrent;
+    const yDisplacement = yOrigin - yCurrent;
+
+
+    console.log({ xOrigin, xCurrent, yOrigin, yCurrent })
+    console.log({ originMousePosition, currentMousePosition })
+    let direction = null;
+
+    if (Math.abs(xDisplacement) > Math.abs(yDisplacement)) {
+        if (xOrigin < 0) {
+            direction = 'left';
+        } else direction = 'right';
+
+    } else {
+        if (yOrigin < 0) {
+            direction = 'bottom'
+        }
+        else direction = 'top';
+    }
+    return direction;
+}
+
+const detectMouseMovement = ({ posibleMovements, originFace, originMousePosition, currentMousePosition }) => {
+    const faceName = getFace(originFace.classList);
+    const mouseMoveDirection = detectMouseMoveDirection({ originMousePosition, currentMousePosition });
+    let mouseMovent = '';
+
+    switch (faceName) {
+        case 'front': {
+            if(mouseMoveDirection === 'right'){
+                mouseMovement = 'U';
+            };
+        }
+        case 'left': {
+        }
+        case 'right': {
+        }
+        case 'back': {
+
+        }
+        case 'top': {
+
+        } case 'bottom': {
+
+        }
+
+    }
+
+};
+
+const originMousePosition = {
+    clientX: 0,
+    clientY: 0,
+    screenX: 0,
+    screenY: 0,
+    pageX: 0,
+    pageY: 0,
+    isSetted: false,
+};
+
+
+let posibleMovements = [];
+let $implicatedMiniCubes = [];
+let $faceClicked = '';
+
 const mouseMovement = (event) => {
-    const { target } = event;
+    const { target, clientX, clientY, screenX, screenY, pageX, pageY } = event;
+    console.log("MOUSE DOWN", clientX);
 
     if (!target.classList.contains('cubic__face')) return;
+
     // get face of clicked element
-    const faceClicked = getFace(target.classList);
+    //faceClicked = getFace(target.classList);
+
+    // get the face clicked 
+    $faceClicked = target;
     // get the id of the parent (miniCube)
     const { id } = target.parentElement
     // get the indexs inside the model
     const [indexRow, indexCube] = getMiniCubeIndexsById(id);
 
     // get all posible movement of the clicked element
-    const posibleMovements = getPosiblesMovements(indexRow, indexCube)
-
-    const $implicatedMiniCubes = [];
-    MOVES['U'].implicatedMiniCubes.forEach(({ element }) => {
-        const miniCubeModelName = miniCubeModel[element[0]][element[1]].name;
-        $implicatedMiniCubes.push(document.getElementById(miniCubeModelName));
-    })
-
-    movesElementsToAnotherParent($implicatedMiniCubes, $cubicPlain)
+    posibleMovements = getPosiblesMovements(indexRow, indexCube)
 
     selectedArea.addEventListener("mousemove", listenMouseMove)
 }
 
 const listenMouseMove = (event) => {
-    var xPos = event.clientX / window.innerWidth ,
+    const { clientX, clientY, screenX, screenY, pageX, pageY } = event;
+
+    if(originMousePosition.pageX === pageX && originMousePosition.pageY === pageY) return;
+
+    if (!originMousePosition.isSetted) {
+        console.log("first FRAME", event);
+
+        originMousePosition.clientX = clientX;
+        originMousePosition.clientY = clientY;
+        originMousePosition.screenX = screenX;
+        originMousePosition.screenY = screenY;
+        originMousePosition.pageX = pageX;
+        originMousePosition.pageY = pageY;
+        originMousePosition.isSetted = true;
+
+        return;
+
+    } else if ($implicatedMiniCubes.length === 0) {
+
+        console.log("second FRAME", event);
+        const currentMousePosition = { clientX, clientY, screenX, screenY, pageX, pageY };
+        detectMouseMovement({ originFace: $faceClicked, originMousePosition, currentMousePosition, });
+
+        // harcoded.
+        MOVES['U'].implicatedMiniCubes.forEach(({ element }) => {
+            const miniCubeModelName = miniCubeModel[element[0]][element[1]].name;
+            $implicatedMiniCubes.push(document.getElementById(miniCubeModelName));
+        })
+        movesElementsToAnotherParent($implicatedMiniCubes, $cubicPlain)
+    }
+
+    var xPos = event.clientX / selectedArea.offsetWidth,
         yPos = event.clientY / window.innerHeight
 
-    TweenLite.to($cubicPlain, 1, {
-        rotationY: xPos * 200,
+    gsap.to($cubicPlain, 1, {
+        rotationY: xPos * 100,
         ease: "Power1.easeOut",
     });
 }
 
+const mouseUpHandler = (event) => {
+    console.log("MOUSE UP");
+    selectedArea.removeEventListener("mousemove", listenMouseMove)
+
+    const { target, clientX: xDestination, clientY: yDestination } = event;
+    const { x: xOrigin, y: yOrigin } = originMousePosition;
+
+    if (!xOrigin || !yOrigin) {
+        return;
+    }
+
+    if (xOrigin > xDestination) {
+        movesElementsToAnotherParent($implicatedMiniCubes, $cubic);
+        moveCube('U!');
+    } else {
+        movesElementsToAnotherParent($implicatedMiniCubes, $cubic);
+        moveCube('U');
+    }
+
+    $implicatedMiniCubes = [];
+
+}
+
 selectedArea.addEventListener("mousedown", mouseMovement)
 
-selectedArea.addEventListener("mouseup", () => {
-    TweenLite.to($cubicPlain, 1, {
-        rotationY: 90,
-        ease: "Power1.easeOut",
-    });
-    selectedArea.removeEventListener("mousemove", listenMouseMove)
-})
+selectedArea.addEventListener("mouseup", mouseUpHandler)
