@@ -442,196 +442,253 @@ const rePaintCube = () => {
 }
 
 
-// mouse movements function.
-const getFace = (classList) => {
-    const formatedClassList = Array.from(classList)
-    const filteredClassList = formatedClassList.filter(className => {
-        return className.includes('cubic__face--');
-    })
-    return filteredClassList[0].split('--')[1];
-}
+// // mouse movements function.
+// const getFace = (classList) => {
+//     const formatedClassList = Array.from(classList)
+//     const filteredClassList = formatedClassList.filter(className => {
+//         return className.includes('cubic__face--');
+//     })
+//     return filteredClassList[0].split('--')[1];
+// }
 
-const getMiniCubeIndexsById = (id) => {
-    if (!id) return;
-    let result = null;
+// const getMiniCubeIndexsById = (id) => {
+//     if (!id) return;
+//     let result = null;
 
-    // array every only for break the loop
-    miniCubeModel.every((miniCubeRow, indexRow) => {
-        const indexMiniCube = miniCubeRow.findIndex(miniCube => miniCube.name === id);
-        // find index in this row
-        if (indexMiniCube !== -1) {
-            result = [indexRow, indexMiniCube];
-            return false;
-        }
-        return true;
-    })
-    return result;
-}
+//     // array every only for break the loop
+//     miniCubeModel.every((miniCubeRow, indexRow) => {
+//         const indexMiniCube = miniCubeRow.findIndex(miniCube => miniCube.name === id);
+//         // find index in this row
+//         if (indexMiniCube !== -1) {
+//             result = [indexRow, indexMiniCube];
+//             return false;
+//         }
+//         return true;
+//     })
+//     return result;
+// }
 
-const getPosiblesMovements = (indexRow, indexCube) => {
-    const result = [];
-    for (const move in MOVES) {
-        const isExistingCubeInThisMovement = MOVES[move].implicatedMiniCubes.find(({ element }) => element[0] === indexRow && element[1] === indexCube)
-        if (isExistingCubeInThisMovement) result.push(MOVES[move]);
-    };
-    return result;
-}
+// const getPosiblesMovements = (indexRow, indexCube) => {
+//     const result = [];
+//     for (const move in MOVES) {
+//         const isExistingCubeInThisMovement = MOVES[move].implicatedMiniCubes.find(({ element }) => element[0] === indexRow && element[1] === indexCube)
+//         if (isExistingCubeInThisMovement) result.push(MOVES[move]);
+//     };
+//     return result;
+// }
 
-const detectMouseMoveDirection = ({ originMousePosition, currentMousePosition }) => {
-    const { pageX: xOrigin, pageY: yOrigin } = originMousePosition;
-    const { pageX: xCurrent, pageY: yCurrent } = currentMousePosition;
+// const detectMouseMoveDirection = ({ originMousePosition, currentMousePosition }) => {
+//     const { pageX: xOrigin, pageY: yOrigin } = originMousePosition;
+//     const { pageX: xCurrent, pageY: yCurrent } = currentMousePosition;
 
-    const xDisplacement = xOrigin - xCurrent;
-    const yDisplacement = yOrigin - yCurrent;
-
-
-    console.log({ xOrigin, xCurrent, yOrigin, yCurrent })
-    console.log({ originMousePosition, currentMousePosition })
-    let direction = null;
-
-    if (Math.abs(xDisplacement) > Math.abs(yDisplacement)) {
-        if (xOrigin < 0) {
-            direction = 'left';
-        } else direction = 'right';
-
-    } else {
-        if (yOrigin < 0) {
-            direction = 'bottom'
-        }
-        else direction = 'top';
-    }
-    return direction;
-}
-
-const detectMouseMovement = ({ posibleMovements, originFace, originMousePosition, currentMousePosition }) => {
-    const faceName = getFace(originFace.classList);
-    const mouseMoveDirection = detectMouseMoveDirection({ originMousePosition, currentMousePosition });
-    let mouseMovent = '';
-
-    switch (faceName) {
-        case 'front': {
-            if(mouseMoveDirection === 'right'){
-                mouseMovement = 'U';
-            };
-        }
-        case 'left': {
-        }
-        case 'right': {
-        }
-        case 'back': {
-
-        }
-        case 'top': {
-
-        } case 'bottom': {
-
-        }
-
-    }
-
-};
-
-const originMousePosition = {
-    clientX: 0,
-    clientY: 0,
-    screenX: 0,
-    screenY: 0,
-    pageX: 0,
-    pageY: 0,
-    isSetted: false,
-};
+//     const xDisplacement = xOrigin - xCurrent;
+//     const yDisplacement = yOrigin - yCurrent;
 
 
-let posibleMovements = [];
-let $implicatedMiniCubes = [];
-let $faceClicked = '';
+//     console.log({ xOrigin, xCurrent, yOrigin, yCurrent })
+//     //console.log({ originMousePosition, currentMousePosition })
+//     let direction = null;
 
-const mouseMovement = (event) => {
-    const { target, clientX, clientY, screenX, screenY, pageX, pageY } = event;
-    console.log("MOUSE DOWN", clientX);
+//     if (Math.abs(xDisplacement) > Math.abs(yDisplacement)) {
+//         if (xDisplacement < 0) {
+//             direction = 'right';
+//         } else direction = 'left';
 
-    if (!target.classList.contains('cubic__face')) return;
+//     } else {
+//         if (yDisplacement < 0) {
+//             direction = 'top'
+//         }
+//         else direction = 'bottom';
+//     }
+//     return direction;
+// }
 
-    // get face of clicked element
-    //faceClicked = getFace(target.classList);
+// const detectMouseMovement = ({ posibleMovements, originFace, originMousePosition, currentMousePosition }) => {
+//     const faceName = getFace(originFace.classList);
+//     const mouseMoveDirection = detectMouseMoveDirection({ originMousePosition, currentMousePosition });
+//     console.log(mouseMoveDirection);
+//     let mouseMovement = '';
 
-    // get the face clicked 
-    $faceClicked = target;
-    // get the id of the parent (miniCube)
-    const { id } = target.parentElement
-    // get the indexs inside the model
-    const [indexRow, indexCube] = getMiniCubeIndexsById(id);
+//     switch (faceName) {
+//         case 'front': {
+//             const cases = {
+//                 'right': 'U',
+//                 'left': 'U!',
+//                 'top': 'R',
+//                 'bottom': 'R!',
+//             };
+//             mouseMovement = cases[mouseMoveDirection];
+//         }
+//         case 'left': {
+//             const cases = {
+//                 'right': 'U',
+//                 'left': 'U!',
+//                 'top': 'R',
+//                 'bottom': 'R!',
+//             };
+//             mouseMovement = cases[mouseMoveDirection];
+//         }
+//         case 'right': {
+//             const cases = {
+//                 'right': 'U',
+//                 'left': 'U!',
+//                 'top': 'R',
+//                 'bottom': 'R!',
+//             };
+//             mouseMovement = cases[mouseMoveDirection];
+//         }
+//         case 'back': {
+//             const cases = {
+//                 'right': 'U',
+//                 'left': 'U!',
+//                 'top': 'R',
+//                 'bottom': 'R!',
+//             };
+//             mouseMovement = cases[mouseMoveDirection];
+//         }
+//         case 'top': {
+//             const cases = {
+//                 'right': 'U',
+//                 'left': 'U!',
+//                 'top': 'R',
+//                 'bottom': 'R!',
+//             };
+//             mouseMovement = cases[mouseMoveDirection];
+//         }
+//         case 'bottom': {
+//             const cases = {
+//                 'right': 'U',
+//                 'left': 'U!',
+//                 'top': 'R',
+//                 'bottom': 'R!',
+//             };
+//             mouseMovement = cases[mouseMoveDirection];
+//         }
 
-    // get all posible movement of the clicked element
-    posibleMovements = getPosiblesMovements(indexRow, indexCube)
+//     }
+//     console.log("RETORNO", mouseMovement)
 
-    selectedArea.addEventListener("mousemove", listenMouseMove)
-}
+//     return mouseMovement;
+// };
 
-const listenMouseMove = (event) => {
-    const { clientX, clientY, screenX, screenY, pageX, pageY } = event;
+// const originMousePosition = {
+//     clientX: 0,
+//     clientY: 0,
+//     screenX: 0,
+//     screenY: 0,
+//     pageX: 0,
+//     pageY: 0,
+//     isSetted: false,
+// };
 
-    if(originMousePosition.pageX === pageX && originMousePosition.pageY === pageY) return;
 
-    if (!originMousePosition.isSetted) {
-        console.log("first FRAME", event);
+// let posibleMovements = [];
+// let $implicatedMiniCubes = [];
+// let $faceClicked = '';
 
-        originMousePosition.clientX = clientX;
-        originMousePosition.clientY = clientY;
-        originMousePosition.screenX = screenX;
-        originMousePosition.screenY = screenY;
-        originMousePosition.pageX = pageX;
-        originMousePosition.pageY = pageY;
-        originMousePosition.isSetted = true;
+// const mouseMovement = (event) => {
+//     const { target, clientX, clientY, screenX, screenY, pageX, pageY } = event;
 
-        return;
+//     if (!target.classList.contains('cubic__face')) return;
 
-    } else if ($implicatedMiniCubes.length === 0) {
+//     // get face of clicked element
+//     //faceClicked = getFace(target.classList);
 
-        console.log("second FRAME", event);
-        const currentMousePosition = { clientX, clientY, screenX, screenY, pageX, pageY };
-        detectMouseMovement({ originFace: $faceClicked, originMousePosition, currentMousePosition, });
+//     // get the face clicked 
+//     $faceClicked = target;
+//     // get the id of the parent (miniCube)
+//     const { id } = target.parentElement
+//     // get the indexs inside the model
+//     const [indexRow, indexCube] = getMiniCubeIndexsById(id);
 
-        // harcoded.
-        MOVES['U'].implicatedMiniCubes.forEach(({ element }) => {
-            const miniCubeModelName = miniCubeModel[element[0]][element[1]].name;
-            $implicatedMiniCubes.push(document.getElementById(miniCubeModelName));
-        })
-        movesElementsToAnotherParent($implicatedMiniCubes, $cubicPlain)
-    }
+//     // get all posible movement of the clicked element
+//     posibleMovements = getPosiblesMovements(indexRow, indexCube)
 
-    var xPos = event.clientX / selectedArea.offsetWidth,
-        yPos = event.clientY / window.innerHeight
+//     selectedArea.addEventListener("mousemove", listenMouseMove)
+// }
 
-    gsap.to($cubicPlain, 1, {
-        rotationY: xPos * 100,
-        ease: "Power1.easeOut",
-    });
-}
+// let move = null;
 
-const mouseUpHandler = (event) => {
-    console.log("MOUSE UP");
-    selectedArea.removeEventListener("mousemove", listenMouseMove)
+// const listenMouseMove = (event) => {
+//     const { clientX, clientY, screenX, screenY, pageX, pageY } = event;
 
-    const { target, clientX: xDestination, clientY: yDestination } = event;
-    const { x: xOrigin, y: yOrigin } = originMousePosition;
+//     if (originMousePosition.pageX === pageX && originMousePosition.pageY === pageY) return;
 
-    if (!xOrigin || !yOrigin) {
-        return;
-    }
 
-    if (xOrigin > xDestination) {
-        movesElementsToAnotherParent($implicatedMiniCubes, $cubic);
-        moveCube('U!');
-    } else {
-        movesElementsToAnotherParent($implicatedMiniCubes, $cubic);
-        moveCube('U');
-    }
+//     if (!originMousePosition.isSetted) {
+//         console.log("1")
+//         originMousePosition.clientX = clientX;
+//         originMousePosition.clientY = clientY;
+//         originMousePosition.screenX = screenX;
+//         originMousePosition.screenY = screenY;
+//         originMousePosition.pageX = pageX;
+//         originMousePosition.pageY = pageY;
+//         originMousePosition.isSetted = true;
 
-    $implicatedMiniCubes = [];
+//         return;
 
-}
+//     } else if ($implicatedMiniCubes.length === 0) {
+//         console.log("2")
+//         const currentMousePosition = { clientX, clientY, screenX, screenY, pageX, pageY };
+//         const detectingMovement = detectMouseMovement({ originFace: $faceClicked, originMousePosition, currentMousePosition, });
 
-selectedArea.addEventListener("mousedown", mouseMovement)
+//         move = MOVES[detectingMovement];
+//         move.implicatedMiniCubes.forEach(({ element }) => {
+//             const miniCubeModelName = miniCubeModel[element[0]][element[1]].name;
+//             $implicatedMiniCubes.push(document.getElementById(miniCubeModelName));
+//         })
+//         movesElementsToAnotherParent($implicatedMiniCubes, $cubicPlain)
+//     }
 
-selectedArea.addEventListener("mouseup", mouseUpHandler)
+//     const xPos = event.clientX / selectedArea.offsetWidth;
+//     const yPos = event.clientY / selectedArea.offsetHeight;
+
+
+//     if (move) {
+//         gsap.to($cubicPlain, 1, {
+//             rotationY: move.rotation.y !== 0 ? xPos * 100 : 0,
+//             rotationZ: move.rotation.z !== 0 ? yPos * 100 : 0,
+//             ease: "Power1.easeOut",
+//         });
+//     }
+
+
+//     // // if (move && move.rotation.y !== 0) {
+//     // //     console.log("MOVIENDO")
+//     // //     gsap.to($cubicPlain, 1, {
+//     // //         rotationY: xPos * 100,
+//     // //         ease: "Power1.easeOut",
+//     // //     });
+//     // // } else if (move && move.rotation.z !== 0) {
+//     // //     gsap.to($cubicPlain, 1, {
+//     // //         rotationZ: yPos * 100,
+//     // //         ease: "Power1.easeOut",
+//     // //     });
+//     // }
+// }
+
+// const mouseUpHandler = (event) => {
+//     selectedArea.removeEventListener("mousemove", listenMouseMove)
+
+//     const { target, clientX: xDestination, clientY: yDestination } = event;
+//     const { x: xOrigin, y: yOrigin } = originMousePosition;
+
+//     if (!xOrigin || !yOrigin) {
+//         return;
+//     }
+
+//     if (xOrigin > xDestination) {
+//         movesElementsToAnotherParent($implicatedMiniCubes, $cubic);
+//         moveCube('U!');
+//     } else {
+//         movesElementsToAnotherParent($implicatedMiniCubes, $cubic);
+//         moveCube('U');
+//     }
+
+//     $implicatedMiniCubes = [];
+
+// }
+
+// selectedArea.addEventListener("mousedown", mouseMovement)
+
+// selectedArea.addEventListener("mouseup", mouseUpHandler)

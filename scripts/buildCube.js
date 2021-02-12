@@ -4,9 +4,8 @@ miniCubeModel.flat().forEach((curMiniCube, indexMiniCube) => {
     miniCube.className = "cubic__mini";
 
     const { x: xTranf, y: yTranf, z: zTranf } = curMiniCube.position;
-    const { x: xRot, y: yRot, z: zRot } = curMiniCube.rotation
 
-    miniCube.style.transform = `translate3d(${xTranf}px,${yTranf}px,${zTranf}px) rotateX(${xRot}deg) rotateY(${yRot}deg) rotateZ(${zRot}deg)`;
+    miniCube.style.transform = `translate3d(${xTranf}px,${yTranf}px,${zTranf}px)`;
 
     curMiniCube.faces.forEach((currentface, index) => {
         const face = document.createElement('div');

@@ -1,54 +1,56 @@
-  // rotate cubic on grab button click
- 
-  let xStartPosition;
-  let yStartPosition;
-  let xEndPosition;
-  let yEndPosition;
-  let startRoting = false;
-  let xAngleRotate = 0;
-  let yAngleRotate = 0;
+const grabButton = document.getElementById("grab-button");
 
-  const setInitalValues = (e) => {
-      xStartPosition = e.pageX;
-      yStartPosition = e.pageY;
-      startRoting = true;
-  }
+// rotate cubic on grab button click
 
-  const resetValues = (e) => {
-      startRoting = false;
-  }
+let xStartPosition;
+let yStartPosition;
+let xEndPosition;
+let yEndPosition;
+let startRoting = false;
+let xAngleRotate = 0;
+let yAngleRotate = 0;
 
-  const rotateCubic = (e) => {
-      if (startRoting) {
-          xEndPosition = e.pageX;
-          yEndPosition = e.pageY;
-          xAngleRotate = ((xEndPosition - xStartPosition) * 2) * Math.PI / 360 + xAngleRotate;
-          yAngleRotate = ((yEndPosition - yStartPosition) * 2) * Math.PI / 360 + yAngleRotate;
+const setInitalValues = (e) => {
+    xStartPosition = e.pageX;
+    yStartPosition = e.pageY;
+    startRoting = true;
+}
 
-          $cubic.style.transform = `rotateX(${-yAngleRotate}deg) rotateY(${xAngleRotate}deg)`;
-      }
-  }
+const resetValues = (e) => {
+    startRoting = false;
+}
+
+const rotateCubic = (e) => {
+    if (startRoting) {
+        xEndPosition = e.pageX;
+        yEndPosition = e.pageY;
+        xAngleRotate = ((xEndPosition - xStartPosition) * 2) * Math.PI / 360 + xAngleRotate;
+        yAngleRotate = ((yEndPosition - yStartPosition) * 2) * Math.PI / 360 + yAngleRotate;
+
+        $cubic.style.transform = `rotateX(${-yAngleRotate}deg) rotateY(${xAngleRotate}deg)`;
+    }
+}
 
 
-  const switchGrabbing = () => {
-      isGrabbing = !isGrabbing;
+const switchGrabbing = () => {
+    isGrabbing = !isGrabbing;
 
-      if (isGrabbing) {
-          // remove transition class
-          if ($cubic.classList.contains('cubic--auto-roting')) {
-              $cubic.classList.remove('cubic--auto-roting')
-          }
+    if (isGrabbing) {
+        // remove transition class
+        if ($cubic.classList.contains('cubic--auto-roting')) {
+            $cubic.classList.remove('cubic--auto-roting')
+        }
 
-          selectedArea.classList.add('cubic__main--grabing');
-          selectedArea.addEventListener('mousedown', setInitalValues, false);
-          selectedArea.addEventListener('mousemove', rotateCubic, false);
-          window.addEventListener('mouseup', resetValues, false);
-      } else {
-          selectedArea.classList.remove('cubic__main--grabing');
-          selectedArea.removeEventListener('mousedown', setInitalValues);
-          selectedArea.removeEventListener('mousemove', rotateCubic);
-          window.removeEventListener('mouseup', resetValues);
-      }
-  };
+        selectedArea.classList.add('cubic__main--grabing');
+        selectedArea.addEventListener('mousedown', setInitalValues, false);
+        selectedArea.addEventListener('mousemove', rotateCubic, false);
+        window.addEventListener('mouseup', resetValues, false);
+    } else {
+        selectedArea.classList.remove('cubic__main--grabing');
+        selectedArea.removeEventListener('mousedown', setInitalValues);
+        selectedArea.removeEventListener('mousemove', rotateCubic);
+        window.removeEventListener('mouseup', resetValues);
+    }
+};
 
-  grabButton.addEventListener("click", switchGrabbing)
+grabButton.addEventListener("click", switchGrabbing)
