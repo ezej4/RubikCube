@@ -36,15 +36,30 @@ const rotate = (direction) => {
     let rotationStyle;
     switch (direction) {
         case 'left': {
-            rotationStyle = `rotateX(${xRotation}deg) rotateY(${yRotation+90}deg)`
+            rotationStyle = isCubeInvertedX ?
+                `rotateX(${xRotation}deg) rotateY(${yRotation-90}deg)` :
+                `rotateX(${xRotation}deg) rotateY(${yRotation+90}deg)`;
+
+            const newRotationY = cubePosition.y + 90 > 360 ? cubePosition.y + 90 - 360 : cubePosition.y + 90;
+            cubePosition = { ...cubePosition, y: newRotationY };
+            isCubeInvertedY = cubePosition.y === 270;
             break;
         }
         case 'right': {
-            rotationStyle = `rotateX(${xRotation}deg) rotateY(${yRotation-90}deg)`
+            rotationStyle = isCubeInvertedX ?
+                `rotateX(${xRotation}deg) rotateY(${yRotation+90}deg)` :
+                `rotateX(${xRotation}deg) rotateY(${yRotation-90}deg)`;
+
+            const newRotationY = cubePosition.y - 90 < 0 ? cubePosition.y - 90 + 360 : cubePosition.y - 90;
+            cubePosition = { ...cubePosition, y: newRotationY };
+            isCubeInvertedY = cubePosition.y === 270;
             break;
         }
         case 'top': {
-            rotationStyle = `rotateX(${xRotation+180}deg) rotateY(${yRotation}deg)`
+            rotationStyle = `rotateX(${xRotation+180}deg) rotateY(${yRotation}deg)`;
+            const newRotationX = cubePosition.x + 180 > 360 ? cubePosition.x + 180 - 360 : cubePosition.x + 180;
+            cubePosition = { ...cubePosition, x: newRotationX };
+            isCubeInvertedX = cubePosition.x === 180;
             break;
         }
         default: {
@@ -53,7 +68,6 @@ const rotate = (direction) => {
         }
     }
 
-    if (direction) {
-        $cubic.style.transform = rotationStyle;
-    }
+    $cubic.style.transform = rotationStyle;
+    //$cubicPlain.style.transform = rotationStyle;
 }

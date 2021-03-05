@@ -68,6 +68,7 @@ body {
 
 .cubic__selected-area {
   width: 100%;
+  border: 1px dashed white;
 }
 
 .cubic__plain {

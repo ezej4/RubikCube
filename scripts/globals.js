@@ -14,6 +14,13 @@ let ACTUAL_MOVEMENT;
 let isCubeMoving = false;
 let isGrabbing = false;
 let isSpining = false;
+let isCubeInvertedX = false;
+let isCubeInvertedY = false;
+
+let cubePosition = {
+    x: 0,
+    y: 0,
+};
 
 const facesColors = {
     front: COLORS[0],
@@ -30,34 +37,39 @@ let miniCubeModel = [
     [ // mini-cube-wall 1
         {
             name: 'mini-cube-1',
-            faces: [
-                {
-                    id: 'face-1-1', label: 'front', value: fColor,
+            faces: [{
+                    id: 'face-1-1',
+                    label: 'front',
+                    value: fColor,
                     proximityMoves: {
-                        'right': 'U!',
-                        'left': 'U',
-                        'top': 'F',
-                        'bottom': 'F!',
+                        right: 'U!',
+                        left: 'U',
+                        top: 'F!',
+                        bottom: 'F',
                     }
                 },
                 {
-                    id: 'face-1-2', label: 'left', value: lColor,
+                    id: 'face-1-2',
+                    label: 'left',
+                    value: lColor,
                     proximityMoves: {
-                        'right': 'U',
-                        'left': 'U!',
-                        'top': 'R!',
-                        'bottom': 'R',
+                        right: 'U',
+                        left: 'U!',
+                        top: 'R',
+                        bottom: 'R!',
                     }
                 },
                 { id: 'face-1-3', label: 'right', value: null, },
                 { id: 'face-1-4', label: 'back', value: null, },
                 {
-                    id: 'face-1-5', label: 'top', value: tColor,
+                    id: 'face-1-5',
+                    label: 'top',
+                    value: tColor,
                     proximityMoves: {
-                        'right': 'F',
-                        'left': 'F!',
-                        'top': 'R',
-                        'bottom': 'R!',
+                        right: 'F',
+                        left: 'F!',
+                        top: 'R!',
+                        bottom: 'R',
                     }
                 },
                 { id: 'face-1-6', label: 'bottom', value: null, }
@@ -66,33 +78,101 @@ let miniCubeModel = [
         },
         {
             name: 'mini-cube-2',
-            faces: [
-                { id: 'face-2-1', label: 'front', value: fColor, },
+            faces: [{
+                    id: 'face-2-1',
+                    label: 'front',
+                    value: fColor,
+                    proximityMoves: {
+                        right: 'U',
+                        left: 'U!',
+                        top: 'S!',
+                        bottom: 'S',
+                    }
+                },
                 { id: 'face-2-2', label: 'left', value: null, },
                 { id: 'face-2-3', label: 'right', value: null, },
                 { id: 'face-2-4', label: 'back', value: null, },
-                { id: 'face-2-5', label: 'top', value: tColor, },
+                {
+                    id: 'face-2-5',
+                    label: 'top',
+                    value: tColor,
+                    proximityMoves: {
+                        right: 'S',
+                        left: 'S!',
+                        top: 'R!',
+                        bottom: 'R',
+                    },
+                },
                 { id: 'face-2-6', label: 'bottom', value: null, }
             ],
             position: { x: TRANSLATION_UNITY, y: 0, z: TRANSLATION_UNITY },
         },
         {
             name: 'mini-cube-3',
-            faces: [
-                { id: 'face-3-1', label: 'front', value: fColor, },
+            faces: [{
+                    id: 'face-3-1',
+                    label: 'front',
+                    value: fColor,
+                    proximityMoves: {
+                        right: 'U',
+                        left: 'U!',
+                        top: 'B!',
+                        bottom: 'B',
+                    },
+                },
                 { id: 'face-3-2', label: 'left', value: null, },
-                { id: 'face-3-3', label: 'right', value: rColor, },
+                {
+                    id: 'face-3-3',
+                    label: 'right',
+                    value: rColor,
+                    proximityMoves: {
+                        right: 'U',
+                        left: 'U!',
+                        top: 'R!',
+                        bottom: 'R',
+                        invertedY: true,
+                    },
+                },
                 { id: 'face-3-4', label: 'back', value: null, },
-                { id: 'face-3-5', label: 'top', value: tColor, },
+                {
+                    id: 'face-3-5',
+                    label: 'top',
+                    value: tColor,
+                    proximityMoves: {
+                        right: 'B',
+                        left: 'B!',
+                        top: 'R',
+                        bottom: 'R!',
+                    },
+                },
                 { id: 'face-3-6', label: 'bottom', value: null, }
             ],
             position: { x: 2 * TRANSLATION_UNITY, y: 0, z: TRANSLATION_UNITY },
         },
         {
             name: 'mini-cube-4',
-            faces: [
-                { id: 'face-4-1', label: 'front', value: fColor, },
-                { id: 'face-4-2', label: 'left', value: lColor, },
+            faces: [{
+                    id: 'face-4-1',
+                    label: 'front',
+                    value: fColor,
+                    proximityMoves: {
+                        right: 'E',
+                        left: 'E!',
+                        top: 'F!',
+                        bottom: 'F',
+                    },
+                },
+                {
+                    id: 'face-4-2',
+                    label: 'left',
+                    value: lColor,
+                    proximityMoves: {
+                        right: 'E',
+                        left: 'E!',
+                        top: 'R',
+                        bottom: 'R!',
+                    },
+                },
                 { id: 'face-4-3', label: 'right', value: null, },
                 { id: 'face-4-4', label: 'back', value: null, },
                 { id: 'face-4-5', label: 'top', value: null, },
@@ -102,8 +182,17 @@ let miniCubeModel = [
         },
         {
             name: 'mini-cube-5',
-            faces: [
-                { id: 'face-5-1', label: 'front', value: fColor, },
+            faces: [{
+                    id: 'face-5-1',
+                    label: 'front',
+                    value: fColor,
+                    proximityMoves: {
+                        right: 'E',
+                        left: 'E!',
+                        top: 'S!',
+                        bottom: 'S',
+                    },
+                },
                 { id: 'face-5-2', label: 'left', value: null, },
                 { id: 'face-5-3', label: 'right', value: null, },
                 { id: 'face-5-4', label: 'back', value: null, },
@@ -114,10 +203,30 @@ let miniCubeModel = [
         },
         {
             name: 'mini-cube-6',
-            faces: [
-                { id: 'face-6-1', label: 'front', value: fColor, },
+            faces: [{
+                    id: 'face-6-1',
+                    label: 'front',
+                    value: fColor,
+                    proximityMoves: {
+                        right: 'E',
+                        left: 'E!',
+                        top: 'B!',
+                        bottom: 'B',
+                    },
+                },
                 { id: 'face-6-2', label: 'left', value: null, },
-                { id: 'face-6-3', label: 'right', value: rColor, },
+                {
+                    id: 'face-6-3',
+                    label: 'right',
+                    value: rColor,
+                    proximityMoves: {
+                        right: 'E',
+                        left: 'E!',
+                        top: 'R!',
+                        bottom: 'R',
+                        invertedY: true,
+                    },
+                },
                 { id: 'face-6-4', label: 'back', value: null, },
                 { id: 'face-6-5', label: 'top', value: null, },
                 { id: 'face-6-6', label: 'bottom', value: null, }
@@ -126,25 +235,74 @@ let miniCubeModel = [
         },
         {
             name: 'mini-cube-7',
-            faces: [
-                { id: 'face-7-1', label: 'front', value: fColor, },
-                { id: 'face-7-2', label: 'left', value: lColor, },
+            faces: [{
+                    id: 'face-7-1',
+                    label: 'front',
+                    value: fColor,
+                    proximityMoves: {
+                        right: 'D',
+                        left: 'D!',
+                        top: 'F!',
+                        bottom: 'F',
+                    },
+                },
+                {
+                    id: 'face-7-2',
+                    label: 'left',
+                    value: lColor,
+                    proximityMoves: {
+                        right: 'D',
+                        left: 'D!',
+                        top: 'R',
+                        bottom: 'R!',
+                        // invertedX: true
+                    },
+                },
                 { id: 'face-7-3', label: 'right', value: null, },
                 { id: 'face-7-4', label: 'back', value: null, },
                 { id: 'face-7-5', label: 'top', value: null, },
-                { id: 'face-7-6', label: 'bottom', value: btColor, }
+                {
+                    id: 'face-7-6',
+                    label: 'bottom',
+                    value: btColor,
+                    proximityMoves: {
+                        right: 'F!',
+                        left: 'F',
+                        top: 'R!',
+                        bottom: 'R',
+                    },
+                }
             ],
             position: { x: 0, y: 2 * TRANSLATION_UNITY, z: TRANSLATION_UNITY },
         },
         {
             name: 'mini-cube-8',
-            faces: [
-                { id: 'face-8-1', label: 'front', value: fColor, },
+            faces: [{
+                    id: 'face-8-1',
+                    label: 'front',
+                    value: fColor,
+                    proximityMoves: {
+                        right: 'D',
+                        left: 'D!',
+                        top: 'S!',
+                        bottom: 'S',
+                    },
+                },
                 { id: 'face-8-2', label: 'left', value: null, },
                 { id: 'face-8-3', label: 'right', value: null, },
                 { id: 'face-8-4', label: 'back', value: null, },
                 { id: 'face-8-5', label: 'top', value: null, },
-                { id: 'face-8-6', label: 'bottom', value: btColor, }
+                {
+                    id: 'face-8-6',
+                    label: 'bottom',
+                    value: btColor,
+                    proximityMoves: {
+                        right: 'S!',
+                        left: 'S',
+                        top: 'R!',
+                        bottom: 'R',
+                    },
+                }
             ],
             position: { x: TRANSLATION_UNITY, y: 2 * TRANSLATION_UNITY, z: TRANSLATION_UNITY },
         },
@@ -384,4 +542,3 @@ let miniCubeModel = [
         },
     ]
 ]
-
