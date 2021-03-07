@@ -9,7 +9,7 @@ miniCubeModel.flat().forEach((curMiniCube, indexMiniCube) => {
 
     curMiniCube.faces.forEach((currentface, index) => {
         const face = document.createElement('div');
-        face.innerHTML = currentface.id.split('-')[1] + currentface.id.split('-')[2] ;
+        //face.innerHTML = currentface.id.split('-')[1] + currentface.id.split('-')[2] ;
         face.id = currentface.id;
         face.className = `cubic__face cubic__face--${currentface.label}`
 

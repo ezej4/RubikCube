@@ -432,7 +432,7 @@ const rePaintCube = () => {
                     const face = document.createElement('div');
                     face.className = `cubic__face cubic__face--${currentface.label}`
 
-                    face.innerHTML = miniCube.name.replace(/^\D+/g, '');
+                    //face.innerHTML = miniCube.name.replace(/^\D+/g, '');
 
                     if (currentface.value) {
                         face.classList.add(`cubic__face--${currentface.value}`)
