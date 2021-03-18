@@ -417,6 +417,7 @@ const rePaintCube = () => {
         rotationX: nextCubeRotation.x,
         rotationZ: nextCubeRotation.z,
         ease: "back.out(1.7)",
+        clearProps: 'all',
         //runBackwards: true,
         onComplete: () => {
             unPaintedMiniCubes.forEach((miniCube) => {
@@ -436,6 +437,7 @@ const rePaintCube = () => {
 
                     if (currentface.value) {
                         face.classList.add(`cubic__face--${currentface.value}`)
+                         face.innerHTML = currentface.id.split('-')[1] + " " + currentface.label ;
                     }
 
 
@@ -444,14 +446,18 @@ const rePaintCube = () => {
             })
             movesElementsToAnotherParent($unPaintedMiniCubes, $cubic)
             isCubeMoving = false;
+
+            //gsap.to($cubicPlain, {delay: 1, clearProps: 'all' })
+
         }
     });
-    gsap.to($cubicPlain, {
-        duration: 0,
-        rotationY: 0,
-        rotationX: 0,
-        rotationZ: 0,
-        delay: .5,
-    })
+
+    /*   gsap.to($cubicPlain, {
+          duration: 0,
+          rotationY: 0,
+          rotationX: 0,
+          rotationZ: 0,
+          delay: 1,
+      }) */
 
 }

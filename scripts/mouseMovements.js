@@ -1,4 +1,3 @@
-
 // mouse movements function.
 const getFace = (classList) => {
     const formatedClassList = Array.from(classList)
@@ -36,10 +35,9 @@ const getMiniCubeIndexsById = (id) => {
 const getProximityMovements = (cubeId, face) => {
     if (!cubeId || !face) return;
 
-    console.log(cubeId);
     const cubeIndexs = getMiniCubeIndexsById(cubeId);
-    console.log(cubeIndexs);
     const { x, y } = cubePosition;
+
     const movesForCubeRotation = MOUSE_MOVEMENTS.find(element => {
         return element.xAngle === x && element.yAngle === y
     })
@@ -47,8 +45,6 @@ const getProximityMovements = (cubeId, face) => {
     const miniCubeManualMovement = movesForCubeRotation.value.find(miniCube => {
         return miniCube.miniCube[0] === cubeIndexs[0] && miniCube.miniCube[1] === cubeIndexs[1];
     })
-
-    console.log(miniCubeManualMovement)
 
     return miniCubeManualMovement.proximityMoves[face];
 }
@@ -92,12 +88,14 @@ let $implicatedMiniCubes = [];
 let proximityMoves = [];
 let direction = '';
 let move = null;
+let isMovingNow = false;
 
 const mouseMovement = (event) => {
     const { target } = event;
 
     if (!target.classList.contains('cubic__face') || isGrabbing) return;
-
+    if (isMovingNow) return;
+    isMovingNow = true;
     const $faceClicked = target;
     const { id } = target.parentElement
     const cubeId = target.parentElement.id
@@ -105,7 +103,6 @@ const mouseMovement = (event) => {
     const miniCubeSelected = getMiniCubeById(id);
 
     proximityMoves = getProximityMovements(cubeId, face);
-
     selectedArea.addEventListener("mousemove", listenMouseMove)
     selectedArea.addEventListener("mouseleave", mouseUpHandler)
     selectedArea.addEventListener("mouseup", mouseUpHandler)
@@ -124,36 +121,23 @@ const getRotations = ({ pageX, pageY }) => {
     if (move.rotation.x !== 0) {
         yRotation = ((originMousePosition.pageY - pageY) / $cubicPlain.offsetHeight) * 100;
 
-        /*   if (proximityMoves.invertedY) {
-            yRotation = (pageY - originMousePosition.pageY) / $cubicPlain.offsetHeight * 100;
+        if (proximityMoves.invertedY) {
+            yRotation = ((pageY - originMousePosition.pageY) / $cubicPlain.offsetHeight) * 100;
         }
 
-        if (isCubeInvertedX) {
-            yRotation = (pageY - originMousePosition.pageY) / $cubicPlain.offsetHeight * 100;
-        }
- */
         return { ...results, x: yRotation }
 
     } else if (move.rotation.y !== 0) {
         xRotation = (pageX - originMousePosition.pageX) / $cubicPlain.offsetWidth * 100;
 
-        /*    if (isCubeInvertedX) {
-               xRotation = ((originMousePosition.pageX - pageX) / $cubicPlain.offsetWidth) * 100;
-           } */
-
         return { ...results, y: xRotation }
 
     } else if (move.rotation.z !== 0) {
         zRotation = ((originMousePosition.pageY - pageY) / $cubicPlain.offsetHeight) * 100;
-        /* 
-                if (proximityMoves.invertedY) {
-                    zRotation = (pageY - originMousePosition.pageY) / $cubicPlain.offsetHeight * 100;
-                }
 
-                if (isCubeInvertedX) {
-                    zRotation = (pageY - originMousePosition.pageY) / $cubicPlain.offsetHeight * 100;
-                } */
-
+        if (proximityMoves.invertedZ) {
+            zRotation = (pageY - originMousePosition.pageY) / $cubicPlain.offsetHeight * 100;
+        }
         return { ...results, z: zRotation }
 
     }
@@ -193,11 +177,8 @@ const listenMouseMove = (event) => {
     } else {
 
         const { x, y, z } = getRotations({ pageX, pageY });
-        console.log({ x, y, z })
-        /*   let zPos = ((originMousePosition.pageX - event.pageX) / $cubicPlain.offsetWidth) -
-          ((event.pageY - originMousePosition.pageY) / $cubicPlain.offsetHeight); */
 
-        gsap.to($cubicPlain, 1, {
+        gsap.to($cubicPlain, .3, {
             rotationY: y,
             rotationZ: z,
             rotationX: x,
@@ -242,12 +223,14 @@ const mouseUpHandler = (event) => {
 
     if (!isMouseMoveEnough) {
         gsap.to($cubicPlain, {
-            duration: 1,
+            duration: .3,
             rotationY: 0,
             rotationX: 0,
             rotationZ: 0,
+            clearProps: 'all',
             onComplete: () => {
                 movesElementsToAnotherParent($implicatedMiniCubes, $cubic)
+                isMovingNow = false;
                 resetVariables();
             }
         });
@@ -279,13 +262,11 @@ const mouseUpHandler = (event) => {
 
     moveCube(moveToExec);
 
-    gsap.to($cubicPlain, {
-        duration: 0,
-        rotationY: 0,
-        rotationX: 0,
-        rotationZ: 0,
-        delay: 1,
-    });
+    setTimeout(() => {
+        isMovingNow = false;
+    }, 500);
+    
+    //gsap.to($cubicPlain, { clearProps: 'all' })
 
     resetVariables();
 

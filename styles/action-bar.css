@@ -1,0 +1,52 @@
+
+.action-bar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 0;
+  border-radius: 5px;
+  background: #08a045;
+  gap: 100px;
+  z-index: 2;
+}
+
+.action-bar__rotating-buttons{
+  display: flex;
+  align-items: center;
+}
+
+.action-bar__rotating-buttons i {
+  font-size: 60px;
+  color: white;
+  transition: color .5s;
+}
+
+.action-bar__rotating-buttons i:hover {
+  cursor: pointer;
+  color: black;
+}
+
+.action-bar__extra-buttons {
+  position: absolute;
+  left: 0;
+  margin-left: 14px;
+}
+
+.action-bar__animate-button {
+  width: 160px;
+  padding: 12px;
+  color: white;
+  border: none;
+  margin: 0;
+  border-radius: 4px;
+  background: #1F1A38;
+  transition: transform 1s ease;
+  font-family: 'roboto-regular';
+  font-size: 16px;
+}
+
+.action-bar__animate-button:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}

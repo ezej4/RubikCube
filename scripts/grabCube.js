@@ -1,4 +1,4 @@
-const grabButton = document.getElementById("grab-button");
+/* const grabButton = document.getElementById("grab-button");
 
 // rotate cubic on grab button click
 
@@ -53,4 +53,4 @@ const switchGrabbing = () => {
     }
 };
 
-grabButton.addEventListener("click", switchGrabbing)
+grabButton.addEventListener("click", switchGrabbing) */
