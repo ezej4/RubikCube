@@ -1,3 +1,17 @@
+
+const originMousePosition = {
+    pageX: 0,
+    pageY: 0,
+    isSetted: false,
+};
+
+let $implicatedMiniCubes = [];
+let proximityMoves = [];
+let direction = '';
+let move = null;
+let isMovingNow = false;
+
+
 // mouse movements function.
 const getFace = (classList) => {
     const formatedClassList = Array.from(classList)
@@ -7,13 +21,6 @@ const getFace = (classList) => {
     return filteredClassList[0].split('--')[1];
 }
 
-
-const getMiniCubeById = (id) => {
-    if (!id) return;
-
-    const result = miniCubeModel.flat().find((miniCube) => miniCube.name == id);
-    return result;
-};
 
 const getMiniCubeIndexsById = (id) => {
     if (!id) return;
@@ -49,7 +56,7 @@ const getProximityMovements = (cubeId, face) => {
     return miniCubeManualMovement.proximityMoves[face];
 }
 
-const detectMouseMoveDirection = ({ originMousePosition, currentMousePosition }) => {
+const getMouseDirection = ({ originMousePosition, currentMousePosition }) => {
     const { pageX: xOrigin, pageY: yOrigin } = originMousePosition;
     const { pageX: xCurrent, pageY: yCurrent } = currentMousePosition;
 
@@ -72,41 +79,19 @@ const detectMouseMoveDirection = ({ originMousePosition, currentMousePosition })
 }
 
 /* const detectMouseMovement = ({ originMousePosition, currentMousePosition }) => {
-    const { direction } = detectMouseMoveDirection({ originMousePosition, currentMousePosition });
-
+    const { direction } = getMouseDirection({ originMousePosition, currentMousePosition });
     return proximityMoves[direction];
-
 }; */
 
-const originMousePosition = {
-    pageX: 0,
-    pageY: 0,
-    isSetted: false,
+
+const resetVariables = () => {
+    //movesElementsToAnotherParent($implicatedMiniCubes, $cubic)
+    $implicatedMiniCubes = [];
+    originMousePosition.isSetted = false;
+    move = null;
+    direction = '';
 };
 
-let $implicatedMiniCubes = [];
-let proximityMoves = [];
-let direction = '';
-let move = null;
-let isMovingNow = false;
-
-const mouseMovement = (event) => {
-    const { target } = event;
-
-    if (!target.classList.contains('cubic__face') || isGrabbing) return;
-    if (isMovingNow) return;
-    isMovingNow = true;
-    const $faceClicked = target;
-    const { id } = target.parentElement
-    const cubeId = target.parentElement.id
-    const face = getFace(target.classList);
-    const miniCubeSelected = getMiniCubeById(id);
-
-    proximityMoves = getProximityMovements(cubeId, face);
-    selectedArea.addEventListener("mousemove", listenMouseMove)
-    selectedArea.addEventListener("mouseleave", mouseUpHandler)
-    selectedArea.addEventListener("mouseup", mouseUpHandler)
-}
 
 const getRotations = ({ pageX, pageY }) => {
     const results = { x: 0, y: 0, z: 0 };
@@ -144,7 +129,34 @@ const getRotations = ({ pageX, pageY }) => {
 
 }
 
-const listenMouseMove = (event) => {
+const hasMinimunMoveMouse = (xDisplacement, yDisplacement, direction) => {
+    if (direction === 'left' || direction === 'right') {
+        return Math.abs(xDisplacement) > 100
+    }
+
+    return Math.abs(yDisplacement) > 100
+}
+
+
+const mouseDownHandler = (event) => {
+    const { target } = event;
+
+    if (!target.classList.contains('cubic__face') || isMovingNow) {
+        selectedArea.removeEventListener("mousemove", mouseMoveHandler)
+        return;
+    }
+
+    isMovingNow = true;
+    const cubeId = target.parentElement.id
+    const face = getFace(target.classList);
+
+    proximityMoves = getProximityMovements(cubeId, face);
+    selectedArea.addEventListener("mousemove", mouseMoveHandler)
+    selectedArea.addEventListener("mouseleave", mouseUpHandler)
+    selectedArea.addEventListener("mouseup", mouseUpHandler)
+}
+
+const mouseMoveHandler = (event) => {
     const { pageX, pageY } = event;
 
     if (originMousePosition.pageX === pageX && originMousePosition.pageY === pageY) return;
@@ -161,51 +173,38 @@ const listenMouseMove = (event) => {
     if (!move) {
         const currentMousePosition = { pageX, pageY };
 
-        const { direction: detectedDirection } = detectMouseMoveDirection({ originMousePosition, currentMousePosition });
+        const { direction: detectedDirection } = getMouseDirection({ originMousePosition, currentMousePosition });
         direction = detectedDirection;
 
         const detectedMove = proximityMoves[direction];
 
         move = MOVES[detectedMove];
 
-        move.implicatedMiniCubes.forEach(({ element }) => {
-            const miniCubeModelName = miniCubeModel[element[0]][element[1]].name;
-            $implicatedMiniCubes.push(document.getElementById(miniCubeModelName));
+        $implicatedMiniCubes = move.implicatedMiniCubes.map(({ element }) => {
+            const [firstIndex, secondIndex] = element;
+            const miniCube = miniCubeModel[firstIndex][secondIndex]
+
+            return document.getElementById(miniCube.name);
         })
         movesElementsToAnotherParent($implicatedMiniCubes, $cubicPlain)
 
-    } else {
-
-        const { x, y, z } = getRotations({ pageX, pageY });
-
-        gsap.to($cubicPlain, .3, {
-            rotationY: y,
-            rotationZ: z,
-            rotationX: x,
-            ease: "Power1.easeOut",
-        });
     }
 
+
+    const { x, y, z } = getRotations({ pageX, pageY });
+
+    gsap.to($cubicPlain, .3, {
+        rotationY: y,
+        rotationZ: z,
+        rotationX: x,
+        ease: "Power1.easeOut",
+    });
+
+
 }
-
-const hasMinimunMoveMouse = (xDisplacement, yDisplacement, direction) => {
-    if (direction === 'left' || direction === 'right') {
-        return Math.abs(xDisplacement) > 100
-    }
-
-    return Math.abs(yDisplacement) > 100
-}
-
-const resetVariables = () => {
-    //movesElementsToAnotherParent($implicatedMiniCubes, $cubic)
-    $implicatedMiniCubes = [];
-    originMousePosition.isSetted = false;
-    move = null;
-    direction = '';
-};
 
 const mouseUpHandler = (event) => {
-    selectedArea.removeEventListener("mousemove", listenMouseMove)
+    selectedArea.removeEventListener("mousemove", mouseMoveHandler)
 
     const { pageX, pageY } = event;
     const { pageX: xOrigin, pageY: yOrigin } = originMousePosition;
@@ -217,7 +216,7 @@ const mouseUpHandler = (event) => {
 
     const currentMousePosition = { pageX, pageY };
 
-    const { xDisplacement, yDisplacement } = detectMouseMoveDirection({ originMousePosition, currentMousePosition })
+    const { xDisplacement, yDisplacement } = getMouseDirection({ originMousePosition, currentMousePosition })
 
     const isMouseMoveEnough = hasMinimunMoveMouse(xDisplacement, yDisplacement, direction);
 
@@ -265,11 +264,11 @@ const mouseUpHandler = (event) => {
     setTimeout(() => {
         isMovingNow = false;
     }, 500);
-    
+
     //gsap.to($cubicPlain, { clearProps: 'all' })
 
     resetVariables();
 
 }
 
-selectedArea.addEventListener("mousedown", mouseMovement)
+selectedArea.addEventListener("mousedown", mouseDownHandler)

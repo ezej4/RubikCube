@@ -39,12 +39,12 @@ const animate = (event) => {
         exitAnimation.restart();
         exitAnimationRunning = true;
         isSpining = false;
-        event.target.innerHTML = 'Lets spin!';
+       // event.target.innerHTML = 'Lets spin!';
 
     } else {
         entranceAnimation.restart();
         isSpining = true;
-        event.target.innerHTML = 'Stop spin!';
+       // event.target.innerHTML = 'Stop spin!';
 
     }
 }

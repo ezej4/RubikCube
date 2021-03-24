@@ -1,248 +1,208 @@
+<!DOCTYPE html>
+
 <html>
 
 <head>
     <title>a funny rubik cubic game</title>
-    <link rel=StyleSheet href="./styles.css" type="text/css" media=screen>
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favIcons/favicon-32x32.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favIcons/favicon-16x16.ico">
+
+
+    <link rel=StyleSheet href="./styles-v2.css" type="text/css" media=screen>
+    <link rel=StyleSheet href="./styles/header.css" type="text/css" media=screen>
+    <link rel=StyleSheet href="./styles/cubic.css" type="text/css" media=screen>
+    <link rel=StyleSheet href="./styles/section-cubic.css" type="text/css" media=screen>
+    <link rel=StyleSheet href="./styles/action-bar.css" type="text/css" media=screen>
+    <link rel=StyleSheet href="./styles/section-movements.css" type="text/css" media=screen>
+    <link rel=StyleSheet href="./styles/flows-buttons.css" type="text/css" media=screen>
+    <link rel=StyleSheet href="./styles/about.css" type="text/css" media=screen>
+    <link rel=StyleSheet href="./styles/footer.css" type="text/css" media=screen>
+    <!--   <link rel=StyleSheet href="./assets/fonts/Roboto-Regular.ttf">
+    <link rel=StyleSheet href="./assets/fonts/Nunito-Regular.ttf"> -->
+
     <script src="https://kit.fontawesome.com/20496c3b97.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <section class="cubic__wrapper">
-        <h1 class="cubic__title">The Rubik Cube</h1>
-        <div class="cubic__main" id="cubic-selected-area">
-            <div class="cubic" id="cubic"></div>
+
+    <header class="header">
+        <svg xmlns="http://www.w3.org/2000/svg" class="header__icon" version="1.1" id="svg1532" width="50" height="50.001">
+            <style id="style1466"></style>
+            <g id="layer1" transform="translate(-79.509 -50.65)" display="inline">
+                <path d="M80.502 84.35l.26 4.726.245 3.037s.015.746.973.917l6.52 1.662s1.428.525 1.428-.733c0-1.257-.165-7.581-.165-7.581s-.052-.577-.603-1.025c-.55-.449-6.827-1.832-6.827-1.832l-.86-.233s-.824-.12-.97 1.063z" id="path2108" class="face-front" display="inline" opacity="1" fill="green" fill-opacity="1" stroke="#000" stroke-width=".119" stroke-linecap="butt" stroke-linejoin="miter" stroke-opacity="1" />
+                <path d="M80.211 72.672l.186 5.462.181 3.1s-.037.328 1.037.854l6.52 1.662s1.429.525 1.429-.733c0-1.308-.05-6.04-.05-6.04s.102-1.507-.038-2.196c-.257-1.275-2.164-1.483-2.164-1.483l-5.124-1.06s-1.904-.749-1.977.434z" id="path2108-4" class="face-front" display="inline" opacity="1" fill="green" fill-opacity="1" stroke="#000" stroke-width=".119" stroke-linecap="butt" stroke-linejoin="miter" stroke-opacity="1" />
+                <path d="M79.569 61.264l.258 4.726.104 3.81s-.063.557 1.011 1.083l7.815 1.56s.69-.055.625-1.57a502.157 502.157 0 01-.187-7.653s-.208-1.084-1.124-1.297a694.71 694.71 0 00-6.672-1.489l-.86-.233s-.824-.12-.97 1.063z" id="path2108-4-4" class="face-front" display="inline" opacity="1" fill="green" fill-opacity="1" stroke="#000" stroke-width=".119" stroke-linecap="butt" stroke-linejoin="miter" stroke-opacity="1" />
+                <path d="M90.347 63.49l.051 4.675.052 3.812s-.037.683 1.037 1.209l8.1 1.662s.873.07.81-1.447c-.057-1.342-.156-7.236-.165-8.234 0 0-.208-1.084-1.124-1.297-2.31-.537-6.995-1.308-6.995-1.308l-.796-.135s-.824-.12-.97 1.063z" id="path2108-4-4-1" class="face-front" display="inline" opacity="1" fill="green" fill-opacity="1" stroke="#000" stroke-width=".119" stroke-linecap="butt" stroke-linejoin="miter" stroke-opacity="1" />
+                <path d="M90.566 75.013l.025 4.624.233 3.735s-.037.734 1.037 1.26c2.641.661 5.186 1.324 7.664 1.778 0 0 .839.003.922-1.512-.021-3.71.04-6.505.032-7.199-.012-1.066-1.227-1.846-2.456-2.037-2.622-.513-2.198-.437-5.744-1.255.004.026-1.549-.45-1.714.606z" id="path2108-4-4-1-0" class="face-front" display="inline" opacity="1" fill="green" fill-opacity="1" stroke="#000" stroke-width=".119" stroke-linecap="butt" stroke-linejoin="miter" stroke-opacity="1" />
+                <path d="M90.854 86.485l.026 4.519.147 3.506s-.064.744 1.097 1.168c3.108.929 5.624 1.666 7.647 1.98.173-.038.835.026.792-1.378-.021-3.625-.02-6.161-.026-6.84-.01-.982-.21-1.86-1.868-2.1-2.348-.54-2.135-.437-6.123-1.447.004.026-1.53-.439-1.692.592z" id="path2108-4-4-1-0-5" class="face-front" display="inline" opacity="1" fill="green" fill-opacity="1" stroke="#000" stroke-width=".117" stroke-linecap="butt" stroke-linejoin="miter" stroke-opacity="1" />
+                <path d="M101.534 65.72l.013 4.65-.013 3.786s-.177 1.006 1.076 1.324c2.737.833 4.164.891 8.457 1.744-.026-.052.77.217.719-.99-.013-.298.16-7.737.034-8.786 0 0-.053-1.084-.968-1.297-2.311-.537-7.487-1.32-7.487-1.32l-.796-.135s-.889-.158-1.035 1.025z" id="path2108-4-4-1-05" class="face-front" display="inline" opacity="1" fill="green" fill-opacity="1" stroke="#000" stroke-width=".119" stroke-linecap="butt" stroke-linejoin="miter" stroke-opacity="1" />
+                <path d="M101.545 77.699l-.032 4.596c-.036.603-.008 1.522.004 2.07-.061 1.851.514 2.877 1.807 3.174 1.847.425 2.956.652 5.834 1.35 1.137.305 2.629.437 2.547-.676-.012-.299.143-7.756.017-8.804 0 0-.364-.851-1.28-1.064-2.31-.537-7.066-1.536-7.066-1.536l-.796-.135s-.888-.158-1.035 1.025z" id="path2108-4-4-1-05-9" class="face-front" display="inline" opacity="1" fill="green" fill-opacity="1" stroke="#000" stroke-width=".119" stroke-linecap="butt" stroke-linejoin="miter" stroke-opacity="1" />
+                <path d="M101.527 89.592l.05 4.578.106 3.457c.01.013-.018.666 1.426.941 2.769.76 3.15.8 7.585 2.024.421 0 .835-.195.883-.558.04-.296.197-7.666.072-8.714 0 0-.4-1.012-1.48-1.207-2.337-.421-7.012-1.483-7.012-1.483l-.796-.134s-.687-.086-.834 1.096z" id="path2108-4-4-1-05-1" class="face-front" display="inline" opacity="1" fill="green" fill-opacity="1" stroke="#000" stroke-width=".119" stroke-linecap="butt" stroke-linejoin="miter" stroke-opacity="1" />
+                <path d="M91.389 61.53l8.327 1.582c.905.14 1.039.028 1.318-.036l4.978-2.695c.084-.281-.187-.445-.275-.458l-8.254-1.447c-.7-.11-.836-.076-.901-.054l-.354.151c-1.622.8-2.399 1.231-4.848 2.437-.129.158-.436.295.009.52z" id="path926" class="face-top" fill="#fff" fill-opacity="1" stroke="#000" stroke-width=".119" stroke-linecap="butt" stroke-linejoin="miter" stroke-opacity="1" />
+                <path d="M102.82 63.638l8.327 1.581c.905.14 1.233.105 1.512.04l4.784-2.77c.084-.282-.187-.446-.274-.459l-7.436-1.532c-.011.021-1.08-.128-1.266-.139-.549-.033-.924-.04-1.228.145-1.424.797.138-.035-4.478 2.392-.229.132-.684.466-.239.691z" id="path926-5" class="face-top" display="inline" fill="#fff" fill-opacity="1" stroke="#000" stroke-width=".119" stroke-linecap="butt" stroke-linejoin="miter" stroke-opacity="1" />
+                <path d="M80.654 59.515l8.328 1.58c.905.141.818-.072 1.097-.137l5.199-2.593c.084-.28-.187-.445-.275-.458l-7.827-1.269c-.7-.11-.875-.089-1.121-.067l-.406.164c-1.622.8-2.554 1.053-5.004 2.259-.128.158-.435.295.01.52z" id="path926-3" class="face-top" display="inline" fill="#fff" fill-opacity="1" stroke="#000" stroke-width=".119" stroke-linecap="butt" stroke-linejoin="miter" stroke-opacity="1" />
+                <path d="M87.717 56.341l8.353 1.352c.62.192.74-.112 1.085-.188l4.202-2.123c.291-.294.02-.509-.068-.522l-7.231-1.294c-.701-.11-1.031-.102-1.277-.08l-.276.113c-1.623.8-2.347 1.016-4.797 2.221-.128.158-.436.295.009.521z" id="path926-3-4" class="face-top" display="inline" fill="#fff" fill-opacity="1" stroke="#000" stroke-width=".119" stroke-linecap="butt" stroke-linejoin="miter" stroke-opacity="1" />
+                <path d="M98.078 58.11l8.353 1.352c.911.21 1.228.037 1.446-.11 1.379-.708 2.846-1.387 3.96-2.165.512-.276-.052-.541-.187-.558l-7.232-1.294c-.7-.11-1.15-.192-1.395-.17l-.331.14c-1.623.8-2.174 1.079-4.623 2.284-.128.158-.436.295.009.52z" id="path926-3-4-5" class="face-top" display="inline" fill="#fff" fill-opacity="1" stroke="#000" stroke-width=".119" stroke-linecap="butt" stroke-linejoin="miter" stroke-opacity="1" />
+                <path d="M109.306 60.075l7.87 1.438c.967.203 1.596.121 1.835-.009l3.799-2.315c.463-.256.541-.57.03-.765l-8.548-1.378a2.053 2.053 0 00-1.35.24l-3.91 2.295c-.177.125-.42.336.274.494z" id="path1008" class="face-top" opacity="1" fill="#fff" fill-opacity="1" stroke="#000" stroke-width=".119" stroke-linecap="butt" stroke-linejoin="miter" stroke-opacity="1" />
+                <path d="M128.19 56.022l-3.45 2.03c-.362.104-.54.29-1.666.054l-7.641-1.247c-.489-.009-.779-.315-.452-.577l3.682-2.11c.385-.243.829-.24 1.281-.198l7.706 1.177c.549.1 1.274.328.54.871z" id="path1010" class="face-top" display="inline" fill="#fff" fill-opacity="1" stroke="#000" stroke-width=".119" stroke-linecap="butt" stroke-linejoin="miter" stroke-opacity="1" />
+                <path d="M104.387 54.961l7.5 1.227c1.12.158 1.695.054 1.88-.023l3.789-2.11c.127-.208.006-.346-.207-.458L109.79 52.3c-.364-.012-.586-.21-1.217.127l-4.007 1.952c-.383.194-.48.388-.18.581z" id="path1052" class="face-top" fill="#fff" fill-opacity="1" stroke="#000" stroke-width=".119" stroke-linecap="butt" stroke-linejoin="miter" stroke-opacity="1" />
+                <path d="M94.409 53.248l6.735 1.168c1.69.337 1.626.1 1.793.054l4.466-2.075c.076-.252-.011-.362-.1-.431l-6.8-1.123c-.616-.086-1.237-.225-1.83-.036l-4.21 1.869c-.191.118-.375.4-.054.574z" id="path1054" class="face-top" fill="#fff" fill-opacity="1" stroke="#000" stroke-width=".119" stroke-linecap="butt" stroke-linejoin="miter" stroke-opacity="1" />
+                <path d="M112.93 67.603l-.073 8.696c.183 1.03.496.532.769.503l4.319-3.055c.483-.805.312-1.111.402-1.617l.211-8.162c-.142-.706-.408-.799-.579-.749-1.44.82-2.96 1.833-4.463 2.731-.38.43-.495 1.034-.586 1.653z" id="path1056" class="face-right" fill="red" fill-opacity="1" stroke="#000" stroke-width=".119" stroke-linecap="butt" stroke-linejoin="miter" stroke-opacity="1" />
+                <path d="M112.766 79.697c-.21 2.814-.052 5.651-.07 8.495.066 1.088.38.737.597.649l4.284-3.44c.347-.27.47-.462.54-1.472l.137-7.821c.012-.785-.259-.898-.556-.839l-4.465 3.15c-.239.38-.47.764-.467 1.278z" id="path1058" class="face-right" fill="red" fill-opacity="1" stroke="#000" stroke-width=".119" stroke-linecap="butt" stroke-linejoin="miter" stroke-opacity="1" />
+                <path d="M112.625 91.848l-.116 7.914c.154.871.596.517.596.517l4.27-3.782c.244-.293.351-.653.4-1.041l.169-8.194c-.064-.212.149-.625-.44-.622l-4.374 3.518c-.637.44-.458 1.095-.505 1.69z" id="path1060" class="face-right" fill="red" fill-opacity="1" stroke="#000" stroke-width=".119" stroke-linecap="butt" stroke-linejoin="miter" stroke-opacity="1" />
+                <path d="M118.567 86.818l-.165 7.95c.035.591.26.509.412.52 2.19-1.772 2.608-2.185 3.944-3.305.3-.253.539-.554.522-.997l.21-8.058c.058-.56-.458-.608-.622-.476l-3.642 2.883c-.533.459-.573.978-.659 1.483z" id="path1062" class="face-right" fill="red" fill-opacity="1" stroke="#000" stroke-width=".119" stroke-linecap="butt" stroke-linejoin="miter" stroke-opacity="1" />
+                <path d="M118.876 75.32l-.26 8.207c-.052.938.441.754.687.711l3.74-3.023c.33-.281.516-.774.57-1.461l.155-8.194c.021-.228-.104-.331-.324-.356l-3.844 2.693c-.536.363-.624.895-.724 1.423z" id="path1064" class="face-right" fill="red" fill-opacity="1" stroke="#000" stroke-width=".119" stroke-linecap="butt" stroke-linejoin="miter" stroke-opacity="1" />
+                <path d="M119.122 63.595l-.22 8.562c.01.735.338.68.582.66l3.895-2.756c.187-.088.507-.787.596-1.36l.284-8.359c-.058-.286.03-.675-.543-.635l-4 2.452c-.361.318-.542.813-.594 1.436z" id="path1066" class="face-right" fill="red" fill-opacity="1" stroke="#000" stroke-width=".119" stroke-linecap="butt" stroke-linejoin="miter" stroke-opacity="1" />
+                <path d="M124.7 60.253l-.237 8.192c.036.562.218.538.43.53 1.731-1.037 2.57-1.644 3.715-2.569.159-.223.382-.118.54-1.374l.29-7.813c.07-.83-.214-.729-.42-.79l-3.807 2.37c-.273.216-.433.664-.51 1.454z" id="path1068" class="face-right" fill="red" fill-opacity="1" stroke="#000" stroke-width=".119" stroke-linecap="butt" stroke-linejoin="miter" stroke-opacity="1" />
+                <path d="M124.363 71.433l-.259 8.054c.011.673.267.585.485.54l3.708-2.878c.34-.48.292-1.024.362-1.55l.26-7.342c.001-.789-.258-.738-.596-.432l-3.624 2.49c-.218.33-.361.691-.336 1.118z" id="path1070" class="face-right" fill="red" fill-opacity="1" stroke="#000" stroke-width=".119" stroke-linecap="butt" stroke-linejoin="miter" stroke-opacity="1" />
+                <path d="M124 82.409l-.232 7.825c.121.525.363.492.62.381l3.469-3.1c.274-.267.408-.613.44-1.016l.233-7.647c-.055-.526-.248-.625-.544-.407l-3.636 2.871c-.31.07-.363.91-.35 1.093z" id="path1072" class="face-right" fill="red" fill-opacity="1" stroke="#000" stroke-width=".119" stroke-linecap="butt" stroke-linejoin="miter" stroke-opacity="1" />
+            </g>
+        </svg>
+        <h1 class="header__title">The Rubik Cube</h1>
+    </header>
+
+    <section class="section-cubic">
+        <div class="section-cubic__selected-area" id="cubic-selected-area">
+            <div class="section-cubic__main">
+                <div class="section-cubic__cubic" id="cubic">
+                    <div class="section-cubic__cubic-plain" id="cubic-plain"> </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <section class="action-bar">
-        <div class="action-bar__rotation-icons">
+        <div class="action-bar__rotating-buttons">
+            <!--  <h3 class="action-bar__rotagin-title">Rotate cube</h3> -->
             <i class="fas fa-arrow-circle-left" onclick="rotate('left')"></i>
             <i class="fas fa-arrow-circle-up" onclick="rotate('top')"></i>
             <i class="fas fa-arrow-circle-right" onclick="rotate('right')"></i>
         </div>
-        <div class="action-bar__buttons">
-            <button id="animate-button" class="action-bar__animate-button">Lets spin!</button>
-            <button id="grab-button" class="action-bar__grab-button">Grab</button>
-        </div>
-    </section>
-    <footer>
 
+
+        <!--  <div class="action-bar__extra-buttons">
+            <button class="action-bar__animate-button" id="animate-button">Lets spin!</button>
+              <button id="grab-button" class="action-bar__grab-button">Grab</button> 
+        </div> -->
+    </section>
+
+    <div class="flows-buttons">
+        <div class="flows-buttons__wrapper">
+            <span class="flows-buttons__button">
+                <i class="fas fa-toggle-on"></i>
+            </span>
+            <span class="flows-buttons__button">
+                <i class="fas fa-keyboard"></i>
+            </span>
+            <span class="flows-buttons__button">
+                <i class="fas fa-cube" id="animate-button"></i>
+            </span>
+        </div>
+    </div>
+    <article class="about">
+        <div class="about__title">About this</div>
+        <div class="about__content">
+            <div class="about__texts">
+                <p class="about__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta amet nulla, reiciendis iusto placeat aliquam explicabo dolore laboriosam eum repellendus impedit eius doloribus ipsum optio. Aperiam quidem dolores minus eaque.</p>
+                <p class="about__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta amet nulla, reiciendis iusto placeat aliquam explicabo dolore laboriosam eum repellendus impedit eius doloribus ipsum optio. Aperiam quidem dolores minus eaque.</p>
+                <p class="about__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta amet nulla, reiciendis iusto placeat aliquam explicabo dolore laboriosam eum repellendus impedit eius doloribus ipsum optio. Aperiam quidem dolores minus eaque.</p>
+                <p class="about__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta amet nulla, reiciendis iusto placeat aliquam explicabo dolore laboriosam eum repellendus impedit eius doloribus ipsum optio. Aperiam quidem dolores minus eaque.</p>
+            </div>
+            <!--  <p class="about__footer">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et repellat sunt iste, consequatur excepturi, harum dolorem officiis sequi placeat eum cupiditate cum minima nulla ducimus, distinctio at temporibus quibusdam delectus.
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et repellat sunt iste, consequatur excepturi, harum dolorem officiis sequi placeat eum cupiditate cum minima nulla ducimus, distinctio at temporibus quibusdam delectus.
+            </p> -->
+        </div>
+    </article>
+    <!--  <aside class="section-movements">
+        <span class="section-movements__open-menu">
+            <i class="fas fa-toggle-on"></i>
+        </span>
+        <div class="section-movements__wrapper">
+            <h3 class="section-movements__title">Cube movements</h3>
+            <div class="section-movements__moves">
+                <button class="section-movements__button-move" onclick="moveCube('U')">U
+                    <img class="section-movements__cube-image" src="file:///C:/Users/Ezequiel/Downloads/dbd35bca-db59-4a15-bbf0-ad059d222086.png" />
+                </button>
+                <button class="section-movements__button-move" onclick="moveCube('U!')">U'
+                    <img class="section-movements__cube-image" src="file:///C:/Users/Ezequiel/Downloads/2021.03.13-16.01.png" />
+                </button>
+                <button class="section-movements__button-move" onclick="moveCube('E')">E
+                    <img class="section-movements__cube-image" src="file:///C:/Users/Ezequiel/Downloads/2021.03.13-15.33_01.png" />
+                </button>
+                <button class="section-movements__button-move" onclick="moveCube('E!')">E'
+                    <img class="section-movements__cube-image" src="file:///C:/Users/Ezequiel/Downloads/2021.03.13-15.33_01.png" />
+                </button>
+                <button class="section-movements__button-move" onclick="moveCube('D')">D
+                    <img class="section-movements__cube-image" src="file:///C:/Users/Ezequiel/Downloads/2021.03.13-15.33_01.png" />
+                </button>
+                <button class="section-movements__button-move" onclick="moveCube('D!')">D'
+                    <img class="section-movements__cube-image" src="file:///C:/Users/Ezequiel/Downloads/2021.03.13-15.33_01.png" />
+                </button>
+
+                <button class="section-movements__button-move" onclick="moveCube('R')">R
+                    <img class="section-movements__cube-image" src="file:///C:/Users/Ezequiel/Downloads/2021.03.13-15.33_01.png" />
+                </button>
+                <button class="section-movements__button-move" onclick="moveCube('R!')">R'
+                    <img class="section-movements__cube-image" src="file:///C:/Users/Ezequiel/Downloads/2021.03.13-15.33_01.png" />
+                </button>
+                <button class="section-movements__button-move" onclick="moveCube('M')">M
+                    <img class="section-movements__cube-image" src="file:///C:/Users/Ezequiel/Downloads/2021.03.13-15.33_01.png" />
+                </button>
+                <button class="section-movements__button-move" onclick="moveCube('M!')">M'
+                    <img class="section-movements__cube-image" src="file:///C:/Users/Ezequiel/Downloads/2021.03.13-15.33_01.png" />
+                </button>
+                <button class="section-movements__button-move" onclick="moveCube('L')">L
+                    <img class="section-movements__cube-image" src="file:///C:/Users/Ezequiel/Downloads/2021.03.13-15.33_01.png" />
+                </button>
+                <button class="section-movements__button-move" onclick="moveCube('L!')">L'
+                    <img class="section-movements__cube-image" src="file:///C:/Users/Ezequiel/Downloads/2021.03.13-15.33_01.png" />
+                </button>
+
+                <button class="section-movements__button-move" onclick="moveCube('F')">F
+                    <img class="section-movements__cube-image" src="file:///C:/Users/Ezequiel/Downloads/2021.03.13-15.33_01.png" />
+                </button>
+                <button class="section-movements__button-move" onclick="moveCube('F!')">F'
+                    <img class="section-movements__cube-image" src="file:///C:/Users/Ezequiel/Downloads/2021.03.13-15.33_01.png" />
+                </button>
+                <button class="section-movements__button-move" onclick="moveCube('S')">S
+                    <img class="section-movements__cube-image" src="file:///C:/Users/Ezequiel/Downloads/2021.03.13-15.33_01.png" />
+                </button>
+                <button class="section-movements__button-move" onclick="moveCube('S!')">S'
+                    <img class="section-movements__cube-image" src="file:///C:/Users/Ezequiel/Downloads/2021.03.13-15.33_01.png" />
+                </button>
+                <button class="section-movements__button-move" onclick="moveCube('B')">B
+                    <img class="section-movements__cube-image" src="file:///C:/Users/Ezequiel/Downloads/2021.03.13-15.33_01.png" />
+                </button>
+                <button class="section-movements__button-move" onclick="moveCube('B!')">B'
+                    <img class="section-movements__cube-image" src="file:///C:/Users/Ezequiel/Downloads/2021.03.13-15.33_01.png" />
+                </button>
+            </div>
+        </div>
+
+    </aside> -->
+
+    <footer class="footer">
+        <div class="footer__social-icon">
+            <i class="fab fa-linkedin" id="linkedin_button"></i>
+            <i class="fas fa-envelope"></i>
+
+        </div>
     </footer>
 </body>
-<script>
-    // grab all necesary elements
-    const cubic = document.getElementById("cubic");
-    const selectedArea = document.getElementById("cubic-selected-area");
-    const animateButton = document.getElementById("animate-button");
-    const grabButton = document.getElementById("grab-button");
-</script>
 
-<script>
-    // set all face with his respective pieces
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+<script src="./scripts/globals.js"></script>
+<script src="./scripts/buildCube.js"></script>
+<script src="./scripts/updateCube.js"></script>
+<script src="./scripts/rotateCube.js"></script>
+<script src="./scripts/spiningAnimations.js"></script>
+<script src="./scripts/grabCube.js"></script>
+<script src="./scripts/moves.js"></script>
+<script src="./scripts/mouseMovementsDefinitions.js"></script>
+<script src="./scripts/mouseMovements.js"></script>
+<script src="./scripts/keyBindings.js"></script>
+<script src="./scripts/footerButtonActions.js"></script>
+<script src="./scripts/entranceAnimations.js"></script>
 
-    const matrix = [];
-
-    const MATRIX_COLORS = ['blue', 'red', 'white', 'orange', 'green', 'yellow'];
-    const AMOUNT_PIECES_BY_FACE = 9;
-
-    MATRIX_COLORS.forEach((color, index) => {
-        const face = document.createElement('div');
-        face.className = `cubic__face cubic__face--${index+1}`;
-
-        let counter = 0;
-        const faceData = [];
-
-        while (counter < AMOUNT_PIECES_BY_FACE) {
-            faceData.push(color);
-            const piece = document.createElement('div');
-            piece.id = `cubic-piece-${index +1}-${counter +1}`;
-            piece.className = `cubic__piece cubic__piece--${color}`;
-            face.appendChild(piece);
-            counter++;
-        }
-        matrix.push(faceData);
-        cubic.appendChild(face);
-    });
-</script>
-
-<script>
-    let isRotating = false;
-    let startPiece;
-    let endPiece;
-
-    const getPosition = (piece) => {
-        return {
-            face: piece.id.split('-')[2],
-            cell: piece.id.split('-')[3]
-        }
-    };
-
-    const findRotation = (startPiece, endPiece) => {
-        const startPosition = getPosition(startPiece);
-        const endPosition = getPosition(endPiece);
-
-        console.log({
-            startPosition,
-            endPosition
-        })
-        console.log(matrix);
-    };
-
-    const logPiece = (event) => {
-        const {
-            type,
-            target
-        } = event;
-        const targetClassNames = Array.from(target.classList);
-
-        if (target && targetClassNames.includes('cubic__piece')) {
-            isRotating = type === 'mousedown';
-            if (isRotating) {
-                startPiece = target;
-            } else {
-                endPiece = target
-                findRotation(startPiece, endPiece)
-            }
-        }
-    };
-
-    selectedArea.addEventListener("mousedown", logPiece, false);
-    selectedArea.addEventListener("mouseup", logPiece, false);
-</script>
-
-<script>
-    let isSpining = false;
-
-    const animate = () => {
-        if (isSpining) {
-            cubic.classList.remove("cubic--spin");
-        } else {
-            cubic.classList.add("cubic--spin");
-        }
-        isSpining = !isSpining
-    };
-
-    animateButton.addEventListener("click", animate, false);
-</script>
-<script>
-    // rotate cubic on grab button click
-
-
-    let isGrabbing = false;
-    let xStartPosition;
-    let yStartPosition;
-    let xEndPosition;
-    let yEndPosition;
-    let startRoting = false;
-    let xAngleRotate = 0;
-    let yAngleRotate = 0;
-
-    const setInitalValues = (e) => {
-        xStartPosition = e.pageX;
-        yStartPosition = e.pageY;
-        startRoting = true;
-    }
-
-    const resetValues = (e) => {
-        startRoting = false;
-    }
-
-    const rotateCubic = (e) => {
-        if (startRoting) {
-            xEndPosition = e.pageX;
-            yEndPosition = e.pageY;
-            xAngleRotate = ((xEndPosition - xStartPosition) * 2) * Math.PI / 360 + xAngleRotate;
-            yAngleRotate = ((yEndPosition - yStartPosition) * 2) * Math.PI / 360 + yAngleRotate;
-
-            cubic.style.transform = `rotateX(${-yAngleRotate}deg) rotateY(${xAngleRotate}deg)`;
-        }
-    }
-
-
-    const switchGrabbing = () => {
-        isGrabbing = !isGrabbing;
-
-        if (isGrabbing) {
-            // remove transition class
-            if (cubic.classList.contains('cubic--auto-roting')) {
-                cubic.classList.remove('cubic--auto-roting')
-            }
-
-            selectedArea.classList.add('cubic__main--grabing');
-            selectedArea.addEventListener('mousedown', setInitalValues, false);
-            selectedArea.addEventListener('mousemove', rotateCubic, false);
-            window.addEventListener('mouseup', resetValues, false);
-        } else {
-            selectedArea.classList.remove('cubic__main--grabing');
-            selectedArea.removeEventListener('mousedown', setInitalValues);
-            selectedArea.removeEventListener('mousemove', rotateCubic);
-            window.removeEventListener('mouseup', resetValues);
-        }
-    };
-
-    grabButton.addEventListener("click", switchGrabbing)
-</script>
-
-<script>
-    const getActualRotation = () => {
-        const baseStyle = cubic.style.transform;
-
-        if (!baseStyle) return {
-            x: 0,
-            y: 0
-        }
-
-        // grab all positive and negative numbers.
-        const regex = /[-?\d|,|.\+]+/g;
-        // grab all matches
-        const values = baseStyle.match(regex);
-
-        return {
-            x: parseFloat(values[0]),
-            y: parseFloat(values[1]),
-        }
-    };
-
-    const rotate = (direction) => {
-        //if grabbing is enabled, disable it 
-        if (isGrabbing) {
-            switchGrabbing();
-        }
-
-        if (!cubic.classList.contains('cubic--auto-roting')) {
-            cubic.classList.add('cubic--auto-roting')
-        }
-
-        // get the actual rotation 
-        const {
-            x: xRotation,
-            y: yRotation
-        } = getActualRotation();
-
-        let rotationStyle;
-        switch (direction) {
-            case 'left': {
-                rotationStyle = `rotateX(${xRotation}deg) rotateY(${yRotation+90}deg)`
-                break;
-            }
-            case 'right': {
-                rotationStyle = `rotateX(${xRotation}deg) rotateY(${yRotation-90}deg)`
-                break;
-            }
-            case 'top': {
-                rotationStyle = `rotateX(${xRotation+180}deg) rotateY(${yRotation}deg)`
-                break;
-            }
-            default: {
-                rotationStyle = `rotateX(${xRotation}deg) rotateY(${yRotation}deg)`
-                break;
-            }
-        }
-
-        if (direction) {
-            cubic.style.transform = rotationStyle;
-        }
-    }
-</script>
 
 </html>

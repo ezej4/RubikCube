@@ -262,6 +262,17 @@ const MOUSE_MOVEMENTS = [{
         xAngle: 0,
         yAngle: 180,
         value: [{
+                miniCube: [0, 0],
+                proximityMoves: {
+                    top: { right: 'F!', left: 'F', top: 'R!', bottom: 'R', invertedY: true, invertedZ: true },
+                },
+            },
+            {
+                miniCube: [0, 1],
+                proximityMoves: {
+                    top: { right: 'S!', left: 'S', top: 'R!', bottom: 'R', invertedY: true, invertedZ: true },
+                },
+            }, {
                 miniCube: [0, 2],
                 proximityMoves: {
                     top: { right: 'B!', left: 'B', top: 'R!', bottom: 'R', invertedY: true, invertedZ: true },
@@ -269,61 +280,27 @@ const MOUSE_MOVEMENTS = [{
                 },
             },
             {
-                miniCube: [0, 3],
-                proximityMoves: {
-                    front: { right: 'E', left: 'E!', top: 'F!', bottom: 'F', },
-                },
-            },
-            {
-                miniCube: [0, 4],
-                proximityMoves: {
-                    front: { right: 'E', left: 'E!', top: 'S!', bottom: 'S', },
-                },
-            },
-            {
                 miniCube: [0, 5],
                 proximityMoves: {
-                    front: { right: 'E', left: 'E!', top: 'B!', bottom: 'B', },
                     right: { right: 'E', left: 'E!', top: 'R!', bottom: 'R', invertedZ: true }
-                },
-            },
-            {
-                miniCube: [0, 6],
-                proximityMoves: {
-                    front: { right: 'D', left: 'D!', top: 'F!', bottom: 'F', },
-                    left: { right: 'D', left: 'D!', top: 'R', bottom: 'R!', }
-                },
-            },
-            {
-                miniCube: [0, 7],
-                proximityMoves: {
-                    front: { right: 'D', left: 'D!', top: 'S!', bottom: 'S', },
-
                 },
             },
             {
                 miniCube: [0, 8],
                 proximityMoves: {
-                    front: { right: 'D', left: 'D!', top: 'B!', bottom: 'B', },
                     right: { right: 'D', left: 'D!', top: 'R!', bottom: 'R', invertedZ: true }
-                },
-            },
-            {
-                miniCube: [1, 0],
-                proximityMoves: {
-                    top: { right: 'M', left: 'M!', top: 'F!', bottom: 'F', invertedZ: true },
                 },
             },
             {
                 miniCube: [1, 1],
                 proximityMoves: {
-                    top: { right: 'M', left: 'M!', top: 'S!', bottom: 'S', invertedZ: true },
-                },
+                    top: { right: 'S!', left: 'S', top: 'M!', bottom: 'M', invertedY: true, invertedZ: true },
+                    },
             },
             {
                 miniCube: [1, 2],
                 proximityMoves: {
-                    top: { right: 'M', left: 'M!', top: 'B!', bottom: 'B', invertedZ: true },
+                    top: { right: 'B!', left: 'B', top: 'R!', bottom: 'R', invertedY: true, invertedZ: true },
                     right: { right: 'U', left: 'U!', top: 'M!', bottom: 'M', invertedZ: true }
                 },
             },
@@ -342,34 +319,181 @@ const MOUSE_MOVEMENTS = [{
             {
                 miniCube: [2, 0],
                 proximityMoves: {
-                    top: { right: 'L', left: 'L!', top: 'F!', bottom: 'F', invertedZ: true },
-
+                    top: { right: 'F!', left: 'F', top: 'L!', bottom: 'L', invertedY: true, invertedZ: true },
                 },
             },
             {
                 miniCube: [2, 1],
                 proximityMoves: {
-                    top: { right: 'M', left: 'M!', top: 'S!', bottom: 'S', invertedZ: true },
+                    top: { right: 'S!', left: 'S', top: 'L!', bottom: 'L', invertedY: true, invertedZ: true },
+                    back: { right: 'U', left: 'U!', top: 'S', bottom: 'S!', invertedY: true, },
                 },
             },
             {
                 miniCube: [2, 2],
                 proximityMoves: {
-                    top: { right: 'L', left: 'L!', top: 'B!', bottom: 'B', invertedZ: true },
-                    right: { right: 'U', left: 'U!', top: 'L!', bottom: 'L', invertedZ: true }
+                    top: { right: 'B!', left: 'B', top: 'L!', bottom: 'L', invertedY: true, invertedZ: true },
+                    right: { right: 'U', left: 'U!', top: 'L!', bottom: 'L', invertedZ: true },
+                    back: { right: 'U', left: 'U!', top: 'B', bottom: 'B!', invertedY: true, },
+
+                },
+            },
+            {
+                miniCube: [2, 3],
+                proximityMoves: {
+                    back: { right: 'E', left: 'E!', top: 'F', bottom: 'F!', invertedY: true, },
+
+                },
+            },
+            {
+                miniCube: [2, 4],
+                proximityMoves: {
+                    back: { right: 'E', left: 'E!', top: 'S', bottom: 'S!', invertedY: true, },
 
                 },
             },
             {
                 miniCube: [2, 5],
                 proximityMoves: {
-                    right: { right: 'E', left: 'E!', top: 'L!', bottom: 'L', invertedZ: true }
+                    back: { right: 'E', left: 'E!', top: 'B', bottom: 'B!', invertedY: true, },
+                },
+            },
+            {
+                miniCube: [2, 6],
+                proximityMoves: {
+                    back: { right: 'D', left: 'D!', top: 'F', bottom: 'F!', invertedY: true, },
+                },
+            },
+            {
+                miniCube: [2, 7],
+                proximityMoves: {
+                    back: { right: 'D', left: 'D!', top: 'S', bottom: 'S!', invertedY: true, },
                 },
             },
             {
                 miniCube: [2, 8],
                 proximityMoves: {
-                    right: { right: 'D', left: 'D!', top: 'L!', bottom: 'L', invertedZ: true }
+                    back: { right: 'D', left: 'D!', top: 'B', bottom: 'B!', invertedY: true, },
+                },
+            },
+        ]
+    },
+    {
+        xAngle: 0,
+        yAngle: 90,
+        value: [{
+                miniCube: [0, 0],
+                proximityMoves: {
+                    top: { right: 'F!', left: 'F', top: 'R!', bottom: 'R', invertedY: true, invertedZ: true },
+                },
+            },
+            {
+                miniCube: [0, 1],
+                proximityMoves: {
+                    top: { right: 'S!', left: 'S', top: 'R!', bottom: 'R', invertedY: true, invertedZ: true },
+                },
+            }, {
+                miniCube: [0, 2],
+                proximityMoves: {
+                    top: { right: 'B!', left: 'B', top: 'R!', bottom: 'R', invertedY: true, invertedZ: true },
+                    right: { right: 'U', left: 'U!', top: 'R!', bottom: 'R', invertedZ: true }
+                },
+            },
+            {
+                miniCube: [0, 5],
+                proximityMoves: {
+                    right: { right: 'E', left: 'E!', top: 'R!', bottom: 'R', invertedZ: true }
+                },
+            },
+            {
+                miniCube: [0, 8],
+                proximityMoves: {
+                    right: { right: 'D', left: 'D!', top: 'R!', bottom: 'R', invertedZ: true }
+                },
+            },
+            {
+                miniCube: [1, 1],
+                proximityMoves: {
+                    top: { right: 'S!', left: 'S', top: 'M!', bottom: 'M', invertedY: true, invertedZ: true },
+                    },
+            },
+            {
+                miniCube: [1, 2],
+                proximityMoves: {
+                    top: { right: 'B!', left: 'B', top: 'R!', bottom: 'R', invertedY: true, invertedZ: true },
+                    right: { right: 'U', left: 'U!', top: 'M!', bottom: 'M', invertedZ: true }
+                },
+            },
+            {
+                miniCube: [1, 5],
+                proximityMoves: {
+                    right: { right: 'E', left: 'E!', top: 'M!', bottom: 'M', invertedZ: true }
+                },
+            },
+            {
+                miniCube: [1, 8],
+                proximityMoves: {
+                    right: { right: 'D', left: 'D!', top: 'M!', bottom: 'M', invertedZ: true }
+                },
+            },
+            {
+                miniCube: [2, 0],
+                proximityMoves: {
+                    top: { right: 'F!', left: 'F', top: 'L!', bottom: 'L', invertedY: true, invertedZ: true },
+                },
+            },
+            {
+                miniCube: [2, 1],
+                proximityMoves: {
+                    top: { right: 'S!', left: 'S', top: 'L!', bottom: 'L', invertedY: true, invertedZ: true },
+                    back: { right: 'U', left: 'U!', top: 'S', bottom: 'S!', invertedY: true, },
+                },
+            },
+            {
+                miniCube: [2, 2],
+                proximityMoves: {
+                    top: { right: 'B!', left: 'B', top: 'L!', bottom: 'L', invertedY: true, invertedZ: true },
+                    right: { right: 'U', left: 'U!', top: 'L!', bottom: 'L', invertedZ: true },
+                    back: { right: 'U', left: 'U!', top: 'B', bottom: 'B!', invertedY: true, },
+
+                },
+            },
+            {
+                miniCube: [2, 3],
+                proximityMoves: {
+                    back: { right: 'E', left: 'E!', top: 'F', bottom: 'F!', invertedY: true, },
+
+                },
+            },
+            {
+                miniCube: [2, 4],
+                proximityMoves: {
+                    back: { right: 'E', left: 'E!', top: 'S', bottom: 'S!', invertedY: true, },
+
+                },
+            },
+            {
+                miniCube: [2, 5],
+                proximityMoves: {
+                    back: { right: 'E', left: 'E!', top: 'B', bottom: 'B!', invertedY: true, },
+                },
+            },
+            {
+                miniCube: [2, 6],
+                proximityMoves: {
+                    back: { right: 'D', left: 'D!', top: 'F', bottom: 'F!', invertedY: true, },
+                },
+            },
+            {
+                miniCube: [2, 7],
+                proximityMoves: {
+                    back: { right: 'D', left: 'D!', top: 'S', bottom: 'S!', invertedY: true, },
+                },
+            },
+            {
+                miniCube: [2, 8],
+                proximityMoves: {
+                    back: { right: 'D', left: 'D!', top: 'B', bottom: 'B!', invertedY: true, },
                 },
             },
         ]

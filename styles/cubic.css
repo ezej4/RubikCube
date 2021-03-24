@@ -8,6 +8,8 @@
 .cubic__mini {
   position: absolute;
   transform-style: preserve-3d;
+  font-size: 25px;
+  font-weight: bold;
   /* transition: transform 0.2s linear; */
 }
 
@@ -22,7 +24,7 @@
   justify-content: center;
   border-radius: 12px;
   padding: 2px;
-  /*  background: black; */
+   background: black; 
   box-sizing: border-box;
   backface-visibility: hidden;
   cursor: pointer;

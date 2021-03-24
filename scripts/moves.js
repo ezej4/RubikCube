@@ -400,7 +400,7 @@ const moveCube = (movement) => {
 
 }
 
-const rePaintCube = () => {
+const rePaintCube = (animationDuration = .5) => {
     isCubeMoving = true;
     const unPaintedMiniCubes = miniCubeModel.flat().filter(miniCube => miniCube.hasToRePaint);
 
@@ -412,52 +412,17 @@ const rePaintCube = () => {
     const nextCubeRotation = MOVES[ACTUAL_MOVEMENT].rotation;
 
     gsap.to($cubicPlain, {
-        duration: .5,
+        duration: animationDuration,
         rotationY: nextCubeRotation.y,
         rotationX: nextCubeRotation.x,
         rotationZ: nextCubeRotation.z,
         ease: "back.out(1.7)",
         clearProps: 'all',
-        //runBackwards: true,
         onComplete: () => {
-            unPaintedMiniCubes.forEach((miniCube) => {
-                const { x: xTranf, y: yTranf, z: zTranf } = miniCube.position
-                miniCube.hasToRePaint = false;
-
-                const $miniCubeElement = document.getElementById(miniCube.name);
-                const newTransformStyle = `translate3d(${xTranf}px,${yTranf}px,${zTranf}px)`
-                $miniCubeElement.style.transform = newTransformStyle;
-
-                while ($miniCubeElement.firstChild) $miniCubeElement.removeChild($miniCubeElement.firstChild);
-                miniCube.faces.forEach((currentface, index) => {
-                    const face = document.createElement('div');
-                    face.className = `cubic__face cubic__face--${currentface.label}`
-
-                    //face.innerHTML = miniCube.name.replace(/^\D+/g, '');
-
-                    if (currentface.value) {
-                        face.classList.add(`cubic__face--${currentface.value}`)
-                         face.innerHTML = currentface.id.split('-')[1] + " " + currentface.label ;
-                    }
-
-
-                    $miniCubeElement.appendChild(face)
-                });
-            })
+            updateCube(unPaintedMiniCubes)
             movesElementsToAnotherParent($unPaintedMiniCubes, $cubic)
             isCubeMoving = false;
 
-            //gsap.to($cubicPlain, {delay: 1, clearProps: 'all' })
-
         }
     });
-
-    /*   gsap.to($cubicPlain, {
-          duration: 0,
-          rotationY: 0,
-          rotationX: 0,
-          rotationZ: 0,
-          delay: 1,
-      }) */
-
 }

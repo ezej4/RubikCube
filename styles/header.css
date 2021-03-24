@@ -1,10 +1,18 @@
 .header {
-    text-align: center;
-    padding: 24px;
-  }
-  
-  .header__title {
-    margin-top: 32px;
-    font-size: 24px;
-    color: #C7D6D5;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px;
+}
+
+.header__title {
+  margin: 0;
+  font-size: 32px;
+  color: #C7D6D5;
+}
+
+.header__icon {
+  /* width: 25px; */
+  margin-right: 12px;
+}
