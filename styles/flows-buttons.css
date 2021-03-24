@@ -1,27 +1,48 @@
 .flows-buttons {
-  position: fixed;
-  top: 28px;
-  right: 5px;
-
+  display: none;
 }
 
-.flows-buttons__wrapper {
-  display: flex;
-  flex-direction: column;
-  font-size: 28px;
-}
+@media (min-width: 780px) {
+  .flows-buttons {
+    display: block;
+    position: fixed;
+    top: 28px;
+    right: 5px;
+  }
 
-.flows-buttons__button {
-  margin-top: 20px;
-  border-radius: 50%;
-  padding: 20px;
-  background: seagreen;
-}
+  .flows-buttons__wrapper {
+    display: flex;
+    flex-direction: column;
+    font-size: 28px;
+  }
 
-.flows-buttons__button i {
-  transition: 1s all color;
-}
+  .flows-buttons__button {
+    margin-top: 20px;
+    border-radius: 50%;
+    padding: 20px;
+    background: seagreen;
+  }
 
-.flows-buttons__button i:hover {
-  color: white;
+  .flows-buttons__button {
+    cursor: pointer;
+    transition: 1s all color;
+  }
+
+  .flows-buttons__button:hover {
+    color: white;
+  }
+
+  .flows-buttons__button--text {
+    font-size: 14px;
+    padding: 24px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+  }
+
+
+  .flows-buttons__button--text:hover {
+    color: white;
+  }
+
 }
