@@ -44,3 +44,9 @@ body {
   /*  grid-template-columns: 1fr 200px;
   grid-template-rows: 40px 640px 40px 200px; */
 }
+
+.interactive-background {
+  top: 0;
+  position: absolute;
+  backdrop-filter: blur(50px)
+}

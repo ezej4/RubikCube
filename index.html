@@ -4,6 +4,8 @@
 
 <head>
     <title>a funny rubik cubic game</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favIcons/favicon-32x32.ico">
     <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favIcons/favicon-16x16.ico">
 
@@ -87,20 +89,42 @@
     </section>
 
     <div class="flows-buttons">
-        <div class="flows-buttons__wrapper">
-            <span class="flows-buttons__button">
-                <i class="fas fa-toggle-on"></i>
-            </span>
-            <span class="flows-buttons__button">
-                <i class="fas fa-keyboard"></i>
-            </span>
-            <span class="flows-buttons__button">
-                <i class="fas fa-cube" id="animate-button"></i>
-            </span>
-            <span class="flows-buttons__button flows-buttons__button--text">
-                <span class="flows-buttons__mix">Mix</span>
-            </span>
-        </div>
+        <ul class="flows-buttons__list">
+            <li class="flows-buttons__item">
+                <span class="flows-buttons__button">
+                    <i class="fab fa-readme"></i>
+                </span>
+                <span class="flows-buttons__label">Moves</span>
+            </li>
+
+            <li class="flows-buttons__item">
+                <span class="flows-buttons__button">
+                    <i class="fas fa-keyboard"></i>
+                </span>
+                <span class="flows-buttons__label">keyboard</span>
+            </li>
+
+            <li class="flows-buttons__item">
+                <span class="flows-buttons__button" id="animate-button">
+                    <i class="fas fa-cube"></i>
+                </span>
+                <span class="flows-buttons__label">Lets spin</span>
+            </li>
+
+            <li class="flows-buttons__item">
+                <span class="flows-buttons__button flows-buttons__button--text" id="mix-button">
+                    <span class="flows-buttons__mix">Mix</span>
+                </span>
+                <span class="flows-buttons__label">Mix the cube</span>
+            </li>
+            <li class="flows-buttons__item">
+                <span class="flows-buttons__button">
+                    <i class="fas fa-clock"></i>
+                </span>
+                <span class="flows-buttons__label">Turn on clock</span>
+            </li>
+
+        </ul>
     </div>
     <article class="about">
         <div class="about__title">About this</div>
@@ -191,6 +215,7 @@
 
         </div>
     </footer>
+    <div class="interactive-background" id="interactive-background"></div>
 </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
@@ -205,6 +230,7 @@
 <script src="./scripts/mouseMovements.js"></script>
 <script src="./scripts/keyBindings.js"></script>
 <script src="./scripts/footerButtonActions.js"></script>
+<script src="./scripts/mixCube.js"></script>
 <script src="./scripts/entranceAnimations.js"></script>
 
 

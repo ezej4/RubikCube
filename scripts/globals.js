@@ -543,3 +543,299 @@ let miniCubeModel = [
     ]
 ]
 
+
+const MOVES = {
+    'U': {
+        name: 'U',
+        inverse: 'U!',
+        rotation: { x: 0, y: 90, z: 0 },
+        implicatedMiniCubes: [
+            { element: [0, 0], to: [0, 2] },
+            { element: [0, 1], to: [1, 2] },
+            { element: [0, 2], to: [2, 2] },
+            { element: [1, 0], to: [0, 1] },
+            { element: [1, 1], to: [1, 1] },
+            { element: [1, 2], to: [2, 1] },
+            { element: [2, 0], to: [0, 0] },
+            { element: [2, 1], to: [1, 0] },
+            { element: [2, 2], to: [2, 0] },
+        ]
+    },
+    'U!': {
+        name: 'U!',
+        inverse: 'U',
+        rotation: { x: 0, y: -90, z: 0 },
+        implicatedMiniCubes: [
+            { element: [0, 0], to: [2, 0] },
+            { element: [0, 1], to: [1, 0] },
+            { element: [0, 2], to: [0, 0] },
+            { element: [1, 0], to: [2, 1] },
+            { element: [1, 1], to: [1, 1] },
+            { element: [1, 2], to: [0, 1] },
+            { element: [2, 0], to: [2, 2] },
+            { element: [2, 1], to: [1, 2] },
+            { element: [2, 2], to: [0, 2] },
+        ]
+    },
+    'E': {
+        name: 'E',
+        inverse: 'E!',
+        rotation: { x: 0, y: 90, z: 0 },
+        implicatedMiniCubes: [
+            { element: [0, 3], to: [0, 5] },
+            { element: [0, 4], to: [1, 5] },
+            { element: [0, 5], to: [2, 5] },
+            { element: [1, 3], to: [0, 4] },
+            { element: [1, 4], to: [1, 4] },
+            { element: [1, 5], to: [2, 4] },
+            { element: [2, 3], to: [0, 3] },
+            { element: [2, 4], to: [1, 3] },
+            { element: [2, 5], to: [2, 3] },
+        ]
+    },
+    'E!': {
+        name: 'E!',
+        inverse: 'E',
+        rotation: { x: 0, y: -90, z: 0 },
+        implicatedMiniCubes: [
+            { element: [0, 3], to: [2, 3] },
+            { element: [0, 4], to: [1, 3] },
+            { element: [0, 5], to: [0, 3] },
+            { element: [1, 3], to: [2, 4] },
+            { element: [1, 4], to: [1, 4] },
+            { element: [1, 5], to: [0, 4] },
+            { element: [2, 3], to: [2, 5] },
+            { element: [2, 4], to: [1, 5] },
+            { element: [2, 5], to: [0, 5] },
+        ]
+    },
+    'D': {
+        name: 'D',
+        inverse: 'D!',
+        rotation: { x: 0, y: 90, z: 0 },
+        implicatedMiniCubes: [
+            { element: [0, 6], to: [0, 8] },
+            { element: [0, 7], to: [1, 8] },
+            { element: [0, 8], to: [2, 8] },
+            { element: [1, 6], to: [0, 7] },
+            { element: [1, 7], to: [1, 7] },
+            { element: [1, 8], to: [2, 7] },
+            { element: [2, 6], to: [0, 6] },
+            { element: [2, 7], to: [1, 6] },
+            { element: [2, 8], to: [2, 6] },
+        ]
+    },
+    'D!': {
+        name: 'D!',
+        inverse: 'D',
+        rotation: { x: 0, y: -90, z: 0 },
+        implicatedMiniCubes: [
+            { element: [0, 6], to: [2, 6] },
+            { element: [0, 7], to: [1, 6] },
+            { element: [0, 8], to: [0, 6] },
+            { element: [1, 6], to: [2, 7] },
+            { element: [1, 7], to: [1, 7] },
+            { element: [1, 8], to: [0, 7] },
+            { element: [2, 6], to: [2, 8] },
+            { element: [2, 7], to: [1, 8] },
+            { element: [2, 8], to: [0, 8] },
+        ]
+    },
+    'R': {
+        name: 'R',
+        inverse: 'R!',
+        rotation: { x: 0, y: 0, z: 90 },
+        implicatedMiniCubes: [
+            { element: [0, 0], to: [0, 2] },
+            { element: [0, 1], to: [0, 5] },
+            { element: [0, 2], to: [0, 8] },
+            { element: [0, 3], to: [0, 1] },
+            { element: [0, 4], to: [0, 4] },
+            { element: [0, 5], to: [0, 7] },
+            { element: [0, 6], to: [0, 0] },
+            { element: [0, 7], to: [0, 3] },
+            { element: [0, 8], to: [0, 6] },
+        ]
+    },
+    'R!': {
+        name: 'R!',
+        inverse: 'R',
+        rotation: { x: 0, y: 0, z: -90 },
+        implicatedMiniCubes: [
+            { element: [0, 0], to: [0, 6] },
+            { element: [0, 1], to: [0, 3] },
+            { element: [0, 2], to: [0, 0] },
+            { element: [0, 3], to: [0, 7] },
+            { element: [0, 4], to: [0, 4] },
+            { element: [0, 5], to: [0, 1] },
+            { element: [0, 6], to: [0, 8] },
+            { element: [0, 7], to: [0, 5] },
+            { element: [0, 8], to: [0, 2] },
+        ]
+    },
+    'M': {
+        name: 'M',
+        inverse: 'M!',
+        rotation: { x: 0, y: 0, z: 90 },
+        implicatedMiniCubes: [
+            { element: [1, 0], to: [1, 2] },
+            { element: [1, 1], to: [1, 5] },
+            { element: [1, 2], to: [1, 8] },
+            { element: [1, 3], to: [1, 1] },
+            { element: [1, 4], to: [1, 4] },
+            { element: [1, 5], to: [1, 7] },
+            { element: [1, 6], to: [1, 0] },
+            { element: [1, 7], to: [1, 3] },
+            { element: [1, 8], to: [1, 6] },
+        ]
+    },
+    'M!': {
+        name: 'M!',
+        inverse: 'M',
+        rotation: { x: 0, y: 0, z: -90 },
+        implicatedMiniCubes: [
+            { element: [1, 0], to: [1, 6] },
+            { element: [1, 1], to: [1, 3] },
+            { element: [1, 2], to: [1, 0] },
+            { element: [1, 3], to: [1, 7] },
+            { element: [1, 4], to: [1, 4] },
+            { element: [1, 5], to: [1, 1] },
+            { element: [1, 6], to: [1, 8] },
+            { element: [1, 7], to: [1, 5] },
+            { element: [1, 8], to: [1, 2] },
+        ]
+    },
+    'L': {
+        name: 'L',
+        inverse: 'L!',
+        rotation: { x: 0, y: 0, z: 90 },
+        implicatedMiniCubes: [
+            { element: [2, 0], to: [2, 2] },
+            { element: [2, 1], to: [2, 5] },
+            { element: [2, 2], to: [2, 8] },
+            { element: [2, 3], to: [2, 1] },
+            { element: [2, 4], to: [2, 4] },
+            { element: [2, 5], to: [2, 7] },
+            { element: [2, 6], to: [2, 0] },
+            { element: [2, 7], to: [2, 3] },
+            { element: [2, 8], to: [2, 6] },
+        ]
+    },
+    'L!': {
+        name: 'L!',
+        inverse: 'L',
+        rotation: { x: 0, y: 0, z: -90 },
+        implicatedMiniCubes: [
+            { element: [2, 0], to: [2, 6] },
+            { element: [2, 1], to: [2, 3] },
+            { element: [2, 2], to: [2, 0] },
+            { element: [2, 3], to: [2, 7] },
+            { element: [2, 4], to: [2, 4] },
+            { element: [2, 5], to: [2, 1] },
+            { element: [2, 6], to: [2, 8] },
+            { element: [2, 7], to: [2, 5] },
+            { element: [2, 8], to: [2, 2] },
+        ]
+    },
+
+    'F': {
+        name: 'F',
+        inverse: 'F!',
+        rotation: { x: -90, y: 0, z: 0 },
+        implicatedMiniCubes: [
+            { element: [0, 0], to: [0, 6] },
+            { element: [0, 3], to: [1, 6] },
+            { element: [0, 6], to: [2, 6] },
+            { element: [1, 0], to: [0, 3] },
+            { element: [1, 3], to: [1, 3] },
+            { element: [1, 6], to: [2, 3] },
+            { element: [2, 0], to: [0, 0] },
+            { element: [2, 3], to: [1, 0] },
+            { element: [2, 6], to: [2, 0] },
+        ]
+    },
+    'F!': {
+        name: 'F!',
+        inverse: 'F',
+        rotation: { x: 90, y: 0, z: 0 },
+        implicatedMiniCubes: [
+            { element: [0, 0], to: [2, 0] },
+            { element: [0, 3], to: [1, 0] },
+            { element: [0, 6], to: [0, 0] },
+            { element: [1, 0], to: [2, 3] },
+            { element: [1, 3], to: [1, 3] },
+            { element: [1, 6], to: [0, 3] },
+            { element: [2, 0], to: [2, 6] },
+            { element: [2, 3], to: [1, 6] },
+            { element: [2, 6], to: [0, 6] },
+        ]
+    },
+
+
+    'S': {
+        name: 'S',
+        inverse: 'S!',
+        rotation: { x: -90, y: 0, z: 0 },
+        implicatedMiniCubes: [
+            { element: [0, 1], to: [0, 7] },
+            { element: [0, 4], to: [1, 7] },
+            { element: [0, 7], to: [2, 7] },
+            { element: [1, 1], to: [0, 4] },
+            { element: [1, 4], to: [1, 4] },
+            { element: [1, 7], to: [2, 4] },
+            { element: [2, 1], to: [0, 1] },
+            { element: [2, 4], to: [1, 1] },
+            { element: [2, 7], to: [2, 1] },
+        ]
+    },
+
+
+    'S!': {
+        name: 'S!',
+        inverse: 'S',
+        rotation: { x: 90, y: 0, z: 0 },
+        implicatedMiniCubes: [
+            { element: [0, 1], to: [2, 1] },
+            { element: [0, 4], to: [1, 1] },
+            { element: [0, 7], to: [0, 1] },
+            { element: [1, 1], to: [2, 4] },
+            { element: [1, 4], to: [1, 4] },
+            { element: [1, 7], to: [0, 4] },
+            { element: [2, 1], to: [2, 7] },
+            { element: [2, 4], to: [1, 7] },
+            { element: [2, 7], to: [0, 7] },
+        ]
+    },
+    'B': {
+        name: 'B',
+        inverse: 'B!',
+        rotation: { x: -90, y: 0, z: 0 },
+        implicatedMiniCubes: [
+            { element: [0, 2], to: [0, 8] },
+            { element: [0, 5], to: [1, 8] },
+            { element: [0, 8], to: [2, 8] },
+            { element: [1, 2], to: [0, 5] },
+            { element: [1, 5], to: [1, 5] },
+            { element: [1, 8], to: [2, 5] },
+            { element: [2, 2], to: [0, 2] },
+            { element: [2, 5], to: [1, 2] },
+            { element: [2, 8], to: [2, 2] },
+        ]
+    },
+    'B!': {
+        name: 'B!',
+        inverse: 'B',
+        rotation: { x: 90, y: 0, z: 0 },
+        implicatedMiniCubes: [
+            { element: [0, 2], to: [2, 2] },
+            { element: [0, 5], to: [1, 2] },
+            { element: [0, 8], to: [0, 2] },
+            { element: [1, 2], to: [2, 5] },
+            { element: [1, 5], to: [1, 5] },
+            { element: [1, 8], to: [0, 5] },
+            { element: [2, 2], to: [2, 8] },
+            { element: [2, 5], to: [1, 8] },
+            { element: [2, 8], to: [0, 8] },
+        ]
+    },
+}
