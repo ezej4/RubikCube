@@ -5,12 +5,6 @@ const originMousePosition = {
     isSetted: false,
 };
 
-const originFingerPosition = {
-    pageX: 0,
-    pageY: 0,
-    isSetted: false,
-};
-
 let $implicatedMiniCubes = [];
 let proximityMoves = [];
 let direction = '';
@@ -191,32 +185,11 @@ const hasInTheSamePosition = (event) => {
     const { changedTouches, pageX, pageY } = event;
 
     if (IS_MOBILE) {
-        originFingerPosition.pageX === changedTouches[0].pageX
-            && originFingerPosition.pageY === changedTouches[0].pageY
+        console.log(changedTouches[0].pageX)
     } else {
-        originMousePosition.pageX === pageX
-            && originMousePosition.pageY === pageY
+        originMousePosition.pageX === pageX && originMousePosition.pageY === pageY
     }
 };
-
-const setOriginsPositions = (event) => {
-    const { changedTouches, pageX, pageY } = event;
-
-    if (IS_MOBILE) {
-        if (originFingerPosition.isSetted) return
-
-        originFingerPosition.pageX = changedTouches[0].pageX;
-        originFingerPosition.pageY = changedTouches[0].pageY;
-        originFingerPosition.isSetted = true;
-    } else {
-
-        if (originMousePosition.isSetted) return
-
-        originMousePosition.pageX = pageX;
-        originMousePosition.pageY = pageY;
-        originMousePosition.isSetted = true;
-    }
-}
 
 const mouseMoveHandler = (event) => {
     const { pageX, pageY } = event;
@@ -224,12 +197,15 @@ const mouseMoveHandler = (event) => {
 
     if (hasInTheSamePosition(event)) return;
 
-    if (IS_MOBILE && !originFingerPosition.isSetted) return
-    if (!IS_MOBILE && !originMousePosition.isSetted) return
-    
-    setOriginsPositions();
+    if (!originMousePosition.isSetted) {
 
-    // here to continue
+        originMousePosition.pageX = pageX;
+        originMousePosition.pageY = pageY;
+        originMousePosition.isSetted = true;
+
+        return;
+    }
+
     if (!move) {
         const currentMousePosition = { pageX, pageY };
 
