@@ -1,8 +1,7 @@
-
 .cubic__mini,
 .cubic__face {
-  width: 90px;
-  height: 90px;
+  width: 55px;
+  height: 55px;
 }
 
 .cubic__mini {
@@ -25,7 +24,7 @@
   justify-content: center;
   border-radius: 12px;
   padding: 2px;
-   background: black; 
+  background: black;
   box-sizing: border-box;
   backface-visibility: hidden;
   cursor: pointer;
@@ -63,25 +62,59 @@
 }
 
 .cubic__face--front {
-  transform: rotateX(0deg) rotateZ(0deg) translateZ(50px);
+  transform: rotateX(0deg) rotateZ(0deg) translateZ(30px);
 }
 
 .cubic__face--back {
-  transform: rotatey(180deg) rotateZ(-90deg) translateZ(50px);
+  transform: rotatey(180deg) rotateZ(-90deg) translateZ(30px);
 }
 
 .cubic__face--left {
-  transform: rotatey(-90deg) rotateZ(-90deg) translateZ(50px);
+  transform: rotatey(-90deg) rotateZ(-90deg) translateZ(30px);
 }
 
 .cubic__face--right {
-  transform: rotateY(90deg) rotateZ(0deg) translateZ(50px);
+  transform: rotateY(90deg) rotateZ(0deg) translateZ(30px);
 }
 
 .cubic__face--bottom {
-  transform: rotateX(-90deg) rotateZ(-90deg) translateZ(50px);
+  transform: rotateX(-90deg) rotateZ(-90deg) translateZ(30px);
 }
 
 .cubic__face--top {
-  transform: rotateX(90deg) rotateZ(0deg) translateZ(50px);
+  transform: rotateX(90deg) rotateZ(0deg) translateZ(30px);
+}
+
+@media (min-width: 780px) {
+
+  .cubic__mini,
+  .cubic__face {
+    width: 90px;
+    height: 90px;
+  }
+
+  .cubic__face--front {
+    transform: rotateX(0deg) rotateZ(0deg) translateZ(50px);
+  }
+
+  .cubic__face--back {
+    transform: rotatey(180deg) rotateZ(-90deg) translateZ(50px);
+  }
+
+  .cubic__face--left {
+    transform: rotatey(-90deg) rotateZ(-90deg) translateZ(50px);
+  }
+
+  .cubic__face--right {
+    transform: rotateY(90deg) rotateZ(0deg) translateZ(50px);
+  }
+
+  .cubic__face--bottom {
+    transform: rotateX(-90deg) rotateZ(-90deg) translateZ(50px);
+  }
+
+  .cubic__face--top {
+    transform: rotateX(90deg) rotateZ(0deg) translateZ(50px);
+  }
+
 }
