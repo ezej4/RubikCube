@@ -79,4 +79,4 @@ const entranceAnim = () => {
 }
 
 
-// entranceAnim(); 
+ entranceAnim(); 
