@@ -10,6 +10,7 @@
   transform-style: preserve-3d;
   font-size: 25px;
   font-weight: bold;
+  touch-action: none;
   /* transition: transform 0.2s linear; */
 }
 

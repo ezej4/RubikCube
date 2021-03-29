@@ -1,4 +1,3 @@
-
 const originMousePosition = {
     pageX: 0,
     pageY: 0,
@@ -136,28 +135,19 @@ const hasMinimunMoveMouse = (xDisplacement, yDisplacement, direction) => {
 
 
 const registerEvents = () => {
-    if (IS_MOBILE) {
-        selectedArea.addEventListener("touchmove", mouseMoveHandler)
-        selectedArea.addEventListener("touchleave", mouseUpHandler)
-        selectedArea.addEventListener("touchcancel", mouseUpHandler)
-    } else {
-        selectedArea.addEventListener("mousemove", mouseMoveHandler)
-        selectedArea.addEventListener("mouseleave", mouseUpHandler)
-        selectedArea.addEventListener("mouseup", mouseUpHandler)
-    }
+
+    selectedArea.addEventListener("mousemove", mouseMoveHandler)
+    selectedArea.addEventListener("mouseleave", mouseUpHandler)
+    selectedArea.addEventListener("mouseup", mouseUpHandler)
 
 }
 
 const removeEvents = () => {
-    if (IS_MOBILE) {
-        selectedArea.removeEventListener("touchmove", mouseMoveHandler)
-        selectedArea.removeEventListener("touchleave", mouseUpHandler)
-        selectedArea.removeEventListener("touchcancel", mouseUpHandler)
-    } else {
-        selectedArea.removeEventListener("mousemove", mouseMoveHandler)
-        selectedArea.removeEventListener("mouseleave", mouseUpHandler)
-        selectedArea.removeEventListener("mouseup", mouseUpHandler)
-    }
+
+    selectedArea.removeEventListener("mousemove", mouseMoveHandler)
+    selectedArea.removeEventListener("mouseleave", mouseUpHandler)
+    selectedArea.removeEventListener("mouseup", mouseUpHandler)
+
 }
 
 const mouseDownHandler = (event) => {
@@ -166,7 +156,6 @@ const mouseDownHandler = (event) => {
     console.log(IS_MOBILE);
 
     if (!target.classList.contains('cubic__face') || isMovingNow) {
-        console.log("clean")
         resetVariables();
         return;
     }
@@ -240,7 +229,7 @@ const mouseMoveHandler = (event) => {
 }
 
 const mouseUpHandler = (event) => {
-    //selectedArea.removeEventListener("mousemove", mouseMoveHandler)
+    selectedArea.removeEventListener("mousemove", mouseMoveHandler)
 
     const { pageX, pageY } = event;
     const { pageX: xOrigin, pageY: yOrigin } = originMousePosition;

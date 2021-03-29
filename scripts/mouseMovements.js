@@ -1,4 +1,3 @@
-
 const originMousePosition = {
     pageX: 0,
     pageY: 0,
@@ -26,7 +25,6 @@ const getFace = (classList) => {
     })
     return filteredClassList[0].split('--')[1];
 }
-
 
 const getMiniCubeIndexsById = (id) => {
     if (!id) return;
@@ -62,9 +60,9 @@ const getProximityMovements = (cubeId, face) => {
     return miniCubeManualMovement.proximityMoves[face];
 }
 
-const getMouseDirection = ({ originMousePosition, currentMousePosition }) => {
-    const { pageX: xOrigin, pageY: yOrigin } = originMousePosition;
-    const { pageX: xCurrent, pageY: yCurrent } = currentMousePosition;
+const getMouseDirection = ({ originPosition, currentPosition }) => {
+    const { pageX: xOrigin, pageY: yOrigin } = originPosition;
+    const { pageX: xCurrent, pageY: yCurrent } = currentPosition;
 
     const xDisplacement = xOrigin - xCurrent;
     const yDisplacement = yOrigin - yCurrent;
@@ -81,22 +79,23 @@ const getMouseDirection = ({ originMousePosition, currentMousePosition }) => {
             direction = 'bottom'
         } else direction = 'top';
     }
-    return { direction, xDisplacement, yDisplacement };
-}
 
+    return { direction, xDisplacement, yDisplacement };
+};
 
 const resetVariables = () => {
     //movesElementsToAnotherParent($implicatedMiniCubes, $cubic)
     $implicatedMiniCubes = [];
     originMousePosition.isSetted = false;
+    originFingerPosition.isSetted = false;
     move = null;
     isMovingNow = false;
     direction = '';
     removeEvents();
 };
 
-
 const getRotations = ({ pageX, pageY }) => {
+    const aceleration = IS_MOBILE ? 30 : 100
     const results = { x: 0, y: 0, z: 0 };
     let xRotation = 0;
     let yRotation = 0;
@@ -107,44 +106,70 @@ const getRotations = ({ pageX, pageY }) => {
     }
 
     if (move.rotation.x !== 0) {
-        yRotation = ((originMousePosition.pageY - pageY) / $cubicPlain.offsetHeight) * 100;
+        yRotation = ((originMousePosition.pageY - pageY) / $cubicPlain.offsetHeight) * aceleration;
 
         if (proximityMoves.invertedY) {
-            yRotation = ((pageY - originMousePosition.pageY) / $cubicPlain.offsetHeight) * 100;
+            yRotation = ((pageY - originMousePosition.pageY) / $cubicPlain.offsetHeight) * aceleration;
         }
 
         return { ...results, x: yRotation }
 
     } else if (move.rotation.y !== 0) {
-        xRotation = (pageX - originMousePosition.pageX) / $cubicPlain.offsetWidth * 100;
+        xRotation = (pageX - originMousePosition.pageX) / $cubicPlain.offsetWidth * aceleration;
 
         return { ...results, y: xRotation }
 
     } else if (move.rotation.z !== 0) {
-        zRotation = ((originMousePosition.pageY - pageY) / $cubicPlain.offsetHeight) * 100;
+        zRotation = ((originMousePosition.pageY - pageY) / $cubicPlain.offsetHeight) * aceleration;
 
         if (proximityMoves.invertedZ) {
-            zRotation = (pageY - originMousePosition.pageY) / $cubicPlain.offsetHeight * 100;
+            zRotation = (pageY - originMousePosition.pageY) / $cubicPlain.offsetHeight * aceleration;
         }
         return { ...results, z: zRotation }
 
     }
 
-}
+};
 
 const hasMinimunMoveMouse = (xDisplacement, yDisplacement, direction) => {
+    const minimalMove = IS_MOBILE ? 20 : 100;
+
     if (direction === 'left' || direction === 'right') {
-        return Math.abs(xDisplacement) > 100
+        return Math.abs(xDisplacement) > minimalMove
     }
 
-    return Math.abs(yDisplacement) > 100
-}
+    return Math.abs(yDisplacement) > minimalMove
+};
 
+const hasInTheSamePosition = (event) => {
+    const { changedTouches, pageX, pageY } = event;
+
+    if (IS_MOBILE) {
+        originFingerPosition.pageX === changedTouches[0].pageX &&
+            originFingerPosition.pageY === changedTouches[0].pageY
+    } else {
+        originMousePosition.pageX === pageX &&
+            originMousePosition.pageY === pageY
+    }
+};
+
+const setOriginPosition = (event) => {
+    const { changedTouches, pageX, pageY } = event;
+    if (IS_MOBILE) {
+        originFingerPosition.pageX = changedTouches[0].pageX;
+        originFingerPosition.pageY = changedTouches[0].pageY;
+        originFingerPosition.isSetted = true;
+    } else {
+        originMousePosition.pageX = pageX;
+        originMousePosition.pageY = pageY;
+        originMousePosition.isSetted = true;
+    }
+};
 
 const registerEvents = () => {
     if (IS_MOBILE) {
         selectedArea.addEventListener("touchmove", mouseMoveHandler)
-        selectedArea.addEventListener("touchleave", mouseUpHandler)
+        selectedArea.addEventListener("touchend", mouseUpHandler)
         selectedArea.addEventListener("touchcancel", mouseUpHandler)
     } else {
         selectedArea.addEventListener("mousemove", mouseMoveHandler)
@@ -152,7 +177,7 @@ const registerEvents = () => {
         selectedArea.addEventListener("mouseup", mouseUpHandler)
     }
 
-}
+};
 
 const removeEvents = () => {
     if (IS_MOBILE) {
@@ -164,19 +189,15 @@ const removeEvents = () => {
         selectedArea.removeEventListener("mouseleave", mouseUpHandler)
         selectedArea.removeEventListener("mouseup", mouseUpHandler)
     }
-}
+};
 
 const mouseDownHandler = (event) => {
     const { target } = event;
 
-    console.log(IS_MOBILE);
-
     if (!target.classList.contains('cubic__face') || isMovingNow) {
-        console.log("clean")
         resetVariables();
         return;
     }
-
 
     isMovingNow = true;
     const cubeId = target.parentElement.id
@@ -187,53 +208,36 @@ const mouseDownHandler = (event) => {
     registerEvents();
 }
 
-const hasInTheSamePosition = (event) => {
-    const { changedTouches, pageX, pageY } = event;
-
-    if (IS_MOBILE) {
-        originFingerPosition.pageX === changedTouches[0].pageX
-            && originFingerPosition.pageY === changedTouches[0].pageY
-    } else {
-        originMousePosition.pageX === pageX
-            && originMousePosition.pageY === pageY
-    }
-};
-
-const setOriginsPositions = (event) => {
-    const { changedTouches, pageX, pageY } = event;
-
-    if (IS_MOBILE) {
-        if (originFingerPosition.isSetted) return
-
-        originFingerPosition.pageX = changedTouches[0].pageX;
-        originFingerPosition.pageY = changedTouches[0].pageY;
-        originFingerPosition.isSetted = true;
-    } else {
-
-        if (originMousePosition.isSetted) return
-
-        originMousePosition.pageX = pageX;
-        originMousePosition.pageY = pageY;
-        originMousePosition.isSetted = true;
-    }
-}
 
 const mouseMoveHandler = (event) => {
-    const { pageX, pageY } = event;
+    const { changedTouches, pageX, pageY } = event;
+    const currentPosition = IS_MOBILE ? { pageX: changedTouches[0].pageX, pageY: changedTouches[0].pageY } : { pageX, pageY };
+
+    const originPosition = IS_MOBILE ?
+        originFingerPosition :
+        originMousePosition;
     //var touch = event.originalEvent.touches[0] || event.originalEvent.changedTouches[0];
 
     if (hasInTheSamePosition(event)) return;
 
-    if (IS_MOBILE && !originFingerPosition.isSetted) return
-    if (!IS_MOBILE && !originMousePosition.isSetted) return
-    
-    setOriginsPositions();
+    if (IS_MOBILE && !originFingerPosition.isSetted) {
+        setOriginPosition(event);
+        return;
+    }
+    if (!IS_MOBILE && !originMousePosition.isSetted) {
+        setOriginPosition(event);
+        return;
+    }
+
 
     // here to continue
     if (!move) {
-        const currentMousePosition = { pageX, pageY };
 
-        const { direction: detectedDirection } = getMouseDirection({ originMousePosition, currentMousePosition });
+        const { direction: detectedDirection } = getMouseDirection({
+            originPosition,
+            currentPosition
+        });
+
         direction = detectedDirection;
 
         const detectedMove = proximityMoves[direction];
@@ -247,36 +251,37 @@ const mouseMoveHandler = (event) => {
             return document.getElementById(miniCube.name);
         })
         movesElementsToAnotherParent($implicatedMiniCubes, $cubicPlain)
-
+        return;
     }
 
 
-    const { x, y, z } = getRotations({ pageX, pageY });
+    const { x, y, z } = getRotations(currentPosition);
 
     gsap.to($cubicPlain, .3, {
         rotationY: y,
         rotationZ: z,
         rotationX: x,
-        ease: "Power1.easeOut",
+        //ease: "Power1.easeOut",
     });
 
 
 }
 
 const mouseUpHandler = (event) => {
-    //selectedArea.removeEventListener("mousemove", mouseMoveHandler)
+    selectedArea.removeEventListener("mousemove", mouseMoveHandler)
+    const { changedTouches, pageX, pageY } = event;
+    const currentPosition = IS_MOBILE ? { pageX: changedTouches[0].pageX, pageY: changedTouches[0].pageY } : { pageX, pageY };
 
-    const { pageX, pageY } = event;
-    const { pageX: xOrigin, pageY: yOrigin } = originMousePosition;
+    const originPosition = IS_MOBILE ?
+        originFingerPosition :
+        originMousePosition;
 
-    if (!originMousePosition || !xOrigin || !yOrigin || !move) {
+    if (!originPosition || !move) {
         resetVariables();
         return
     };
 
-    const currentMousePosition = { pageX, pageY };
-
-    const { xDisplacement, yDisplacement } = getMouseDirection({ originMousePosition, currentMousePosition })
+    const { xDisplacement, yDisplacement } = getMouseDirection({ originPosition, currentPosition })
 
     const isMouseMoveEnough = hasMinimunMoveMouse(xDisplacement, yDisplacement, direction);
 
@@ -331,5 +336,8 @@ const mouseUpHandler = (event) => {
 
 }
 
-selectedArea.addEventListener("mousedown", mouseDownHandler)
-selectedArea.addEventListener("touchstart", mouseDownHandler)
+if (IS_MOBILE) {
+    selectedArea.addEventListener("touchstart", mouseDownHandler);
+} else {
+    selectedArea.addEventListener("mousedown", mouseDownHandler);
+}
