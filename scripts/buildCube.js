@@ -33,7 +33,7 @@ miniCubeModel.flat().forEach((curMiniCube, indexMiniCube) => {
 
         if (currentface.value) {
             const indexs = getMiniCubeIndexsById(curMiniCube.name)
-            //face.innerHTML = indexs[0] + "-" + indexs[1] + " " + currentface.label;
+            face.innerHTML = indexs[0] + "-" + indexs[1] + " " + currentface.label;
             face.classList.add(`cubic__face--${currentface.value}`)
         }
 
