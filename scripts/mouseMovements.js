@@ -115,6 +115,11 @@ const getRotations = ({ pageX, pageY }) => {
   } else if (move.rotation.y !== 0) {
     xRotation = ((pageX - originMousePosition.pageX) / $cubicPlain.offsetWidth) * aceleration;
 
+    if (proximityMoves.invertedX) {
+      console.log("okperoo")
+      xRotation = ((originMousePosition.pageX - pageX) / $cubicPlain.offsetHeight) * aceleration;
+    }
+
     return { ...results, y: xRotation };
   } else if (move.rotation.z !== 0) {
     zRotation = ((originMousePosition.pageY - pageY) / $cubicPlain.offsetHeight) * aceleration;

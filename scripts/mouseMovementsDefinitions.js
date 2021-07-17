@@ -1,3 +1,14 @@
+const buildMovementDefinition = (right, left, top, bottom, invertedY = false, invertedZ = false) => {
+  return {
+    right,
+    left,
+    top,
+    bottom,
+    invertedY,
+    invertedZ,
+  };
+};
+
 const MOUSE_MOVEMENTS = [
   {
     xAngle: 0,
@@ -6,7 +17,7 @@ const MOUSE_MOVEMENTS = [
       {
         miniCube: [0, 0],
         proximityMoves: {
-          left: { right: "U", left: "U!", top: "R", bottom: "R!" },
+          left: buildMovementDefinition("U", "U!", "R", "R!"),
           front: { right: "U", left: "U!", top: "F!", bottom: "F" },
           top: { right: "F", left: "F!", top: "R", bottom: "R!" },
         },
@@ -371,8 +382,7 @@ const MOUSE_MOVEMENTS = [
         miniCube: [2, 8],
         proximityMoves: {
           back: { right: "D", left: "D!", top: "B", bottom: "B!", invertedY: true },
-          right: { right: "D", left: "D!", top: "L!", bottom: "L",  invertedZ: true},
-
+          right: { right: "D", left: "D!", top: "L!", bottom: "L", invertedZ: true },
         },
       },
     ],
@@ -384,70 +394,67 @@ const MOUSE_MOVEMENTS = [
       {
         miniCube: [0, 0],
         proximityMoves: {
-          top: { right: "F!", left: "F", top: "R!", bottom: "R", invertedY: true, invertedZ: true },
+          top: buildMovementDefinition("F", "F!", "R", "R!", true),
         },
       },
       {
         miniCube: [0, 1],
         proximityMoves: {
-          top: { right: "S!", left: "S", top: "R!", bottom: "R", invertedY: true, invertedZ: true },
+          top: { right: "S", left: "S!", top: "R", bottom: "R!", invertedY: true },
         },
       },
       {
         miniCube: [0, 2],
         proximityMoves: {
-          top: { right: "B!", left: "B", top: "R!", bottom: "R", invertedY: true, invertedZ: true },
-          right: { right: "U", left: "U!", top: "R!", bottom: "R", invertedZ: true },
+          top: buildMovementDefinition("R!", "R", "B", "B!", true),
         },
       },
       {
-        miniCube: [0, 5],
+        miniCube: [0, 3],
         proximityMoves: {
-          right: { right: "E", left: "E!", top: "R!", bottom: "R", invertedZ: true },
+          left: { right: "E", left: "E!", top: "R", bottom: "R!" },
         },
       },
       {
-        miniCube: [0, 8],
+        miniCube: [0, 6],
         proximityMoves: {
-          right: { right: "D", left: "D!", top: "R!", bottom: "R", invertedZ: true },
+          left: { right: "D", left: "D!", top: "R", bottom: "R!" },
+        },
+      },
+      {
+        miniCube: [1, 0],
+        proximityMoves: {
+          top: buildMovementDefinition("F", "F!", "M", "M!", true),
+          left: buildMovementDefinition("U", "U!", "M", "M!"),
         },
       },
       {
         miniCube: [1, 1],
         proximityMoves: {
-          top: { right: "S!", left: "S", top: "M!", bottom: "M", invertedY: true, invertedZ: true },
+          top: buildMovementDefinition("M!", "M", "S", "S!",true ),
         },
       },
       {
         miniCube: [1, 2],
         proximityMoves: {
-          top: { right: "B!", left: "B", top: "R!", bottom: "R", invertedY: true, invertedZ: true },
-          right: { right: "U", left: "U!", top: "M!", bottom: "M", invertedZ: true },
+          top: buildMovementDefinition("M!", "M", "B", "B!", true),
         },
       },
-      {
-        miniCube: [1, 5],
-        proximityMoves: {
-          right: { right: "E", left: "E!", top: "M!", bottom: "M", invertedZ: true },
-        },
-      },
-      {
-        miniCube: [1, 8],
-        proximityMoves: {
-          right: { right: "D", left: "D!", top: "M!", bottom: "M", invertedZ: true },
-        },
-      },
+
       {
         miniCube: [2, 0],
         proximityMoves: {
-          top: { right: "F!", left: "F", top: "L!", bottom: "L", invertedY: true, invertedZ: true },
+          top: buildMovementDefinition("M!", "M", "F", "F!", true),
+          left:  buildMovementDefinition("U", "U!", "L", "L!", true),
         },
       },
+      //continue here
+
       {
         miniCube: [2, 1],
         proximityMoves: {
-          top: { right: "S!", left: "S", top: "L!", bottom: "L", invertedY: true, invertedZ: true },
-          back: { right: "U", left: "U!", top: "S", bottom: "S!", invertedY: true },
+          top: buildMovementDefinition("L!", "L", "S", "S!", true),
+          back:  buildMovementDefinition("U", "U!", "S", "S!", true),
         },
       },
       {
