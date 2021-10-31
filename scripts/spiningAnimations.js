@@ -1,21 +1,10 @@
-/* const animate = () => {
-    if (isSpining) {
-        $cubic.classList.remove("cubic--spin");
-    } else {
-        $cubic.classList.add("cubic--spin");
-    }
-    isSpining = !isSpining
-}; */
-
 let exitAnimationRunning = false;
-
 
 const entranceAnimation = gsap.to($cubic, {
     rotationX: "+=360",
     rotationY: "+=360",
     duration: 2,
     ease: "none",
-    //repeatDelay: 3,
     repeat: -1,
     paused: true,
 })

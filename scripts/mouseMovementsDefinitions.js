@@ -338,7 +338,7 @@ const MOUSE_MOVEMENTS = [
         miniCube: [2, 0],
         proximityMoves: {
           top: { right: "F!", left: "F", top: "L!", bottom: "L", invertedY: true, invertedZ: true },
-          back: buildMovementDefinition("U", "U!", "F", "F!", true, true, false),
+          back: buildMovementDefinition("U", "U", "F", "F!", true, true, false),
         },
       },
       {

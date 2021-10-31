@@ -19,16 +19,11 @@ const getActualRotation = () => {
 };
 
 const rotate = (direction) => {
-  //if grabbing is enabled, disable it
-  if (isGrabbing) {
-    switchGrabbing();
-  }
 
   if (!$cubic.classList.contains("cubic--auto-roting")) {
     $cubic.classList.add("cubic--auto-roting");
   }
 
-  // get the actual rotation
   const { x: xRotation, y: yRotation } = getActualRotation();
 
   let rotationStyle;
