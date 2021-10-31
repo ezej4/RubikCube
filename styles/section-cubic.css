@@ -1,15 +1,18 @@
+/*   make a keyframe animation for moving background*/
+
 .section-cubic {
   display: flex;
   flex-direction: column;
   background-image: url("../assets/images/background.png");
   background-size: 600px;
+/*   animation: backgroundAnimation 60s linear infinite; */
 }
 
 .section-cubic__selected-area {
   /*  border: 1px dashed white; */
   width: 100%;
   perspective: 2000px;
-  backdrop-filter: blur(7px) brightness(30%) contrast(100%);
+  backdrop-filter: blur(7px) brightness(10%);
   background-color: rgb(41 38 47 / 20%);
   
 }

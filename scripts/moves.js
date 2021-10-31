@@ -1,9 +1,4 @@
 
-const movesElementsToAnotherParent = (elements, newParent) => {
-    elements.forEach(element => {
-        newParent.appendChild(element)
-    })
-}
 
 const filterAndOrderFaces = (baseArray, orderArray) => {
     const result = [];
@@ -76,8 +71,7 @@ const rotateFaces = (miniCubeFaces, movement) => {
 
 const moveCube = (movement, animationDuration) => {
     if (isCubeMoving) {
-        console.log("cube mooving")
-        return
+        return;
     };
 
     const affectedMiniCubes = MOVES[movement].implicatedMiniCubes || null;
@@ -130,7 +124,6 @@ const rePaintCube = (animationDuration = .5) => {
             updateCube(unPaintedMiniCubes)
             movesElementsToAnotherParent($unPaintedMiniCubes, $cubic)
             isCubeMoving = false;
-
         }
     });
 }

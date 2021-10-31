@@ -38,5 +38,6 @@ const entranceAnim = () => {
 
 }
 
-
- //entranceAnim(); 
+if(!DEBUG_MODE){
+    entranceAnim();
+}

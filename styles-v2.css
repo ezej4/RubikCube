@@ -8,6 +8,17 @@
   src: url('./assets/fonts/Nunito-Regular.ttf');
 }
 
+@keyframes backgroundAnimation {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 200%;
+  }
+}
+  
+
+
 @keyframes rotate {
   0% {
     transform: rotate3d(1, 1, 0, 0deg);

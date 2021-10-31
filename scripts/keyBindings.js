@@ -1,6 +1,5 @@
 const handleKeyDown = (event) => {
   const keyPressed = event.key;
-  console.log(keyPressed);
   const keyCases = {
     ArrowUp: () => rotate("top"),
     //'ArrowDown': rotate('top'),
