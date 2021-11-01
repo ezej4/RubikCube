@@ -22,6 +22,7 @@ const entranceAnim = () => {
                 x: 500,
                 y: -400,
                 stagger: 0.01,
+                opacity: 0,
             })
         .from(".action-bar",
             0.5, {

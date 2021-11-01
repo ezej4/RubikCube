@@ -3,27 +3,25 @@
   flex-direction: column;
   background-image: url("../assets/images/background.png");
   background-size: 600px;
-   animation: backgroundAnimation 60s linear infinite; 
+  animation: backgroundAnimation 60s linear infinite;
 }
 
 .section-cubic__selected-area {
-  /*  border: 1px dashed white; */
   width: 100%;
   perspective: 2000px;
-  backdrop-filter: blur(7px) brightness(10%);
+  backdrop-filter: blur(7px) brightness(100%);
   background-color: rgb(41 38 47 / 20%);
-  
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .section-cubic__main {
   width: 100%;
-  height: calc(90vh - 100px);
+  height: calc(90vh - 60px);
   transform: rotateX(-22deg) rotateY(60deg);
   transform-style: preserve-3d;
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
 
 .section-cubic__cubic {
@@ -33,13 +31,12 @@
   height: 185px;
 }
 
-.section-cubic__cubic-plain{
+.section-cubic__cubic-plain {
   position: absolute;
   transform-style: preserve-3d;
   width: 175px;
   height: 175px;
 }
-
 
 @media (min-width: 780px) {
   .section-cubic__cubic {
@@ -48,11 +45,14 @@
     width: 300px;
     height: 300px;
   }
-  
-  .section-cubic__cubic-plain{
+
+  .section-cubic__cubic-plain {
     position: absolute;
     transform-style: preserve-3d;
     width: 290px;
     height: 290px;
+  }
+  .section-cubic__main {
+    height: calc(90vh - 100px);
   }
 }

@@ -1,7 +1,6 @@
-
 .action-bar {
   width: 100%;
-  height: calc(10vh);
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11,20 +10,15 @@
   z-index: 2;
 }
 
-.action-bar__rotating-buttons{
+.action-bar__rotating-buttons {
   display: flex;
   align-items: center;
 }
 
 .action-bar__rotating-buttons i {
-  font-size: 60px;
+  font-size: 40px;
   color: white;
-  transition: color .5s;
-}
-
-.action-bar__rotating-buttons i:hover {
-  cursor: pointer;
-  color: black;
+  transition: color 0.5s;
 }
 
 .action-bar__extra-buttons {
@@ -40,13 +34,26 @@
   border: none;
   margin: 0;
   border-radius: 4px;
-  background: #1F1A38;
+  background: #1f1a38;
   transition: transform 1s ease;
-  font-family: 'roboto-regular';
+  font-family: "roboto-regular";
   font-size: 16px;
 }
 
 .action-bar__animate-button:hover {
   cursor: pointer;
   transform: scale(1.1);
+}
+@media screen and (min-width: 768px) {
+  .action-bar {
+    height: 10vh;
+  }
+  .action-bar__rotating-buttons i {
+    font-size: 60px;
+  }
+
+  .action-bar__rotating-buttons i:hover {
+    cursor: pointer;
+    color: black;
+  }
 }
