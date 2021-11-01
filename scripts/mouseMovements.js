@@ -290,7 +290,7 @@ const mouseUpHandler = (event) => {
     }
   }
 
-  const animationDuration = 0.5;
+  const animationDuration = 0.3;
 
   moveCube(moveToExec, animationDuration);
 
