@@ -16,7 +16,7 @@
 
 .section-cubic__main {
   width: 100%;
-  height: calc(90vh - 60px);
+  height: calc(80vh - 60px);
   transform: rotateX(-22deg) rotateY(60deg);
   transform-style: preserve-3d;
   display: flex;
