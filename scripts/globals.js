@@ -4,7 +4,7 @@ const $cubicPlain = document.getElementById("cubic-plain")
 const selectedArea = document.getElementById("cubic-selected-area");
 const animateButton = document.getElementById("animate-button");
 
-const DEBUG_MODE = false;
+const DEBUG_MODE = true;
 
 // device
 const IS_MOBILE = mobileAndTabletCheck();

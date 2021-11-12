@@ -50,7 +50,7 @@ const resetVariables = () => {
 };
 
 const getRotations = ({ pageX, pageY }) => {
-  const aceleration = IS_MOBILE ? 20 : 100;
+  const aceleration = IS_MOBILE ? 60 : 100;
   const results = { x: 0, y: 0, z: 0 };
   let xRotation = 0;
   let yRotation = 0;
@@ -62,36 +62,37 @@ const getRotations = ({ pageX, pageY }) => {
 
   if (move.rotation.x !== 0) {
     yRotation = IS_MOBILE
-      ? ((originMousePosition.pageY - pageY) / $cubicPlain.offsetHeight) * aceleration + 50
+      ? ((originMousePosition.pageY - pageY) / $cubicPlain.offsetHeight) * aceleration + 100
       : ((originMousePosition.pageY - pageY) / $cubicPlain.offsetHeight) * aceleration;
 
     if (proximityMoves.invertedY) {
       yRotation = IS_MOBILE
-        ? ((pageY - originMousePosition.pageY) / $cubicPlain.offsetHeight) * aceleration - 50
+        ? ((pageY - originMousePosition.pageY) / $cubicPlain.offsetHeight) * aceleration - 100
         : ((pageY - originMousePosition.pageY) / $cubicPlain.offsetHeight) * aceleration;
     }
 
     return { ...results, x: yRotation };
   } else if (move.rotation.y !== 0) {
+
     xRotation = IS_MOBILE
-      ? ((pageX - originMousePosition.pageX) / $cubicPlain.offsetWidth) * aceleration - 30
+      ? ((pageX - originMousePosition.pageX) / $cubicPlain.offsetWidth) * aceleration - 100
       : ((pageX - originMousePosition.pageX) / $cubicPlain.offsetWidth) * aceleration;
 
     if (proximityMoves.invertedX) {
       xRotation = IS_MOBILE
-        ? ((originMousePosition.pageX - pageX) / $cubicPlain.offsetHeight) * aceleration  + 30
+        ? ((originMousePosition.pageX - pageX) / $cubicPlain.offsetHeight) * aceleration  + 100
         : ((originMousePosition.pageX - pageX) / $cubicPlain.offsetHeight) * aceleration;
     }
 
     return { ...results, y: xRotation };
   } else if (move.rotation.z !== 0) {
     zRotation = IS_MOBILE
-      ? ((originMousePosition.pageY - pageY) / $cubicPlain.offsetHeight) * aceleration + 50
+      ? ((originMousePosition.pageY - pageY) / $cubicPlain.offsetHeight) * aceleration + 100
       : ((originMousePosition.pageY - pageY) / $cubicPlain.offsetHeight) * aceleration;
 
     if (proximityMoves.invertedZ) {
       zRotation = IS_MOBILE
-        ? ((pageY - originMousePosition.pageY) / $cubicPlain.offsetHeight) * aceleration - 50
+        ? ((pageY - originMousePosition.pageY) / $cubicPlain.offsetHeight) * aceleration - 100
         : ((pageY - originMousePosition.pageY) / $cubicPlain.offsetHeight) * aceleration;
     }
     return { ...results, z: zRotation };

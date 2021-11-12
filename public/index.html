@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 
 <html>
 
@@ -6,21 +6,19 @@
     <title>a funny rubik cubic game</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favIcons/favicon-32x32.ico">
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favIcons/favicon-16x16.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="./../assets/images/favIcons/favicon-32x32.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="./../assets/images/favIcons/favicon-16x16.ico">
 
 
-    <link rel=StyleSheet href="../styles-v2.css" type="text/css" media=screen>
-    <link rel=StyleSheet href="../styles/header.css" type="text/css" media=screen>
-    <link rel=StyleSheet href="../styles/cubic.css" type="text/css" media=screen>
-    <link rel=StyleSheet href="../styles/section-cubic.css" type="text/css" media=screen>
-    <link rel=StyleSheet href="../styles/action-bar.css" type="text/css" media=screen>
-    <link rel=StyleSheet href="../styles/section-movements.css" type="text/css" media=screen>
-    <link rel=StyleSheet href="../styles/flows-buttons.css" type="text/css" media=screen>
-    <link rel=StyleSheet href="../styles/about.css" type="text/css" media=screen>
-    <link rel=StyleSheet href="../styles/footer.css" type="text/css" media=screen>
-    <!--   <link rel=StyleSheet href="../assets/fonts/Roboto-Regular.ttf">
-    <link rel=StyleSheet href="../assets/fonts/Nunito-Regular.ttf"> -->
+    <link rel=StyleSheet href="./../styles-v2.css" type="text/css" media=screen>
+    <link rel=StyleSheet href="./../styles/header.css" type="text/css" media=screen>
+    <link rel=StyleSheet href="./../styles/cubic.css" type="text/css" media=screen>
+    <link rel=StyleSheet href="./../styles/section-cubic.css" type="text/css" media=screen>
+    <link rel=StyleSheet href="./../styles/action-bar.css" type="text/css" media=screen>
+    <link rel=StyleSheet href="./../styles/section-movements.css" type="text/css" media=screen>
+    <link rel=StyleSheet href="./../styles/flows-buttons.css" type="text/css" media=screen>
+    <link rel=StyleSheet href="./../styles/about.css" type="text/css" media=screen>
+    <link rel=StyleSheet href="./../styles/footer.css" type="text/css" media=screen>
 
     <script src="https://kit.fontawesome.com/20496c3b97.js" crossorigin="anonymous"></script>
 </head>
@@ -75,17 +73,13 @@
 
     <section class="action-bar">
         <div class="action-bar__rotating-buttons">
-            <!--  <h3 class="action-bar__rotagin-title">Rotate cube</h3> -->
             <i class="fas fa-arrow-circle-left" onclick="rotate('left')"></i>
             <i class="fas fa-arrow-circle-up" onclick="rotate('top')"></i>
             <i class="fas fa-arrow-circle-right" onclick="rotate('right')"></i>
         </div>
 
 
-        <!--  <div class="action-bar__extra-buttons">
-            <button class="action-bar__animate-button" id="animate-button">Lets spin!</button>
-              <button id="grab-button" class="action-bar__grab-button">Grab</button> 
-        </div> -->
+      
     </section>
 
     <div class="flows-buttons">
@@ -135,78 +129,10 @@
                 <p class="about__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta amet nulla, reiciendis iusto placeat aliquam explicabo dolore laboriosam eum repellendus impedit eius doloribus ipsum optio. Aperiam quidem dolores minus eaque.</p>
                 <p class="about__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta amet nulla, reiciendis iusto placeat aliquam explicabo dolore laboriosam eum repellendus impedit eius doloribus ipsum optio. Aperiam quidem dolores minus eaque.</p>
             </div>
-            <!--  <p class="about__footer">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et repellat sunt iste, consequatur excepturi, harum dolorem officiis sequi placeat eum cupiditate cum minima nulla ducimus, distinctio at temporibus quibusdam delectus.
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et repellat sunt iste, consequatur excepturi, harum dolorem officiis sequi placeat eum cupiditate cum minima nulla ducimus, distinctio at temporibus quibusdam delectus.
-            </p> -->
+            
         </div>
     </article>
-    <!--  <aside class="section-movements">
-        <span class="section-movements__open-menu">
-            <i class="fas fa-toggle-on"></i>
-        </span>
-        <div class="section-movements__wrapper">
-            <h3 class="section-movements__title">Cube movements</h3>
-            <div class="section-movements__moves">
-                <button class="section-movements__button-move" onclick="moveCube('U')">U
-                    <img class="section-movements__cube-image" src="file:///C:/Users/Ezequiel/Downloads/dbd35bca-db59-4a15-bbf0-ad059d222086.png" />
-                </button>
-                <button class="section-movements__button-move" onclick="moveCube('U!')">U'
-                    <img class="section-movements__cube-image" src="file:///C:/Users/Ezequiel/Downloads/2021.03.13-16.01.png" />
-                </button>
-                <button class="section-movements__button-move" onclick="moveCube('E')">E
-                    <img class="section-movements__cube-image" src="file:///C:/Users/Ezequiel/Downloads/2021.03.13-15.33_01.png" />
-                </button>
-                <button class="section-movements__button-move" onclick="moveCube('E!')">E'
-                    <img class="section-movements__cube-image" src="file:///C:/Users/Ezequiel/Downloads/2021.03.13-15.33_01.png" />
-                </button>
-                <button class="section-movements__button-move" onclick="moveCube('D')">D
-                    <img class="section-movements__cube-image" src="file:///C:/Users/Ezequiel/Downloads/2021.03.13-15.33_01.png" />
-                </button>
-                <button class="section-movements__button-move" onclick="moveCube('D!')">D'
-                    <img class="section-movements__cube-image" src="file:///C:/Users/Ezequiel/Downloads/2021.03.13-15.33_01.png" />
-                </button>
-
-                <button class="section-movements__button-move" onclick="moveCube('R')">R
-                    <img class="section-movements__cube-image" src="file:///C:/Users/Ezequiel/Downloads/2021.03.13-15.33_01.png" />
-                </button>
-                <button class="section-movements__button-move" onclick="moveCube('R!')">R'
-                    <img class="section-movements__cube-image" src="file:///C:/Users/Ezequiel/Downloads/2021.03.13-15.33_01.png" />
-                </button>
-                <button class="section-movements__button-move" onclick="moveCube('M')">M
-                    <img class="section-movements__cube-image" src="file:///C:/Users/Ezequiel/Downloads/2021.03.13-15.33_01.png" />
-                </button>
-                <button class="section-movements__button-move" onclick="moveCube('M!')">M'
-                    <img class="section-movements__cube-image" src="file:///C:/Users/Ezequiel/Downloads/2021.03.13-15.33_01.png" />
-                </button>
-                <button class="section-movements__button-move" onclick="moveCube('L')">L
-                    <img class="section-movements__cube-image" src="file:///C:/Users/Ezequiel/Downloads/2021.03.13-15.33_01.png" />
-                </button>
-                <button class="section-movements__button-move" onclick="moveCube('L!')">L'
-                    <img class="section-movements__cube-image" src="file:///C:/Users/Ezequiel/Downloads/2021.03.13-15.33_01.png" />
-                </button>
-
-                <button class="section-movements__button-move" onclick="moveCube('F')">F
-                    <img class="section-movements__cube-image" src="file:///C:/Users/Ezequiel/Downloads/2021.03.13-15.33_01.png" />
-                </button>
-                <button class="section-movements__button-move" onclick="moveCube('F!')">F'
-                    <img class="section-movements__cube-image" src="file:///C:/Users/Ezequiel/Downloads/2021.03.13-15.33_01.png" />
-                </button>
-                <button class="section-movements__button-move" onclick="moveCube('S')">S
-                    <img class="section-movements__cube-image" src="file:///C:/Users/Ezequiel/Downloads/2021.03.13-15.33_01.png" />
-                </button>
-                <button class="section-movements__button-move" onclick="moveCube('S!')">S'
-                    <img class="section-movements__cube-image" src="file:///C:/Users/Ezequiel/Downloads/2021.03.13-15.33_01.png" />
-                </button>
-                <button class="section-movements__button-move" onclick="moveCube('B')">B
-                    <img class="section-movements__cube-image" src="file:///C:/Users/Ezequiel/Downloads/2021.03.13-15.33_01.png" />
-                </button>
-                <button class="section-movements__button-move" onclick="moveCube('B!')">B'
-                    <img class="section-movements__cube-image" src="file:///C:/Users/Ezequiel/Downloads/2021.03.13-15.33_01.png" />
-                </button>
-            </div>
-        </div>
-
-    </aside> -->
+  
 
     <footer class="footer">
         <div class="footer__social-icon">
@@ -219,20 +145,20 @@
 </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
-<script src="../scripts/detectMobile.js"></script>
-<script src="../scripts/globals.js"></script>
-<script src="../scripts/utils/index.js"></script>
-<script src="../scripts/buildCube.js"></script>
-<script src="../scripts/updateCube.js"></script>
-<script src="../scripts/rotateCube.js"></script>
-<script src="../scripts/spiningAnimations.js"></script>
-<script src="../scripts/moves.js"></script>
-<script src="../scripts/mouseMovementsDefinitions.js"></script>
-<script src="../scripts/mouseMovements.js"></script>
-<script src="../scripts/keyBindings.js"></script>
-<script src="../scripts/footerButtonActions.js"></script>
-<script src="../scripts/mixCube.js"></script>
-<script src="../scripts/entranceAnimations.js"></script>
+<script src="./../scripts/detectMobile.js"></script>
+<script src="./../scripts/globals.js"></script>
+<script src="./../scripts/utils/index.js"></script>
+<script src="./../scripts/buildCube.js"></script>
+<script src="./../scripts/updateCube.js"></script>
+<script src="./../scripts/rotateCube.js"></script>
+<script src="./../scripts/spiningAnimations.js"></script>
+<script src="./../scripts/moves.js"></script>
+<script src="./../scripts/mouseMovementsDefinitions.js"></script>
+<script src="./../scripts/mouseMovements.js"></script>
+<script src="./../scripts/keyBindings.js"></script>
+<script src="./../scripts/footerButtonActions.js"></script>
+<script src="./../scripts/mixCube.js"></script>
+<script src="./../scripts/entranceAnimations.js"></script>
 
 
-</html>
+</html> -->
