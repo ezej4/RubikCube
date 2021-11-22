@@ -73,14 +73,13 @@ const getRotations = ({ pageX, pageY }) => {
 
     return { ...results, x: yRotation };
   } else if (move.rotation.y !== 0) {
-
     xRotation = IS_MOBILE
-      ? ((pageX - originMousePosition.pageX) / $cubicPlain.offsetWidth) * aceleration - 100
+      ? ((pageX - originMousePosition.pageX) / $cubicPlain.offsetWidth) * aceleration - 70
       : ((pageX - originMousePosition.pageX) / $cubicPlain.offsetWidth) * aceleration;
 
     if (proximityMoves.invertedX) {
       xRotation = IS_MOBILE
-        ? ((originMousePosition.pageX - pageX) / $cubicPlain.offsetHeight) * aceleration  + 100
+        ? ((originMousePosition.pageX - pageX) / $cubicPlain.offsetHeight) * aceleration  + 70
         : ((originMousePosition.pageX - pageX) / $cubicPlain.offsetHeight) * aceleration;
     }
 
