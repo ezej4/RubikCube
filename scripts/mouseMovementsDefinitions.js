@@ -654,7 +654,7 @@ const MOUSE_MOVEMENTS = [
   },
   {
     xAngle: 180,
-    yAngle: 270,
+    yAngle: 90,
     value: [
       {
         miniCube: [0, 2],
@@ -775,6 +775,7 @@ const MOUSE_MOVEMENTS = [
         proximityMoves: {
           back: buildMovementDefinition("D!", "D", "B!", "B", false, false, true),
           bottom: buildMovementDefinition("L!", "L", "B!", "B", false, false, true),
+          right: buildMovementDefinition("D!", "D", "L", "L!", false, false, true),
         },
       },
       // here
@@ -911,7 +912,7 @@ const MOUSE_MOVEMENTS = [
   },
   {
     xAngle: 180,
-    yAngle: 90,
+    yAngle: 270,
     value: [
       {
         miniCube: [0, 0],

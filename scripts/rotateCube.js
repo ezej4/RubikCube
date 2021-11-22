@@ -1,66 +1,89 @@
 const getActualRotation = () => {
-  const baseStyle = $cubic.style.transform;
+    const baseStyle = $cubic.style.transform;
 
-  if (!baseStyle)
+    if (!baseStyle)
+        return {
+            x: 0,
+            y: 0,
+        };
+
+    // grab all positive and negative numbers.
+    const regex = /[-?\d|,|.\+]+/g;
+    // grab all matches
+    const values = baseStyle.match(regex);
+
     return {
-      x: 0,
-      y: 0,
+        x: parseFloat(values[0]),
+        y: parseFloat(values[1]),
     };
-
-  // grab all positive and negative numbers.
-  const regex = /[-?\d|,|.\+]+/g;
-  // grab all matches
-  const values = baseStyle.match(regex);
-
-  return {
-    x: parseFloat(values[0]),
-    y: parseFloat(values[1]),
-  };
 };
 
 const rotate = (direction) => {
-
-  if (!$cubic.classList.contains("cubic--auto-roting")) {
-    $cubic.classList.add("cubic--auto-roting");
-  }
-
-  const { x: xRotation, y: yRotation } = getActualRotation();
-
-  let rotationStyle;
-  switch (direction) {
-    case "left": {
-      rotationStyle = isCubeInvertedX
-        ? `rotateX(${xRotation}deg) rotateY(${yRotation - 90}deg)`
-        : `rotateX(${xRotation}deg) rotateY(${yRotation + 90}deg)`;
-
-      const newRotationY = cubePosition.y + 90 > 360 ? cubePosition.y + 90 - 360 : cubePosition.y + 90;
-      cubePosition = { ...cubePosition, y: newRotationY };
-      isCubeInvertedY = cubePosition.y === 270;
-      break;
+    if (!$cubic.classList.contains('cubic--auto-roting')) {
+        $cubic.classList.add('cubic--auto-roting');
     }
-    case "right": {
-      rotationStyle = isCubeInvertedX
-        ? `rotateX(${xRotation}deg) rotateY(${yRotation + 90}deg)`
-        : `rotateX(${xRotation}deg) rotateY(${yRotation - 90}deg)`;
+    const { x: xRotation, y: yRotation } = getActualRotation();
 
-      const newRotationY = cubePosition.y - 90 < 0 ? cubePosition.y - 90 + 360 : cubePosition.y - 90;
-      cubePosition = { ...cubePosition, y: newRotationY };
-      isCubeInvertedY = cubePosition.y === 270;
-      break;
+    let rotationStyle;
+    let newRotationY;
+
+    switch (direction) {
+        case 'left': {
+          console.log("left")
+            if (isCubeInvertedX) {
+                rotationStyle = `rotateX(${xRotation}deg) rotateY(${yRotation - 90}deg)`;
+                newRotationY = cubePosition.y - 90;
+            } else {
+                newRotationY = cubePosition.y + 90;
+                rotationStyle = `rotateX(${xRotation}deg) rotateY(${yRotation + 90}deg)`;
+            }
+
+            if (newRotationY >= 360) {
+              newRotationY = 0;
+            }
+            if (newRotationY < 0) {
+              newRotationY = 270;
+            }
+
+            cubePosition = { ...cubePosition, y: newRotationY };
+            isCubeInvertedY = cubePosition.y === 270;
+
+            break;
+        }
+        case 'right': {
+          console.log("right")
+            if (isCubeInvertedX) {
+                rotationStyle = `rotateX(${xRotation}deg) rotateY(${yRotation + 90}deg)`;
+                newRotationY = cubePosition.y + 90;
+            } else {
+                newRotationY = cubePosition.y - 90;
+                rotationStyle = `rotateX(${xRotation}deg) rotateY(${yRotation - 90}deg)`;
+            }
+
+            if (newRotationY >= 360) {
+              newRotationY = 0;
+            }
+            if (newRotationY < 0) {
+              newRotationY = 270;
+            }
+
+            cubePosition = { ...cubePosition, y: newRotationY };
+            isCubeInvertedY = cubePosition.y === 270;
+            break;
+        }
+        case 'top': {
+            rotationStyle = `rotateX(${xRotation + 180}deg) rotateY(${yRotation}deg)`;
+            const newRotationX = cubePosition.x + 180 >= 360 ? cubePosition.x + 180 - 360 : cubePosition.x + 180;
+            cubePosition = { ...cubePosition, x: newRotationX };
+            isCubeInvertedX = cubePosition.x === 180;
+            break;
+        }
+        default: {
+            rotationStyle = `rotateX(${xRotation}deg) rotateY(${yRotation}deg)`;
+            break;
+        }
     }
-    case "top": {
-      rotationStyle = `rotateX(${xRotation + 180}deg) rotateY(${yRotation}deg)`;
-      const newRotationX = cubePosition.x + 180 >= 360 ? cubePosition.x + 180 - 360 : cubePosition.x + 180;
-      cubePosition = { ...cubePosition, x: newRotationX };
-      isCubeInvertedX = cubePosition.x === 180;
-      break;
-    }
-    default: {
-      rotationStyle = `rotateX(${xRotation}deg) rotateY(${yRotation}deg)`;
-      break;
-    }
-  }
- 
-  console.log(cubePosition);
-  $cubic.style.transform = rotationStyle;
+
+    console.log(cubePosition);
+    $cubic.style.transform = rotationStyle;
 };
