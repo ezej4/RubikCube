@@ -10,13 +10,13 @@ const originFingerPosition = {
   isSetted: false,
 };
 
-let $implicatedMiniCubes = [];
+/* let $implicatedMiniCubes = [];
 let proximityMoves = [];
 let direction = "";
 let move = null;
-let isMovingNow = false;
+let isMovingNow = false; */
 
-const getMouseDirection = ({ originPosition, currentPosition }) => {
+/* const getMouseDirection = ({ originPosition, currentPosition }) => {
   const { pageX: xOrigin, pageY: yOrigin } = originPosition;
   const { pageX: xCurrent, pageY: yCurrent } = currentPosition;
 
@@ -37,8 +37,8 @@ const getMouseDirection = ({ originPosition, currentPosition }) => {
 
   return { direction, xDisplacement, yDisplacement };
 };
-
-const resetVariables = () => {
+ */
+/* const resetVariables = () => {
   //movesElementsToAnotherParent($implicatedMiniCubes, $cubic)
   isMovingNow = false;
   $implicatedMiniCubes = [];
@@ -47,7 +47,7 @@ const resetVariables = () => {
   move = null;
   direction = "";
   removeEvents();
-};
+}; */
 
 const getRotations = ({ pageX, pageY }) => {
   const aceleration = IS_MOBILE ? 60 : 100;
@@ -79,7 +79,7 @@ const getRotations = ({ pageX, pageY }) => {
 
     if (proximityMoves.invertedX) {
       xRotation = IS_MOBILE
-        ? ((originMousePosition.pageX - pageX) / $cubicPlain.offsetHeight) * aceleration  + 70
+        ? ((originMousePosition.pageX - pageX) / $cubicPlain.offsetHeight) * aceleration + 70
         : ((originMousePosition.pageX - pageX) / $cubicPlain.offsetHeight) * aceleration;
     }
 
@@ -98,10 +98,10 @@ const getRotations = ({ pageX, pageY }) => {
   }
 };
 
-const hasMinimunMoveMouse = (xDisplacement, yDisplacement, direction) => {
+/* const hasMinimunMoveMouse = (xDisplacement, yDisplacement, direction) => {
   const minimalMove = IS_MOBILE ? 20 : 40;
 
-  if (direction === "left" || direction === "right") {
+  if (["left", "right"].includes(direction)) {
     return Math.abs(xDisplacement) > minimalMove;
   }
 
@@ -116,7 +116,7 @@ const hasInTheSamePosition = (event) => {
   } else {
     originMousePosition.pageX === pageX && originMousePosition.pageY === pageY;
   }
-};
+}; */
 
 const setOriginPosition = (event) => {
   const { changedTouches, pageX, pageY } = event;

@@ -29,7 +29,6 @@ const rotate = (direction) => {
 
     switch (direction) {
         case 'left': {
-          console.log("left")
             if (isCubeInvertedX) {
                 rotationStyle = `rotateX(${xRotation}deg) rotateY(${yRotation - 90}deg)`;
                 newRotationY = cubePosition.y - 90;

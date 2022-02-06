@@ -4,7 +4,7 @@
   <head>
     <title>a funny rubik cubic game</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
 
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favIcons/favicon-32x32.ico" />
     <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favIcons/favicon-16x16.ico" />
@@ -19,6 +19,7 @@
     <link rel="StyleSheet" href="./styles/flows-buttons.css" type="text/css" media="screen" />
     <link rel="StyleSheet" href="./styles/about.css" type="text/css" media="screen" />
     <link rel="StyleSheet" href="./styles/footer.css" type="text/css" media="screen" />
+    <link rel="StyleSheet" href="./styles/keyboard-modal.css" type="text/css" media="screen" />
     <!--   <link rel=StyleSheet href="./assets/fonts/Roboto-Regular.ttf">
     <link rel=StyleSheet href="./assets/fonts/Nunito-Regular.ttf"> -->
 
@@ -27,7 +28,7 @@
 
   <body>
     <header class="header">
-      <svg xmlns="http://www.w3.org/2000/svg" class="header__icon" version="1.1" id="svg1532" width="50" height="50.001">
+      <svg xmlns="http://www.w3.org/2000/svg" class="header__icon" version="1.1" id="svg1532" width="75" height="50.001">
         <style id="style1466"></style>
         <g id="layer1" transform="translate(-79.509 -50.65)" display="inline">
           <path
@@ -416,7 +417,7 @@
           <span class="flows-buttons__label">Moves</span>
         </li> -->
 
-        <li class="flows-buttons__item">
+        <li id="keyboard-modal-trigger" class="flows-buttons__item">
           <span class="flows-buttons__button">
             <i class="fas fa-keyboard"></i>
           </span>
@@ -448,17 +449,12 @@
       <div class="about__content">
         <div class="about__title">About this</div>
         <div class="about__texts">
+          <p class="about__text">Made with ❤️ and only for fun. Play with the cube and try to resolve it.</p>
           <p class="about__text">
-            Made with ❤️ and only for fun.
-            Play with the cube and try to resolve it.
+            build with only Vanilla Javascript, <a target="_blank" href="https://fontawesome.com/">FA ICONS</a> and
+            <a target="_blank" href="https://greensock.com/gsap/">GSAP </a> for some animations
           </p>
-          <p class="about__text">
-           build with only Vanilla Javascript, <a target="_blank" href="https://fontawesome.com/">FA ICONS</a> and  <a target="_blank" href="https://greensock.com/gsap/">GSAP </a> for some animations
-          </p>
-          <p class="about__text">
-            Want to learn more about the Rubik cube?
-            there are some links that can de helpfull.r
-          </p>
+          <p class="about__text">Want to learn more about the Rubik cube? there are some links that can de helpfull.r</p>
           <p class="about__text">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta amet nulla, reiciendis iusto placeat aliquam explicabo dolore laboriosam
             eum repellendus impedit eius doloribus ipsum optio. Aperiam quidem dolores minus eaque.
@@ -544,6 +540,181 @@
       </div>
     </footer>
     <div class="interactive-background" id="interactive-background"></div>
+    <div id="keyboard-modal" class="keyboard-modal">
+      <div class="keyboard-modal__content">
+        <div class="keyboard-modal__close">
+          <i id="keyboard-modal-close" class="fas fa-times-circle"></i>
+        </div>
+
+        <div class="keyboard-modal__content-title">
+          <h2>Keyboards</h2>
+        </div>
+
+        <div class="keyboard-modal__body">
+          <p class="keyboard-modal__title-divisor">Rotations</p>
+
+          <div class="keyboard-modal__keyboards keyboard-modal__keyboards--first ">
+            <div class="keyboard-modal__row">
+              <img width="75"   loading="lazy" src="./assets/images/cube_moves/LEFT.gif" />
+              <div class="keyboard-modal__key">
+                <kbd class="keyboard-modal__key-value">⬅️</kbd>
+              </div>
+            </div>
+            <div class="keyboard-modal__row">
+              <img width="75"   loading="lazy" src="./assets/images/cube_moves/UP.gif" />
+              <div class="keyboard-modal__key">
+                <kbd class="keyboard-modal__key-value">⬆️</kbd>
+              </div>
+            </div>
+            <div class="keyboard-modal__row">
+              <img width="75"   loading="lazy" src="./assets/images/cube_moves/RIGHT.gif" />
+              <div class="keyboard-modal__key">
+                <kbd class="keyboard-modal__key-value">➡️</kbd>
+              </div>
+            </div>
+          </div>
+
+          <p class="keyboard-modal__title-divisor">Moves</p>
+
+          <div class="keyboard-modal__grid">
+            <div class="keyboard-modal__keyboards">
+              <div class="keyboard-modal__row">
+                <img width="75"   loading="lazy" src="./assets/images/cube_moves/U.gif" />
+                <div class="keyboard-modal__key">
+                  <kbd class="keyboard-modal__key-value">u</kbd>
+                </div>
+              </div>
+              <div class="keyboard-modal__row">
+                <img width="75"   loading="lazy" src="./assets/images/cube_moves/U!.gif" />
+                <div class="keyboard-modal__key">
+                  <kbd class="keyboard-modal__key-value">shift + u </kbd>
+                </div>
+              </div>
+            </div>
+
+            <div class="keyboard-modal__keyboards">
+              <div class="keyboard-modal__row">
+                <img width="75"   loading="lazy" src="./assets/images/cube_moves/E.gif" />
+                <div class="keyboard-modal__key">
+                  <kbd class="keyboard-modal__key-value">e</kbd>
+                </div>
+              </div>
+              <div class="keyboard-modal__row">
+                <img width="75"   loading="lazy" src="./assets/images/cube_moves/E!.gif" />
+                <div class="keyboard-modal__key">
+                  <kbd class="keyboard-modal__key-value">shift + e </kbd>
+                </div>
+              </div>
+            </div>
+
+            <div class="keyboard-modal__keyboards">
+              <div class="keyboard-modal__row">
+                <img width="75"   loading="lazy" src="./assets/images/cube_moves/D.gif" />
+                <div class="keyboard-modal__key">
+                  <kbd class="keyboard-modal__key-value">d</kbd>
+                </div>
+              </div>
+              <div class="keyboard-modal__row">
+                <img width="75"   loading="lazy" src="./assets/images/cube_moves/D!.gif" />
+                <div class="keyboard-modal__key">
+                  <kbd class="keyboard-modal__key-value">shift + d </kbd>
+                </div>
+              </div>
+            </div>
+
+            <div class="keyboard-modal__keyboards">
+              <div class="keyboard-modal__row">
+                <img width="75"   loading="lazy" src="./assets/images/cube_moves/R.gif" />
+                <div class="keyboard-modal__key">
+                  <kbd class="keyboard-modal__key-value">r</kbd>
+                </div>
+              </div>
+              <div class="keyboard-modal__row">
+                <img width="75"   loading="lazy" src="./assets/images/cube_moves/R!.gif" />
+                <div class="keyboard-modal__key">
+                  <kbd class="keyboard-modal__key-value">shift + r </kbd>
+                </div>
+              </div>
+            </div>
+
+            <div class="keyboard-modal__keyboards">
+              <div class="keyboard-modal__row">
+                <img width="75"   loading="lazy" src="./assets/images/cube_moves/M.gif" />
+                <div class="keyboard-modal__key">
+                  <kbd class="keyboard-modal__key-value">m</kbd>
+                </div>
+              </div>
+              <div class="keyboard-modal__row">
+                <img width="75"   loading="lazy" src="./assets/images/cube_moves/M!.gif" />
+                <div class="keyboard-modal__key">
+                  <kbd class="keyboard-modal__key-value">shift + m </kbd>
+                </div>
+              </div>
+            </div>
+
+            <div class="keyboard-modal__keyboards">
+              <div class="keyboard-modal__row">
+                <img width="75"   loading="lazy" src="./assets/images/cube_moves/L.gif" />
+                <div class="keyboard-modal__key">
+                  <kbd class="keyboard-modal__key-value">l</kbd>
+                </div>
+              </div>
+              <div class="keyboard-modal__row">
+                <img width="75"   loading="lazy" src="./assets/images/cube_moves/L!.gif" />
+                <div class="keyboard-modal__key">
+                  <kbd class="keyboard-modal__key-value">shift + l </kbd>
+                </div>
+              </div>
+            </div>
+
+            <div class="keyboard-modal__keyboards">
+              <div class="keyboard-modal__row">
+                <img width="75"   loading="lazy" src="./assets/images/cube_moves/F.gif" />
+                <div class="keyboard-modal__key">
+                  <kbd class="keyboard-modal__key-value">f</kbd>
+                </div>
+              </div>
+              <div class="keyboard-modal__row">
+                <img width="75"   loading="lazy" src="./assets/images/cube_moves/F!.gif" />
+                <div class="keyboard-modal__key">
+                  <kbd class="keyboard-modal__key-value">shift + f </kbd>
+                </div>
+              </div>
+            </div>
+
+            <div class="keyboard-modal__keyboards">
+              <div class="keyboard-modal__row">
+                <img width="75"   loading="lazy" src="./assets/images/cube_moves/S.gif" />
+                <div class="keyboard-modal__key">
+                  <kbd class="keyboard-modal__key-value">s</kbd>
+                </div>
+              </div>
+              <div class="keyboard-modal__row">
+                <img width="75"   loading="lazy" src="./assets/images/cube_moves/S!.gif" />
+                <div class="keyboard-modal__key">
+                  <kbd class="keyboard-modal__key-value">shift + s </kbd>
+                </div>
+              </div>
+            </div>
+
+            <div class="keyboard-modal__keyboards">
+              <div class="keyboard-modal__row">
+                <img width="75"   loading="lazy" src="./assets/images/cube_moves/B.gif" />
+                <div class="keyboard-modal__key">
+                  <kbd class="keyboard-modal__key-value">b</kbd>
+                </div>
+              </div>
+              <div class="keyboard-modal__row">
+                <img width="75"   loading="lazy" src="./assets/images/cube_moves/B!.gif" />
+                <div class="keyboard-modal__key">
+                  <kbd class="keyboard-modal__key-value">shift + b </kbd>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
@@ -556,9 +727,11 @@
   <script src="./scripts/spiningAnimations.js"></script>
   <script src="./scripts/moves.js"></script>
   <script src="./scripts/mouseMovementsDefinitions.js"></script>
-  <script src="./scripts/mouseMovements.js"></script>
+  <script src="./scripts/handleMovements/shared.js"></script>
+  <script src="./scripts/handleMovements/index.js"></script>
   <script src="./scripts/keyBindings.js"></script>
   <script src="./scripts/footerButtonActions.js"></script>
   <script src="./scripts/mixCube.js"></script>
   <script src="./scripts/entranceAnimations.js"></script>
+  <script src="./scripts/openKeyboardModal.js"></script>
 </html>

@@ -1,6 +1,6 @@
 const handleKeyDown = (event) => {
   const keyPressed = event.key;
-  const animationVelocity = 0.08;
+  const animationVelocity = 1.08;
   const keyCases = {
     ArrowUp: () => rotate("top"),
     //'ArrowDown': rotate('top'),

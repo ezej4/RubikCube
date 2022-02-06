@@ -16,26 +16,26 @@ const implicatedFaceMovementMapper = (movement) => {
     switch (movement) {
         case 'U':
         case 'E':
-        case 'D':
+        case 'D!':
             return ["front", "right", "back", "left"];
         case 'U!':
         case 'E!':
-        case 'D!':
+        case 'D':
             return ["left", "back", "right", "front"];
-        case 'R':
+        case 'R!':
         case 'M':
         case 'L':
             return ["left", "top", "right", "bottom"];
-        case 'R!':
+        case 'R':
         case 'M!':
         case 'L!':
             return ["bottom", "right", "top", "left"];
-        case 'F':
-        case 'S':
-        case 'B':
-            return ['front', 'bottom', 'back', 'top'];
         case 'F!':
         case 'S!':
+        case 'B':
+            return ['front', 'bottom', 'back', 'top'];
+        case 'F':
+        case 'S':
         case 'B!':
             return ['top', 'back', 'bottom', 'front'];
 

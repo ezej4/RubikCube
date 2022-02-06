@@ -44,6 +44,32 @@
 }
 
 
+@keyframes entrance-left {
+  0% {
+      transform: translateX(-100vw);
+      opacity: 0;
+  }
+
+  100% {
+      transform: translateX(0vw);
+      opacity: 1;
+  }
+}
+
+@keyframes exit-left {
+  0% {
+      transform: translateX(0vw);
+      opacity: 1;
+  }
+
+  100% {
+      transform: translateX(-100vw);
+      opacity: 0;
+  }
+}
+
+
+
 body {
   margin: 0;
   padding: 0;

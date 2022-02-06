@@ -18,36 +18,36 @@ const MOUSE_MOVEMENTS = [
       {
         miniCube: [0, 0],
         proximityMoves: {
-          left: buildMovementDefinition("U", "U!", "R", "R!"),
-          front: { right: "U", left: "U!", top: "F!", bottom: "F" },
-          top: { right: "F", left: "F!", top: "R", bottom: "R!" },
+          left: buildMovementDefinition("U", "U!", "R!", "R"),
+          front: { right: "U", left: "U!", top: "F", bottom: "F!" },
+          top: { right: "F!", left: "F", top: "R!", bottom: "R" },
         },
       },
       {
         miniCube: [0, 1],
         proximityMoves: {
-          front: { right: "U", left: "U!", top: "S!", bottom: "S" },
-          top: { right: "S", left: "S!", top: "R", bottom: "R!" },
+          front: { right: "U", left: "U!", top: "S", bottom: "S!" },
+          top: { right: "S!", left: "S", top: "R!", bottom: "R" },
         },
       },
       {
         miniCube: [0, 2],
         proximityMoves: {
           front: { right: "U", left: "U!", top: "B!", bottom: "B" },
-          top: { right: "B", left: "B!", top: "R", bottom: "R!" },
+          top: { right: "B", left: "B!", top: "R!", bottom: "R" },
         },
       },
       {
         miniCube: [0, 3],
         proximityMoves: {
-          front: { right: "E", left: "E!", top: "F!", bottom: "F" },
-          left: { right: "E", left: "E!", top: "R", bottom: "R!" },
+          front: { right: "E", left: "E!", top: "F", bottom: "F!" },
+          left: { right: "E", left: "E!", top: "R!", bottom: "R" },
         },
       },
       {
         miniCube: [0, 4],
         proximityMoves: {
-          front: { right: "E", left: "E!", top: "S!", bottom: "S" },
+          front: { right: "E", left: "E!", top: "S", bottom: "S!" },
         },
       },
       {
@@ -59,33 +59,33 @@ const MOUSE_MOVEMENTS = [
       {
         miniCube: [0, 6],
         proximityMoves: {
-          front: { right: "D", left: "D!", top: "F!", bottom: "F" },
-          left: { right: "D", left: "D!", top: "R", bottom: "R!" },
+          front: { right: "D!", left: "D", top: "F", bottom: "F!" },
+          left: { right: "D!", left: "D", top: "R!", bottom: "R" },
         },
       },
       {
         miniCube: [0, 7],
         proximityMoves: {
-          front: { right: "D", left: "D!", top: "S!", bottom: "S" },
+          front: { right: "D!", left: "D", top: "S", bottom: "S!" },
         },
       },
       {
         miniCube: [0, 8],
         proximityMoves: {
-          front: { right: "D", left: "D!", top: "B!", bottom: "B" },
+          front: { right: "D!", left: "D", top: "B!", bottom: "B" },
         },
       },
       {
         miniCube: [1, 0],
         proximityMoves: {
           left: { right: "U", left: "U!", top: "M", bottom: "M!" },
-          top: { right: "F", left: "F!", top: "M", bottom: "M!" },
+          top: { right: "F!", left: "F", top: "M", bottom: "M!" },
         },
       },
       {
         miniCube: [1, 1],
         proximityMoves: {
-          top: { right: "S", left: "S!", top: "M", bottom: "M!" },
+          top: { right: "S!", left: "S", top: "M", bottom: "M!" },
         },
       },
       {
@@ -103,20 +103,20 @@ const MOUSE_MOVEMENTS = [
       {
         miniCube: [1, 6],
         proximityMoves: {
-          left: { right: "D", left: "D!", top: "M", bottom: "M!" },
+          left: { right: "D!", left: "D", top: "M", bottom: "M!" },
         },
       },
       {
         miniCube: [2, 0],
         proximityMoves: {
           left: { right: "U", left: "U!", top: "L", bottom: "L!" },
-          top: { right: "F", left: "F!", top: "L", bottom: "L!" },
+          top: { right: "F!", left: "F", top: "L", bottom: "L!" },
         },
       },
       {
         miniCube: [2, 1],
         proximityMoves: {
-          top: { right: "S", left: "S!", top: "L", bottom: "L!" },
+          top: { right: "S!", left: "S", top: "L", bottom: "L!" },
         },
       },
       {
@@ -134,7 +134,7 @@ const MOUSE_MOVEMENTS = [
       {
         miniCube: [2, 6],
         proximityMoves: {
-          left: { right: "D", left: "D!", top: "L", bottom: "L!" },
+          left: { right: "D!", left: "D", top: "L", bottom: "L!" },
         },
       },
     ],
@@ -146,74 +146,74 @@ const MOUSE_MOVEMENTS = [
       {
         miniCube: [0, 0],
         proximityMoves: {
-          front: { right: "U", left: "U!", top: "F!", bottom: "F" },
-          top: { right: "R", left: "R!", top: "F!", bottom: "F", invertedZ: true },
+          front: { right: "U", left: "U!", top: "F", bottom: "F!" },
+          top: { right: "R!", left: "R", top: "F", bottom: "F!", invertedZ: true },
         },
       },
       {
         miniCube: [0, 1],
         proximityMoves: {
-          front: { right: "U", left: "U!", top: "S!", bottom: "S" },
-          top: { right: "R", left: "R!", top: "S!", bottom: "S", invertedZ: true },
+          front: { right: "U", left: "U!", top: "S", bottom: "S!" },
+          top: { right: "R!", left: "R", top: "S", bottom: "S!", invertedZ: true },
         },
       },
       {
         miniCube: [0, 2],
         proximityMoves: {
           front: { right: "U", left: "U!", top: "B!", bottom: "B" },
-          top: { right: "R", left: "R!", top: "B!", bottom: "B", invertedZ: true },
-          right: { right: "U", left: "U!", top: "R!", bottom: "R", invertedZ: true },
+          top: { right: "R!", left: "R", top: "B!", bottom: "B", invertedZ: true },
+          right: { right: "U", left: "U!", top: "R", bottom: "R!", invertedZ: true },
         },
       },
       {
         miniCube: [0, 3],
         proximityMoves: {
-          front: { right: "E", left: "E!", top: "F!", bottom: "F" },
+          front: { right: "E", left: "E!", top: "F", bottom: "F!" },
         },
       },
       {
         miniCube: [0, 4],
         proximityMoves: {
-          front: { right: "E", left: "E!", top: "S!", bottom: "S" },
+          front: { right: "E", left: "E!", top: "S", bottom: "S!" },
         },
       },
       {
         miniCube: [0, 5],
         proximityMoves: {
           front: { right: "E", left: "E!", top: "B!", bottom: "B" },
-          right: { right: "E", left: "E!", top: "R!", bottom: "R", invertedZ: true },
+          right: { right: "E", left: "E!", top: "R", bottom: "R!", invertedZ: true },
         },
       },
       {
         miniCube: [0, 6],
         proximityMoves: {
-          front: { right: "D", left: "D!", top: "F!", bottom: "F" },
-          left: { right: "D", left: "D!", top: "R", bottom: "R!" },
+          front: { right: "D!", left: "D", top: "F", bottom: "F!" },
+          left: { right: "D!", left: "D", top: "R!", bottom: "R" },
         },
       },
       {
         miniCube: [0, 7],
         proximityMoves: {
-          front: { right: "D", left: "D!", top: "S!", bottom: "S" },
+          front: { right: "D!", left: "D", top: "S", bottom: "S!" },
         },
       },
       {
         miniCube: [0, 8],
         proximityMoves: {
-          front: { right: "D", left: "D!", top: "B!", bottom: "B" },
-          right: { right: "D", left: "D!", top: "R!", bottom: "R", invertedZ: true },
+          front: { right: "D!", left: "D", top: "B!", bottom: "B" },
+          right: { right: "D!", left: "D", top: "R", bottom: "R!", invertedZ: true },
         },
       },
       {
         miniCube: [1, 0],
         proximityMoves: {
-          top: { right: "M", left: "M!", top: "F!", bottom: "F", invertedZ: true },
+          top: { right: "M", left: "M!", top: "F", bottom: "F!", invertedZ: true },
         },
       },
       {
         miniCube: [1, 1],
         proximityMoves: {
-          top: { right: "M", left: "M!", top: "S!", bottom: "S", invertedZ: true },
+          top: { right: "M", left: "M!", top: "S", bottom: "S!", invertedZ: true },
         },
       },
       {
@@ -232,19 +232,19 @@ const MOUSE_MOVEMENTS = [
       {
         miniCube: [1, 8],
         proximityMoves: {
-          right: { right: "D", left: "D!", top: "M!", bottom: "M", invertedZ: true },
+          right: { right: "D!", left: "D", top: "M!", bottom: "M", invertedZ: true },
         },
       },
       {
         miniCube: [2, 0],
         proximityMoves: {
-          top: { right: "L", left: "L!", top: "F!", bottom: "F", invertedZ: true },
+          top: { right: "L", left: "L!", top: "F", bottom: "F!", invertedZ: true },
         },
       },
       {
         miniCube: [2, 1],
         proximityMoves: {
-          top: { right: "M", left: "M!", top: "S!", bottom: "S", invertedZ: true },
+          top: { right: "M", left: "M!", top: "S", bottom: "S!", invertedZ: true },
         },
       },
       {
@@ -263,7 +263,7 @@ const MOUSE_MOVEMENTS = [
       {
         miniCube: [2, 8],
         proximityMoves: {
-          right: { right: "D", left: "D!", top: "L!", bottom: "L", invertedZ: true },
+          right: { right: "D!", left: "D", top: "L!", bottom: "L", invertedZ: true },
         },
       },
     ],
@@ -275,50 +275,50 @@ const MOUSE_MOVEMENTS = [
       {
         miniCube: [0, 0],
         proximityMoves: {
-          top: { right: "F!", left: "F", top: "R!", bottom: "R", invertedY: true, invertedZ: true },
+          top: { right: "F", left: "F!", top: "R", bottom: "R!", invertedY: true, invertedZ: true },
         },
       },
       {
         miniCube: [0, 1],
         proximityMoves: {
-          top: { right: "S!", left: "S", top: "R!", bottom: "R", invertedY: true, invertedZ: true },
+          top: { right: "S", left: "S!", top: "R", bottom: "R!", invertedY: true, invertedZ: true },
         },
       },
       {
         miniCube: [0, 2],
         proximityMoves: {
-          top: { right: "B!", left: "B", top: "R!", bottom: "R", invertedY: true, invertedZ: true },
-          right: { right: "U", left: "U!", top: "R!", bottom: "R", invertedZ: true },
+          top: { right: "B!", left: "B", top: "R", bottom: "R!", invertedY: true, invertedZ: true },
+          right: { right: "U", left: "U!", top: "R", bottom: "R!", invertedZ: true },
         },
       },
       {
         miniCube: [0, 5],
         proximityMoves: {
-          right: { right: "E", left: "E!", top: "R!", bottom: "R", invertedZ: true },
+          right: { right: "E", left: "E!", top: "R", bottom: "R!", invertedZ: true },
         },
       },
       {
         miniCube: [0, 8],
         proximityMoves: {
-          right: { right: "D", left: "D!", top: "R!", bottom: "R", invertedZ: true },
+          right: { right: "D!", left: "D", top: "R", bottom: "R!", invertedZ: true },
         },
       },
       {
         miniCube: [1, 0],
         proximityMoves: {
-          top: buildMovementDefinition("F!", "F", "M!", "M", true, true),
+          top: buildMovementDefinition("F", "F!", "M!", "M", true, true),
         },
       },
       {
         miniCube: [1, 1],
         proximityMoves: {
-          top: { right: "S!", left: "S", top: "M!", bottom: "M", invertedY: true, invertedZ: true },
+          top: { right: "S", left: "S!", top: "M!", bottom: "M", invertedY: true, invertedZ: true },
         },
       },
       {
         miniCube: [1, 2],
         proximityMoves: {
-          top: { right: "B!", left: "B", top: "R!", bottom: "R", invertedY: true, invertedZ: true },
+          top: { right: "B!", left: "B", top: "R", bottom: "R!", invertedY: true, invertedZ: true },
           right: { right: "U", left: "U!", top: "M!", bottom: "M", invertedZ: true },
         },
       },
@@ -331,21 +331,21 @@ const MOUSE_MOVEMENTS = [
       {
         miniCube: [1, 8],
         proximityMoves: {
-          right: { right: "D", left: "D!", top: "M!", bottom: "M", invertedZ: true },
+          right: { right: "D!", left: "D", top: "M!", bottom: "M", invertedZ: true },
         },
       },
       {
         miniCube: [2, 0],
         proximityMoves: {
-          top: { right: "F!", left: "F", top: "L!", bottom: "L", invertedY: true, invertedZ: true },
-          back: buildMovementDefinition("U", "U", "F", "F!", true, true, false),
+          top: { right: "F", left: "F!", top: "L!", bottom: "L", invertedY: true, invertedZ: true },
+          back: buildMovementDefinition("U", "U", "F!", "F", true, true, false),
         },
       },
       {
         miniCube: [2, 1],
         proximityMoves: {
-          top: { right: "S!", left: "S", top: "L!", bottom: "L", invertedY: true, invertedZ: true },
-          back: { right: "U", left: "U!", top: "S", bottom: "S!", invertedY: true },
+          top: { right: "S", left: "S!", top: "L!", bottom: "L", invertedY: true, invertedZ: true },
+          back: { right: "U", left: "U!", top: "S!", bottom: "S", invertedY: true },
         },
       },
       {
@@ -359,13 +359,13 @@ const MOUSE_MOVEMENTS = [
       {
         miniCube: [2, 3],
         proximityMoves: {
-          back: { right: "E", left: "E!", top: "F", bottom: "F!", invertedY: true },
+          back: { right: "E", left: "E!", top: "F!", bottom: "F", invertedY: true },
         },
       },
       {
         miniCube: [2, 4],
         proximityMoves: {
-          back: { right: "E", left: "E!", top: "S", bottom: "S!", invertedY: true },
+          back: { right: "E", left: "E!", top: "S!", bottom: "S", invertedY: true },
         },
       },
       {
@@ -378,20 +378,20 @@ const MOUSE_MOVEMENTS = [
       {
         miniCube: [2, 6],
         proximityMoves: {
-          back: { right: "D", left: "D!", top: "F", bottom: "F!", invertedY: true },
+          back: { right: "D!", left: "D", top: "F!", bottom: "F", invertedY: true },
         },
       },
       {
         miniCube: [2, 7],
         proximityMoves: {
-          back: { right: "D", left: "D!", top: "S", bottom: "S!", invertedY: true },
+          back: { right: "D!", left: "D", top: "S!", bottom: "S", invertedY: true },
         },
       },
       {
         miniCube: [2, 8],
         proximityMoves: {
-          back: { right: "D", left: "D!", top: "B", bottom: "B!", invertedY: true },
-          right: { right: "D", left: "D!", top: "L!", bottom: "L", invertedZ: true },
+          back: { right: "D!", left: "D", top: "B", bottom: "B!", invertedY: true },
+          right: { right: "D!", left: "D", top: "L!", bottom: "L", invertedZ: true },
         },
       },
     ],
@@ -403,45 +403,45 @@ const MOUSE_MOVEMENTS = [
       {
         miniCube: [0, 0],
         proximityMoves: {
-          top: buildMovementDefinition("R!", "R", "F", "F!", true),
-          left: buildMovementDefinition("U", "U!", "R", "R!", true),
+          top: buildMovementDefinition("R", "R!", "F!", "F", true),
+          left: buildMovementDefinition("U", "U!", "R!", "R", true),
         },
       },
       {
         miniCube: [0, 1],
         proximityMoves: {
-          top: buildMovementDefinition("R!", "R", "S", "S!", true),
+          top: buildMovementDefinition("R", "R!", "S!", "S", true),
         },
       },
       {
         miniCube: [0, 2],
         proximityMoves: {
-          top: buildMovementDefinition("R!", "R", "B", "B!", true),
+          top: buildMovementDefinition("R", "R!", "B", "B!", true),
         },
       },
       {
         miniCube: [0, 3],
         proximityMoves: {
-          left: { right: "E", left: "E!", top: "R", bottom: "R!" },
+          left: { right: "E", left: "E!", top: "R!", bottom: "R" },
         },
       },
       {
         miniCube: [0, 6],
         proximityMoves: {
-          left: { right: "D", left: "D!", top: "R", bottom: "R!" },
+          left: { right: "D!", left: "D", top: "R!", bottom: "R" },
         },
       },
       {
         miniCube: [1, 0],
         proximityMoves: {
-          top: buildMovementDefinition("M!", "M", "F", "F!", true),
+          top: buildMovementDefinition("M!", "M", "F!", "F", true),
           left: buildMovementDefinition("U", "U!", "M", "M!"),
         },
       },
       {
         miniCube: [1, 1],
         proximityMoves: {
-          top: buildMovementDefinition("M!", "M", "S", "S!", true),
+          top: buildMovementDefinition("M!", "M", "S!", "S", true),
         },
       },
       {
@@ -459,22 +459,22 @@ const MOUSE_MOVEMENTS = [
       {
         miniCube: [1, 6],
         proximityMoves: {
-          left: buildMovementDefinition("D", "D!", "M", "M!", true),
+          left: buildMovementDefinition("D!", "D", "M", "M!", true),
         },
       },
       {
         miniCube: [2, 0],
         proximityMoves: {
-          top: buildMovementDefinition("L!", "L", "F", "F!", true),
+          top: buildMovementDefinition("L!", "L", "F!", "F", true),
           left: buildMovementDefinition("U", "U!", "L", "L!", true),
-          back: buildMovementDefinition("U", "U!", "F", "F!", true),
+          back: buildMovementDefinition("U", "U!", "F!", "F", true),
         },
       },
       {
         miniCube: [2, 1],
         proximityMoves: {
-          top: buildMovementDefinition("L!", "L", "S", "S!", true),
-          back: buildMovementDefinition("U", "U!", "S", "S!", true),
+          top: buildMovementDefinition("L!", "L", "S!", "S", true),
+          back: buildMovementDefinition("U", "U!", "S!", "S", true),
         },
       },
       {
@@ -488,13 +488,13 @@ const MOUSE_MOVEMENTS = [
         miniCube: [2, 3],
         proximityMoves: {
           left: buildMovementDefinition("E", "E!", "L", "L!", true),
-          back: buildMovementDefinition("E", "E!", "F", "F!", true),
+          back: buildMovementDefinition("E", "E!", "F!", "F", true),
         },
       },
       {
         miniCube: [2, 4],
         proximityMoves: {
-          back: buildMovementDefinition("E", "E!", "S", "S!", true),
+          back: buildMovementDefinition("E", "E!", "S!", "S", true),
         },
       },
       {
@@ -506,20 +506,20 @@ const MOUSE_MOVEMENTS = [
       {
         miniCube: [2, 6],
         proximityMoves: {
-          back: buildMovementDefinition("D", "D!", "F", "F!", true),
-          left: buildMovementDefinition("D", "D!", "L", "L!", true),
+          back: buildMovementDefinition("D!", "D", "F!", "F", true),
+          left: buildMovementDefinition("D!", "D", "L", "L!", true),
         },
       },
       {
         miniCube: [2, 7],
         proximityMoves: {
-          back: buildMovementDefinition("D", "D!", "S", "S!", true),
+          back: buildMovementDefinition("D!", "D", "S!", "S", true),
         },
       },
       {
         miniCube: [2, 8],
         proximityMoves: {
-          back: buildMovementDefinition("D", "D!", "B", "B!", true),
+          back: buildMovementDefinition("D!", "D", "B", "B!", true),
         },
       },
     ],
@@ -531,32 +531,32 @@ const MOUSE_MOVEMENTS = [
       {
         miniCube: [0, 0],
         proximityMoves: {
-          left: buildMovementDefinition("U!", "U", "R!", "R", false, true, true),
+          left: buildMovementDefinition("U!", "U", "R", "R!", false, true, true),
         },
       },
       {
         miniCube: [0, 3],
         proximityMoves: {
-          left: buildMovementDefinition("E!", "E", "R!", "R", false, true, true),
+          left: buildMovementDefinition("E!", "E", "R", "R!", false, true, true),
         },
       },
       {
         miniCube: [0, 6],
         proximityMoves: {
-          left: buildMovementDefinition("D!", "D", "R!", "R", false, true, true),
-          bottom: buildMovementDefinition("F", "F!", "R!", "R", false, true, true),
+          left: buildMovementDefinition("D", "D!", "R", "R!", false, true, true),
+          bottom: buildMovementDefinition("F!", "F", "R", "R!", false, true, true),
         },
       },
       {
         miniCube: [0, 7],
         proximityMoves: {
-          bottom: buildMovementDefinition("S", "S!", "R!", "R", false, true, true),
+          bottom: buildMovementDefinition("S!", "S", "R", "R!", false, true, true),
         },
       },
       {
         miniCube: [0, 8],
         proximityMoves: {
-          bottom: buildMovementDefinition("B", "B!", "R!", "R", false, true, true),
+          bottom: buildMovementDefinition("B", "B!", "R", "R!", false, true, true),
         },
       },
       {
@@ -574,14 +574,14 @@ const MOUSE_MOVEMENTS = [
       {
         miniCube: [1, 6],
         proximityMoves: {
-          left: buildMovementDefinition("D!", "D", "M!", "M", false, true, true),
-          bottom: buildMovementDefinition("F", "F!", "M!", "M", false, true, true),
+          left: buildMovementDefinition("D", "D!", "M!", "M", false, true, true),
+          bottom: buildMovementDefinition("F!", "F", "M!", "M", false, true, true),
         },
       },
       {
         miniCube: [1, 7],
         proximityMoves: {
-          bottom: buildMovementDefinition("S", "S!", "M!", "M", false, true, true),
+          bottom: buildMovementDefinition("S!", "S", "M!", "M", false, true, true),
         },
       },
       {
@@ -594,13 +594,13 @@ const MOUSE_MOVEMENTS = [
         miniCube: [2, 0],
         proximityMoves: {
           left: buildMovementDefinition("U!", "U", "L!", "L", false, true, true),
-          back: buildMovementDefinition("U!", "U", "F!", "F", false, false, true),
+          back: buildMovementDefinition("U!", "U", "F", "F!", false, false, true),
         },
       },
       {
         miniCube: [2, 1],
         proximityMoves: {
-          back: buildMovementDefinition("U!", "U", "S!", "S", false, false, true),
+          back: buildMovementDefinition("U!", "U", "S", "S!", false, false, true),
         },
       },
       {
@@ -612,14 +612,14 @@ const MOUSE_MOVEMENTS = [
       {
         miniCube: [2, 3],
         proximityMoves: {
-          back: buildMovementDefinition("E!", "E", "F!", "F", false, false, true),
+          back: buildMovementDefinition("E!", "E", "F", "F!", false, false, true),
           left: buildMovementDefinition("E!", "E", "L!", "L", false, true, true),
         },
       },
       {
         miniCube: [2, 4],
         proximityMoves: {
-          back: buildMovementDefinition("E!", "E", "S!", "S", false, false, true),
+          back: buildMovementDefinition("E!", "E", "S", "S!", false, false, true),
         },
       },
       {
@@ -631,23 +631,23 @@ const MOUSE_MOVEMENTS = [
       {
         miniCube: [2, 6],
         proximityMoves: {
-          bottom: buildMovementDefinition("F", "F!", "L!", "L", false, true, false),
-          back: buildMovementDefinition("D!", "D", "F!", "F", false, false, true),
-          left: buildMovementDefinition("D!", "D", "L!", "L", false, true, true),
+          bottom: buildMovementDefinition("F!", "F", "L!", "L", false, true, false),
+          back: buildMovementDefinition("D", "D!", "F", "F!", false, false, true),
+          left: buildMovementDefinition("D", "D!", "L!", "L", false, true, true),
         },
       },
       {
         miniCube: [2, 7],
         proximityMoves: {
-          bottom: buildMovementDefinition("S", "S!", "L!", "L", false, true, true),
-          back: buildMovementDefinition("D!", "D", "S!", "S", false, false, true),
+          bottom: buildMovementDefinition("S!", "S", "L!", "L", false, true, true),
+          back: buildMovementDefinition("D", "D!", "S", "S!", false, false, true),
         },
       },
       {
         miniCube: [2, 8],
         proximityMoves: {
           bottom: buildMovementDefinition("B", "B!", "L!", "L", false, true, true),
-          back: buildMovementDefinition("D!", "D", "B!", "B", false, false, true),
+          back: buildMovementDefinition("D", "D!", "B!", "B", false, false, true),
         },
       },
     ],
@@ -659,32 +659,32 @@ const MOUSE_MOVEMENTS = [
       {
         miniCube: [0, 2],
         proximityMoves: {
-          right: buildMovementDefinition("U!", "U", "R", "R!", false, false, true),
+          right: buildMovementDefinition("U!", "U", "R!", "R", false, false, true),
         },
       },
       {
         miniCube: [0, 5],
         proximityMoves: {
-          right: buildMovementDefinition("E!", "E", "R", "R!", false, false, true),
+          right: buildMovementDefinition("E!", "E", "R!", "R", false, false, true),
         },
       },
       {
         miniCube: [0, 6],
         proximityMoves: {
-          bottom: buildMovementDefinition("R!", "R", "F!", "F", false, false, true),
+          bottom: buildMovementDefinition("R", "R!", "F", "F!", false, false, true),
         },
       },
       {
         miniCube: [0, 7],
         proximityMoves: {
-          bottom: buildMovementDefinition("R!", "R", "S!", "S", false, false, true),
+          bottom: buildMovementDefinition("R", "R!", "S", "S!", false, false, true),
         },
       },
       {
         miniCube: [0, 8],
         proximityMoves: {
-          right: buildMovementDefinition("D!", "D", "R", "R!", false, false, true),
-          bottom: buildMovementDefinition("R!", "R", "B!", "B", false, false, true),
+          right: buildMovementDefinition("D", "D!", "R!", "R", false, false, true),
+          bottom: buildMovementDefinition("R", "R!", "B!", "B", false, false, true),
         },
       },
       {
@@ -702,32 +702,32 @@ const MOUSE_MOVEMENTS = [
       {
         miniCube: [1, 6],
         proximityMoves: {
-          bottom: buildMovementDefinition("M!", "M", "F!", "F", false, false, true),
+          bottom: buildMovementDefinition("M!", "M", "F", "F!", false, false, true),
         },
       },
       {
         miniCube: [1, 7],
         proximityMoves: {
-          bottom: buildMovementDefinition("M!", "M", "S!", "S", false, false, true),
+          bottom: buildMovementDefinition("M!", "M", "S", "S!", false, false, true),
         },
       },
       {
         miniCube: [1, 8],
         proximityMoves: {
-          right: buildMovementDefinition("D!", "D", "M", "M!", false, false, true),
+          right: buildMovementDefinition("D", "D!", "M", "M!", false, false, true),
           bottom: buildMovementDefinition("M!", "M", "B!", "B", false, false, true),
         },
       },
       {
         miniCube: [2, 0],
         proximityMoves: {
-          back: buildMovementDefinition("U!", "U", "F!", "F", false, false, true),
+          back: buildMovementDefinition("U!", "U", "F", "F!", false, false, true),
         },
       },
       {
         miniCube: [2, 1],
         proximityMoves: {
-          back: buildMovementDefinition("U!", "U", "S!", "S", false, false, true),
+          back: buildMovementDefinition("U!", "U", "S", "S!", false, false, true),
         },
       },
       {
@@ -740,13 +740,13 @@ const MOUSE_MOVEMENTS = [
       {
         miniCube: [2, 3],
         proximityMoves: {
-          back: buildMovementDefinition("E!", "E", "F!", "F", false, false, true),
+          back: buildMovementDefinition("E!", "E", "F", "F!", false, false, true),
         },
       },
       {
         miniCube: [2, 4],
         proximityMoves: {
-          back: buildMovementDefinition("E!", "E", "S!", "S", false, false, true),
+          back: buildMovementDefinition("E!", "E", "S", "S!", false, false, true),
         },
       },
       {
@@ -759,23 +759,23 @@ const MOUSE_MOVEMENTS = [
       {
         miniCube: [2, 6],
         proximityMoves: {
-          back: buildMovementDefinition("D!", "D", "F!", "F", false, false, true),
-          bottom: buildMovementDefinition("L!", "L", "F!", "F", false, true, false),
+          back: buildMovementDefinition("D", "D!", "F", "F!", false, false, true),
+          bottom: buildMovementDefinition("L!", "L", "F", "F!", false, true, false),
         },
       },
       {
         miniCube: [2, 7],
         proximityMoves: {
-          back: buildMovementDefinition("D!", "D", "S!", "S", false, false, true),
-          bottom: buildMovementDefinition("L!", "L", "S!", "S", false, false, true),
+          back: buildMovementDefinition("D", "D!", "S", "S!", false, false, true),
+          bottom: buildMovementDefinition("L!", "L", "S", "S!", false, false, true),
         },
       },
       {
         miniCube: [2, 8],
         proximityMoves: {
-          back: buildMovementDefinition("D!", "D", "B!", "B", false, false, true),
+          back: buildMovementDefinition("D", "D!", "B!", "B", false, false, true),
           bottom: buildMovementDefinition("L!", "L", "B!", "B", false, false, true),
-          right: buildMovementDefinition("D!", "D", "L", "L!", false, false, true),
+          right: buildMovementDefinition("D", "D!", "L", "L!", false, false, true),
         },
       },
       // here
@@ -788,61 +788,61 @@ const MOUSE_MOVEMENTS = [
       {
         miniCube: [0, 0],
         proximityMoves: {
-          front: buildMovementDefinition("U!", "U", "F", "F!", true, false, true),
+          front: buildMovementDefinition("U!", "U", "F!", "F", true, false, true),
         },
       },
       {
         miniCube: [0, 1],
         proximityMoves: {
-          front: buildMovementDefinition("U!", "U", "S", "S!", true, false, true),
+          front: buildMovementDefinition("U!", "U", "S!", "S", true, false, true),
         },
       },
       {
         miniCube: [0, 2],
         proximityMoves: {
-          right: buildMovementDefinition("U!", "U", "R", "R!", false, false, true),
+          right: buildMovementDefinition("U!", "U", "R!", "R", false, false, true),
           front: buildMovementDefinition("U!", "U", "B", "B!", true, false, true),
         },
       },
       {
         miniCube: [0, 3],
         proximityMoves: {
-          front: buildMovementDefinition("E!", "E", "F", "F!", true, false, true),
+          front: buildMovementDefinition("E!", "E", "F!", "F", true, false, true),
         },
       },
       {
         miniCube: [0, 4],
         proximityMoves: {
-          front: buildMovementDefinition("E!", "E", "S", "S!", true, false, true),
+          front: buildMovementDefinition("E!", "E", "S!", "S", true, false, true),
         },
       },
       {
         miniCube: [0, 5],
         proximityMoves: {
           front: buildMovementDefinition("E!", "E", "B", "B!", true, false, true),
-          right: buildMovementDefinition("E!", "E", "R", "R!", false, false, true),
+          right: buildMovementDefinition("E!", "E", "R!", "R", false, false, true),
         },
       },
       {
         miniCube: [0, 6],
         proximityMoves: {
-          front: buildMovementDefinition("D!", "D", "F", "F!", true, false, true),
-          bottom: buildMovementDefinition("F!", "F", "R", "R!", true, false, true),
+          front: buildMovementDefinition("D", "D!", "F!", "F", true, false, true),
+          bottom: buildMovementDefinition("F", "F!", "R!", "R", true, false, true),
         },
       },
       {
         miniCube: [0, 7],
         proximityMoves: {
-          front: buildMovementDefinition("D!", "D", "S", "S!", true, false, true),
-          bottom: buildMovementDefinition("S!", "S", "R", "R!", true, false, true),
+          front: buildMovementDefinition("D", "D!", "S!", "S", true, false, true),
+          bottom: buildMovementDefinition("S", "S!", "R!", "R", true, false, true),
         },
       },
       {
         miniCube: [0, 8],
         proximityMoves: {
-          front: buildMovementDefinition("D!", "D", "B", "B!", true, false, true),
-          bottom: buildMovementDefinition("B!", "B", "R", "R!", true, false, true),
-          right: buildMovementDefinition("D!", "D", "R", "R!", false, false, true),
+          front: buildMovementDefinition("D", "D!", "B", "B!", true, false, true),
+          bottom: buildMovementDefinition("B!", "B", "R!", "R", true, false, true),
+          right: buildMovementDefinition("D", "D!", "R!", "R", false, false, true),
         },
       },
       {
@@ -860,20 +860,20 @@ const MOUSE_MOVEMENTS = [
       {
         miniCube: [1, 6],
         proximityMoves: {
-          bottom: buildMovementDefinition("F!", "F", "M", "M!", true, false, true),
+          bottom: buildMovementDefinition("F", "F!", "M", "M!", true, false, true),
         },
       },
       {
         miniCube: [1, 7],
         proximityMoves: {
-          bottom: buildMovementDefinition("S!", "S", "M", "M!", true, false, true),
+          bottom: buildMovementDefinition("S", "S!", "M", "M!", true, false, true),
         },
       },
 
       {
         miniCube: [1, 8],
         proximityMoves: {
-          right: buildMovementDefinition("D!", "D", "M", "M!", false, false, true),
+          right: buildMovementDefinition("D", "D!", "M", "M!", false, false, true),
           bottom: buildMovementDefinition("B!", "B", "M", "M!", true, false, false),
         },
       },
@@ -892,19 +892,19 @@ const MOUSE_MOVEMENTS = [
       {
         miniCube: [2, 6],
         proximityMoves: {
-          bottom: buildMovementDefinition("F!", "F", "L", "L!", true, false, true),
+          bottom: buildMovementDefinition("F", "F!", "L", "L!", true, false, true),
         },
       },
       {
         miniCube: [2, 7],
         proximityMoves: {
-          bottom: buildMovementDefinition("S!", "S", "L", "L!", true, false, true),
+          bottom: buildMovementDefinition("S", "S!", "L", "L!", true, false, true),
         },
       },
       {
         miniCube: [2, 8],
         proximityMoves: {
-          right: buildMovementDefinition("D!", "D", "L", "L!", false, false, true),
+          right: buildMovementDefinition("D", "D!", "L", "L!", false, false, true),
           bottom: buildMovementDefinition("B!", "B", "L", "L!", true, false, true),
         },
       },
@@ -917,14 +917,14 @@ const MOUSE_MOVEMENTS = [
       {
         miniCube: [0, 0],
         proximityMoves: {
-          front: buildMovementDefinition("U!", "U", "F", "F!", true, false, true),
-          left: buildMovementDefinition("U!", "U", "R!", "R", false, true, true),
+          front: buildMovementDefinition("U!", "U", "F!", "F", true, false, true),
+          left: buildMovementDefinition("U!", "U", "R", "R!", false, true, true),
         },
       },
       {
         miniCube: [0, 1],
         proximityMoves: {
-          front: buildMovementDefinition("U!", "U", "S", "S!", true, false, true),
+          front: buildMovementDefinition("U!", "U", "S!", "S", true, false, true),
         },
       },
       {
@@ -936,14 +936,14 @@ const MOUSE_MOVEMENTS = [
       {
         miniCube: [0, 3],
         proximityMoves: {
-          front: buildMovementDefinition("E!", "E", "F", "F!", true, false, true),
-          left: buildMovementDefinition("E!", "E", "R!", "R", false, true, true),
+          front: buildMovementDefinition("E!", "E", "F!", "F", true, false, true),
+          left: buildMovementDefinition("E!", "E", "R", "R!", false, true, true),
         },
       },
       {
         miniCube: [0, 4],
         proximityMoves: {
-          front: buildMovementDefinition("E!", "E", "S", "S!", true, false, true),
+          front: buildMovementDefinition("E!", "E", "S!", "S", true, false, true),
         },
       },
       {
@@ -955,23 +955,23 @@ const MOUSE_MOVEMENTS = [
       {
         miniCube: [0, 6],
         proximityMoves: {
-          front: buildMovementDefinition("D!", "D", "F", "F!", true, false, true),
-          left: buildMovementDefinition("D!", "D", "R!", "R", false, true, true),
-          bottom: buildMovementDefinition("R", "R!", "F", "F!", true, true, true),
+          front: buildMovementDefinition("D", "D!", "F!", "F", true, false, true),
+          left: buildMovementDefinition("D", "D!", "R", "R!", false, true, true),
+          bottom: buildMovementDefinition("R!", "R", "F!", "F", true, true, true),
         },
       },
       {
         miniCube: [0, 7],
         proximityMoves: {
-          front: buildMovementDefinition("D!", "D", "S", "S!", true, false, true),
-          bottom: buildMovementDefinition("R", "R!", "S", "S!", true, true, true),
+          front: buildMovementDefinition("D", "D!", "S!", "S", true, false, true),
+          bottom: buildMovementDefinition("R!", "R", "S!", "S", true, true, true),
         },
       },
       {
         miniCube: [0, 8],
         proximityMoves: {
-          front: buildMovementDefinition("D!", "D", "B", "B!", true, false, true),
-          bottom: buildMovementDefinition("R", "R!", "B", "B!", true, true, true),
+          front: buildMovementDefinition("D", "D!", "B", "B!", true, false, true),
+          bottom: buildMovementDefinition("R!", "R", "B", "B!", true, true, true),
         },
       },
       {
@@ -989,14 +989,14 @@ const MOUSE_MOVEMENTS = [
       {
         miniCube: [1, 6],
         proximityMoves: {
-          left: buildMovementDefinition("D!", "D", "M!", "M", false, true, true),
-          bottom: buildMovementDefinition("M", "M!", "F", "F!", true, true, true),
+          left: buildMovementDefinition("D", "D!", "M!", "M", false, true, true),
+          bottom: buildMovementDefinition("M", "M!", "F!", "F", true, true, true),
         },
       },
       {
         miniCube: [1, 7],
         proximityMoves: {
-          bottom: buildMovementDefinition("M", "M!", "S", "S!", true, true, true),
+          bottom: buildMovementDefinition("M", "M!", "S!", "S", true, true, true),
         },
       },
       {
@@ -1020,14 +1020,14 @@ const MOUSE_MOVEMENTS = [
       {
         miniCube: [2, 6],
         proximityMoves: {
-          left: buildMovementDefinition("D!", "D", "L!", "L", false, true, true),
-          bottom: buildMovementDefinition("L", "L!", "F", "F!", true, true, true),
+          left: buildMovementDefinition("D", "D!", "L!", "L", false, true, true),
+          bottom: buildMovementDefinition("L", "L!", "F!", "F", true, true, true),
         },
       },
       {
         miniCube: [2, 7],
         proximityMoves: {
-          bottom: buildMovementDefinition("L", "L!", "S", "S!", true, true, true),
+          bottom: buildMovementDefinition("L", "L!", "S!", "S", true, true, true),
         },
       },
       {
