@@ -1,6 +1,0 @@
-cubos en rotation izquierda-derecho 
-    1ra fila: 1,2,3,12,20,19,18,10
-
-    3ra fila: 7,8,9,17,26,25,24,15
-
-cubos en rotacion
