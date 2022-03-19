@@ -83,6 +83,5 @@ const rotate = (direction) => {
         }
     }
 
-    console.log(cubePosition);
     $cubic.style.transform = rotationStyle;
 };

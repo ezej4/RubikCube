@@ -1,12 +1,46 @@
-#timer-arrow{
-  transform-origin: 255px 280px !important;
+@keyframes rotate360 {
+  from {
+    transform: rotatez(-43deg);
+  }
+  to {
+    transform: rotatez(317deg);
+  }
 }
+
+@keyframes skewXTimerLogo {
+  0% {
+    transform: scale(1);
+  }
+  10% {
+    transform: scale(0.9);
+  }
+  20% {
+    transform: scale(1);
+  }
+  100%{
+    transform: scale(1);
+  }
+}
+
+
+#timer_arrow {
+  transform-origin: 255px 280px;
+  transform: rotateZ(-43deg);
+  transition: 0.1 ease all;
+}
+.timer_arrow--animated {
+  animation: rotate360 60s linear infinite;
+}
+.timer__logo--animated{
+  animation: skewXTimerLogo 10s ease infinite;
+}
+
 .timer {
   position: absolute;
   top: 12vh;
   left: 4px;
   padding: 4px 8px;
-  background: #07472b;
+  background: seagreen;
   border-radius: 30px;
   display: flex;
   align-items: center;
@@ -25,6 +59,7 @@
   width: 60px;
   height: 60px;
 }
+
 
 .timer__fields {
   width: 100%;
@@ -104,7 +139,7 @@
   .timer__buttons i {
     padding: 8px;
     cursor: pointer;
-    transition: .5s ease all;
+    transition: 0.5s ease all;
   }
 
   .timer__buttons i:hover {

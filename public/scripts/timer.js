@@ -6,21 +6,21 @@ const timerStartTrigger = document.getElementById("play_timer");
 const timerPauseTrigger = document.getElementById("pause_timer");
 const timerStopTrigger = document.getElementById("stop_timer");
 const timerLabel = document.getElementById("label_timer");
+const timmerLogo = document.getElementById("timer_logo");
+const timmerArrow = document.getElementById("timer_arrow");
 
 let isTimerRunning = false;
 let isTimerPaused = false;
 
 let timeSeconds = 0;
 
-const animationStepDuration = 4.1;
-const animationStepRotation = 15;
-const animation = gsap.timeline({ repeat: -1, repeatDelay: 1, yoyo: true });
-
 const clearTimeVariables = () => {
   COUNT_MOVES = 0;
   timeSeconds = 0;
   isTimerRunning = false;
   isTimerPaused = false;
+  timmerArrow.classList.remove("timer_arrow--animated");
+  timmerLogo.classList.remove("timer__logo--animated");
 };
 
 const showTimer = () => {
@@ -76,31 +76,21 @@ const stopTimer = () => {
   clearTimeVariables();
   updateTimerMoves();
   updateTimerTime();
-  animation.pause();
-};
+}
 
 const pauseTimer = () => {
   isTimerPaused = true;
   isTimerRunning = false;
-  animation.pause();
+  timmerArrow.style.animationPlayState = 'paused';
+  timmerLogo.style.animationPlayState = 'paused';
 };
 
-//tl.staggerTo("#timer_logo", 1.5, { x: "+=10", repeat: -1, repeatDelay: 0.5, force3D: true, ease: Power4.easeOuteaseOut }, 0.15);
-
 const initAnimation = () => {
-  animation.to("#timer-arrow", animationStepDuration, { rotation: 360 });
+  timmerArrow.style.animationPlayState = 'running';
+  timmerLogo.style.animationPlayState = 'running';
 
-  /*  animation.to("#timer_logo", animationStepDuration, { scale: 1.1 });
-  animation.to("#timer_logo", animationStepDuration, { x: -0, rotation: animationStepRotation });
-  animation.to("#timer_logo", animationStepDuration, { x: 0, rotation: -animationStepRotation });
-  animation.to("#timer_logo", animationStepDuration, { x: -0, rotation: animationStepRotation });
-  animation.to("#timer_logo", animationStepDuration, { x: 0, rotation: -animationStepRotation });
-  animation.to("#timer_logo", animationStepDuration, { x: -0, rotation: animationStepRotation });
-  animation.to("#timer_logo", animationStepDuration, { x: 0, rotation: -animationStepRotation });
-  animation.to("#timer_logo", animationStepDuration, { x: -0, rotation: animationStepRotation });
-  animation.to("#timer_logo", animationStepDuration, { x: 0, rotation: 0 });
-  animation.to("#timer_logo", animationStepDuration, { scale: 1 });
-  animation.play(); */
+  timmerArrow.classList.add("timer_arrow--animated");
+  timmerLogo.classList.add("timer__logo--animated");
 };
 
 timerTrigger.addEventListener("click", showTimer);
