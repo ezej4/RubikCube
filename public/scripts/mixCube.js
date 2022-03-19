@@ -26,7 +26,7 @@ const handleMixCubeClick = () => {
   setIntervalX(
     () => {
       const aleatoryMove = getRandomMove();
-      moveCube(aleatoryMove, 0.08);
+      moveCube(aleatoryMove, 0.08, true);
     },
     100,
     amountOfMixins,

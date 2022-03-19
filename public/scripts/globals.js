@@ -4,7 +4,10 @@ const $cubicPlain = document.getElementById("cubic-plain");
 const selectedArea = document.getElementById("cubic-selected-area");
 const animateButton = document.getElementById("animate-button");
 
-const DEBUG_MODE = false;
+const DEBUG_MODE = true;
+let TIMER_VISIBLE = true;
+
+let COUNT_MOVES = 0;
 
 // device
 const IS_MOBILE = mobileAndTabletCheck();
@@ -12,7 +15,7 @@ const IS_MOBILE = mobileAndTabletCheck();
 // variables
 const COLORS = ["blue", "red", "orange", "green", "white", "yellow"];
 const AMOUNT_MINI_CUBES = 27;
-const TRANSLATION_UNITY = IS_MOBILE ? 60 : 100; /*PX*/
+const TRANSLATION_UNITY = IS_MOBILE ? 75 : 100; /*PX*/
 
 let ACTUAL_MOVEMENT;
 let isCubeMoving = false;

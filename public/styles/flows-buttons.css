@@ -7,7 +7,10 @@
     display: block;
     position: fixed;
     top: 28px;
-    right: 5px;
+    right: 0px;
+    background: black;
+    padding: 16px 4px;
+    border-radius: 15px;
   }
 
   .flows-buttons__list {
@@ -16,6 +19,7 @@
     align-items: center;
     font-size: 28px;
     margin: 0;
+    padding: 0;
   }
 
   .flows-buttons__item {
@@ -39,7 +43,7 @@
 
   .flows-buttons__button {
     cursor: pointer;
-    transition: 1s all color;
+    transition: .5s ease all;
   }
 
   .flows-buttons__label {
@@ -50,6 +54,8 @@
 
   .flows-buttons__button:hover {
     color: white;
+    transform: translateY(-10px);
+    background: #940303;
   }
 
   .flows-buttons__button--text {
@@ -58,11 +64,6 @@
     font-weight: bold;
     text-align: center;
     cursor: pointer;
-  }
-
-
-  .flows-buttons__button--text:hover {
-    color: white;
   }
 
 }

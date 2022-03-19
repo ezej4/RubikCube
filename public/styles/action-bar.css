@@ -17,7 +17,7 @@
 
 .action-bar__rotating-buttons i {
   font-size: 40px;
-  color: white;
+  color: rgb(0, 0, 0);
   transition: color 0.5s;
 }
 
@@ -54,6 +54,6 @@
 
   .action-bar__rotating-buttons i:hover {
     cursor: pointer;
-    color: black;
+    color: #940303;
   }
 }

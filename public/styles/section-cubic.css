@@ -1,22 +1,28 @@
 .section-cubic {
   display: flex;
   flex-direction: column;
-  background-image: url("../assets/images/background.png");
-  background-size: 600px;
-  animation: backgroundAnimation 120s linear infinite;
+ /*  background-image: url("../assets/images/background.png");
+  background-size: 600px
+  */
+/*   animation: backgroundAnimation 20s linear infinite;  */
+  background-color: rgb(41 38 47 / 20%);
+  background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(5,34,13,1) 30%, rgb(38 117 9) 57%, rgba(0,0,0,1) 84%, rgba(0,0,0,1) 100%);
+  background: rgb(2,0,36);
+  background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(1,65,18,1) 25%, rgba(0,56,28,1) 50%, rgba(0,25,19,1) 75%, rgba(0,0,0,1) 100%);background: rgb(16,116,16);
+  background: radial-gradient(circle, rgba(16,116,16,1) 15%, rgba(8,0,0,1) 50%, rgba(21,22,21,1) 73%, rgba(4,20,0,1) 100%);
+  background-size: 100%;
 }
 
 .section-cubic__selected-area {
   width: 100%;
   perspective: 2000px;
-  backdrop-filter: blur(7px) brightness(100%);
-  background-color: rgb(41 38 47 / 20%);
-  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(7px) brightness(100%) grayscale(0.7);
+
 }
 
 .section-cubic__main {
   width: 100%;
-  height: calc(80vh - 60px);
+  height: calc(80vh - 100px);
   transform: rotateX(-22deg) rotateY(60deg);
   transform-style: preserve-3d;
   display: flex;
@@ -27,15 +33,15 @@
 .section-cubic__cubic {
   position: relative;
   transform-style: preserve-3d;
-  width: 185px;
-  height: 185px;
+  width: 230px;
+  height: 230px;
 }
 
 .section-cubic__cubic-plain {
   position: absolute;
   transform-style: preserve-3d;
-  width: 175px;
-  height: 175px;
+  width: 220px;
+  height: 220px;
 }
 
 @media (min-width: 780px) {

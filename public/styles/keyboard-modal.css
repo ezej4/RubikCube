@@ -7,7 +7,7 @@
 }
 
 .keyboard-modal {
-  transform: translateX(-100vw);
+  transform: translateX(-100%);
   position: fixed;
   top: 0;
   width: 100%;
@@ -32,7 +32,7 @@
 }
 
 .keyboard-modal__body {
-  background: #000;
+  background: rgba(0, 0, 0, 0.2);
   margin: 34px;
   padding: 24px 0 48px;
   border-radius: 5px;
