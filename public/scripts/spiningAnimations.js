@@ -1,41 +1,24 @@
-let exitAnimationRunning = false;
-
-const entranceAnimation = gsap.to($cubic, {
-    rotationX: "+=360",
-    rotationY: "+=360",
-    duration: 2,
-    ease: "none",
+const animateButton = document.getElementById("animate_button");
+const entranceAnimation = gsap
+  .to(".cubic__mini", 2.5, {
+    background: "transparent",
+    x: 500,
+    y: -400,
+    stagger: 0.8,
+    opacity: 0,
+    yoyo: true,
+    paused: true,
     repeat: -1,
-    paused: true,
-})
-const exitAnimation = gsap.to($cubic, {
-    rotationX: 0,
-    rotationY: 0,
-    duration: 1.5,
-    paused: true,
-    clearProps: 'all',
-    onComplete: () => {
-        exitAnimationRunning = false;
-    }
-})
-
+  })
+  .repeatDelay(0.2);
 
 const animate = (event) => {
-    if (exitAnimationRunning) return;
-
-    if (entranceAnimation.isActive() === true) {    
-        entranceAnimation.pause();
-        exitAnimation.restart();
-        exitAnimationRunning = true;
-        isSpining = false;
-       // event.target.innerHTML = 'Lets spin!';
-
-    } else {
-        entranceAnimation.restart();
-        isSpining = true;
-       // event.target.innerHTML = 'Stop spin!';
-
-    }
-}
+  if (!entranceAnimation.paused()) {
+    entranceAnimation.seek(0);
+    entranceAnimation.pause();
+  } else {
+    entranceAnimation.play();
+  }
+};
 
 animateButton.addEventListener("click", animate, false);

@@ -8,7 +8,7 @@ const getRandomMove = () => {
   return result;
 };
 
-const setIntervalX = (callback, delay, repetitions, callbackFinish) => {
+const setIntervalX = (callback, delay, repetitions, callbackFinish = () => {}) => {
   let x = 0;
   const intervalID = window.setInterval(function () {
     callback();
@@ -27,35 +27,11 @@ const handleMixCubeClick = () => {
     () => {
       const aleatoryMove = getRandomMove();
       moveCube(aleatoryMove, 0.08, true);
+      USER_MOVES.push({ ...MOVES[aleatoryMove], isAuto: true });
     },
     100,
     amountOfMixins,
-    () => {}
   );
-};
-
-const swithBackground = (callback, reverse) => {
-  const $backgroundElement = document.getElementById("interactive-background");
-  const animationTl = gsap.timeline({
-    paused: true,
-  });
-
-  animationTl.to($backgroundElement, 1, {
-    background: "rgba(0,0,0,0.2)",
-    width: "100%",
-    height: "100%",
-    onComplete: callback,
-  });
-
-  animationTl.to($backgroundElement, 2, {
-    background: "rgba(0,0,0,0.2)",
-    position: "absolute",
-    y: -1000,
-    delay: 2,
-    clearProps: "all",
-  });
-
-  animationTl.play();
 };
 
 $mixCubegButton.addEventListener("click", handleMixCubeClick, false);

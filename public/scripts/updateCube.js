@@ -37,7 +37,10 @@ const updateCube = (miniCubesToUpdate) => {
           face.innerHTML = indexs[0] + "-" + indexs[1] + " " + currentface.label;
         }
         face.classList.add(`cubic__face--${currentface.value}`);
+        face.classList.add("cubic__face--colored");
         // face.innerHTML = currentface.id.split('-')[1] + " " + currentface.label ;
+      } else {
+        face.classList.add("cubic__face--uncolored");
       }
 
       $miniCubeElement.appendChild(face);

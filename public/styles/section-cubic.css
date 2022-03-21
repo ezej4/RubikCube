@@ -48,15 +48,15 @@
   .section-cubic__cubic {
     position: relative;
     transform-style: preserve-3d;
-    width: 300px;
-    height: 300px;
+    width: 305px;
+    height: 305px;
   }
 
   .section-cubic__cubic-plain {
     position: absolute;
     transform-style: preserve-3d;
-    width: 290px;
-    height: 290px;
+    width: 295px;
+    height: 295px;
   }
   .section-cubic__main {
     height: calc(90vh - 100px);

@@ -93,6 +93,8 @@ const initAnimation = () => {
   timmerLogo.classList.add("timer__logo--animated");
 };
 
+showTimer();
+
 timerTrigger.addEventListener("click", showTimer);
 timerStopTrigger.addEventListener("click", stopTimer);
 timerStartTrigger.addEventListener("click", starTimer);

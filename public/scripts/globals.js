@@ -2,33 +2,12 @@
 const $cubic = document.getElementById("cubic");
 const $cubicPlain = document.getElementById("cubic-plain");
 const selectedArea = document.getElementById("cubic-selected-area");
-const animateButton = document.getElementById("animate-button");
 
 const DEBUG_MODE = false;
-let TIMER_VISIBLE = true;
-
-let COUNT_MOVES = 0;
-
-// device
 const IS_MOBILE = mobileAndTabletCheck();
-
-// variables
 const COLORS = ["blue", "red", "orange", "green", "white", "yellow"];
 const AMOUNT_MINI_CUBES = 27;
 const TRANSLATION_UNITY = IS_MOBILE ? 75 : 100; /*PX*/
-
-let ACTUAL_MOVEMENT;
-let isCubeMoving = false;
-let isGrabbing = false;
-let isSpining = false;
-let isCubeInvertedX = false;
-let isCubeInvertedY = false;
-
-let cubePosition = {
-  x: 0,
-  y: 0,
-};
-
 const facesColors = {
   front: COLORS[0],
   left: COLORS[1],
@@ -37,6 +16,19 @@ const facesColors = {
   top: COLORS[4],
   bottom: COLORS[5],
 };
+
+let TIMER_VISIBLE = false;
+let COUNT_MOVES = 0;
+let USER_MOVES = [];
+let ACTUAL_MOVEMENT;
+let isCubeMoving = false;
+let isCubeInvertedX = false;
+let isCubeInvertedY = false;
+let cubePosition = {
+  x: 0,
+  y: 0,
+};
+
 const { front: fColor, left: lColor, right: rColor, back: bColor, top: tColor, bottom: btColor } = facesColors;
 
 let miniCubeModel = [

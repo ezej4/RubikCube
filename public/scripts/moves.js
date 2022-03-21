@@ -90,6 +90,7 @@ const moveCube = (movement, animationDuration, isAutomatic = false) => {
     });
 
     ACTUAL_MOVEMENT = movement;
+    USER_MOVES.push({...MOVES[movement], isAuto: false});
 
     if (isAutomatic) {
       COUNT_MOVES = 0;
