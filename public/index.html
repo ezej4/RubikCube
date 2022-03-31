@@ -5,9 +5,9 @@
     <title>Funny Rubik cubic game</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <meta charset="UTF-8" />
-    <meta name="description" content="Small demo of the cube Rubik">
-    <meta name="keywords" content="HTML, CSS, JavaScript">
-    <meta name="author" content="Ezequiel Fabbroni">
+    <meta name="description" content="Small demo of the cube Rubik" />
+    <meta name="keywords" content="HTML, CSS, JavaScript" />
+    <meta name="author" content="Ezequiel Fabbroni" />
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favIcons/favicon-32x32.ico" />
     <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favIcons/favicon-16x16.ico" />
     <base href="./" />
@@ -505,20 +505,22 @@
       <div class="about__content">
         <div class="about__title">About this</div>
         <div class="about__texts">
-          <p class="about__text">Made with ❤️ and only for fun. Play with the cube and try to resolve it.</p>
           <p class="about__text">
-            build with only Vanilla Javascript, <a target="_blank" href="https://fontawesome.com/">FA ICONS</a> and
-            <a target="_blank" href="https://greensock.com/gsap/">GSAP </a> for some animations
+            Made with ❤️ and only for fun.<br />
+            Play with the cube and try to resolve it.
           </p>
-          <p class="about__text">Want to learn more about the Rubik cube? there are some links that can de helpfull.r</p>
           <p class="about__text">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta amet nulla, reiciendis iusto placeat aliquam explicabo dolore laboriosam
-            eum repellendus impedit eius doloribus ipsum optio. Aperiam quidem dolores minus eaque.
+            Build with only Vanilla Javascript, <a target="_blank" href="https://fontawesome.com/">FA ICONS</a> and
+            <a target="_blank" href="https://greensock.com/gsap/">GSAP </a> for some animations.
+          </p>
+          <p class="about__text">
+            <a href="https://es.wikipedia.org/wiki/Ern%C5%91_Rubik">Erno Rubik</a> made the Rubik cube in the may 19 of 1974. <br />
+            The cube is made of 27 pieces or small cubes, and it has 6 faces each has a different color.
+          </p>
+          <p class="about__text">
+            43 trillion. Or more accurately, 43,252,003,274,489,856,000. <br/> This impressive figure is the number of possible configurations that can occur in the Rubik's cube (also known as "magic cube") 
           </p>
         </div>
-        <!--  <p class="about__footer">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et repellat sunt iste, consequatur excepturi, harum dolorem officiis sequi placeat eum cupiditate cum minima nulla ducimus, distinctio at temporibus quibusdam delectus.
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et repellat sunt iste, consequatur excepturi, harum dolorem officiis sequi placeat eum cupiditate cum minima nulla ducimus, distinctio at temporibus quibusdam delectus.
-            </p> -->
       </div>
     </article>
 
@@ -541,167 +543,125 @@
         </div>
 
         <div class="keyboard-modal__body">
-          <p class="keyboard-modal__title-divisor">Rotations</p>
+          <table class="keyboard-modal__rotation-table">
+            <tr>
+                <th>keyboard</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+              <td>
+                <i class="fas fa-arrow-left"></i>
+              </td>
+              <td>Move cube left</td>
+            </tr>
+            <tr>
+              <td>
+                <i class="fas fa-arrow-up"></i>
+              </td>
+              <td>Move cube up</td>
+            </tr>
+            <tr>
+              <td>
+                <i class="fas fa-arrow-left"></i>
+              </td>
+              <td>Move cube left</td>
+            </tr>
+            <tr>
+              <td>
+               q
+              </td>
+              <td>Mix the cube</td>
+            </tr>
+            <tr>
+              <td>
+               t
+              </td>
+              <td>show / hide the cube</td>
+            </tr>
+            <tr>
+              <td>
+               c
+              </td>
+              <td>start / stop animation</td>
+            </tr>
+            <tr>
+              <td>
+               w
+              </td>
+              <td>Resolve the cube</td>
+            </tr>
+            <tr>
+              <td>
+                u
+              </td>
+              <td>Rotate the upper face (white)</td>
+            </tr>
+            <tr>
+              <td>shitf + u </td>
+              <td>Rotate the upper face inverse (white) </td>
+            </tr>
+            <tr>
+              <td>
+                d
+              </td>
+              <td>Rotate the down face (yellow)</td>
+            </tr>
+            <tr>
+              <td>shitf + d </td>
+              <td>Rotate the down face inverse (yellow)</td>
+            </tr>
+            <tr>
+              <td>
+                l
+              </td>
+              <td>Rotate the left face (green)</td>
+            </tr>
+            <tr>
+              <td>shitf + l </td>
+              <td>Rotate the left face inverse (green) </td>
+            </tr>
+            <tr>
+              <td>
+                r
+              </td>
+              <td>Rotate the right face (blue)</td>
+            </tr>
+            <tr>
+              <td>shitf + r </td>
+              <td>Rotate the right face inverse (blue)</td>
+            </tr>
+            <tr>
+              <td>
+                f
+              </td>
+              <td>Rotate the front face (red)</td>
+            </tr>
+            <tr>
+              <td>shitf + f </td>
+              <td>Rotate the front face inverse (red) </td>
+            </tr>
+            <tr>
+              <td>
+                b
+              </td>
+              <td>Rotate the back face (orange)</td>
+            </tr>
+            <tr>
+              <td>shitf + b </td>
+              <td>Rotate the back face inverse (orange)</td>
+            </tr>
 
-          <div class="keyboard-modal__keyboards keyboard-modal__keyboards--first">
-            <div class="keyboard-modal__row">
-              <img width="75" loading="lazy" src="./assets/images/cube_moves/LEFT.gif" />
-              <div class="keyboard-modal__key">
-                <kbd class="keyboard-modal__key-value">⬅️</kbd>
-              </div>
-            </div>
-            <div class="keyboard-modal__row">
-              <img width="75" loading="lazy" src="./assets/images/cube_moves/UP.gif" />
-              <div class="keyboard-modal__key">
-                <kbd class="keyboard-modal__key-value">⬆️</kbd>
-              </div>
-            </div>
-            <div class="keyboard-modal__row">
-              <img width="75" loading="lazy" src="./assets/images/cube_moves/RIGHT.gif" />
-              <div class="keyboard-modal__key">
-                <kbd class="keyboard-modal__key-value">➡️</kbd>
-              </div>
-            </div>
-          </div>
+            <tr>
+              <td>m, e, s</td>
+              <td>Rotate middles</td>
+            </tr>
 
-          <p class="keyboard-modal__title-divisor">Moves</p>
-
-          <div class="keyboard-modal__grid">
-            <div class="keyboard-modal__keyboards">
-              <div class="keyboard-modal__row">
-                <img width="75" loading="lazy" data-src="./assets/images/cube_moves/U.gif" />
-                <div class="keyboard-modal__key">
-                  <kbd class="keyboard-modal__key-value">u</kbd>
-                </div>
-              </div>
-              <div class="keyboard-modal__row">
-                <img width="75" loading="lazy" data-src="./assets/images/cube_moves/U!.gif" />
-                <div class="keyboard-modal__key">
-                  <kbd class="keyboard-modal__key-value">shift + u </kbd>
-                </div>
-              </div>
-            </div>
-
-            <div class="keyboard-modal__keyboards">
-              <div class="keyboard-modal__row">
-                <img width="75" loading="lazy" data-src="./assets/images/cube_moves/E.gif" />
-                <div class="keyboard-modal__key">
-                  <kbd class="keyboard-modal__key-value">e</kbd>
-                </div>
-              </div>
-              <div class="keyboard-modal__row">
-                <img width="75" loading="lazy" data-src="./assets/images/cube_moves/E!.gif" />
-                <div class="keyboard-modal__key">
-                  <kbd class="keyboard-modal__key-value">shift + e </kbd>
-                </div>
-              </div>
-            </div>
-
-            <div class="keyboard-modal__keyboards">
-              <div class="keyboard-modal__row">
-                <img width="75" loading="lazy" data-src="./assets/images/cube_moves/D.gif" />
-                <div class="keyboard-modal__key">
-                  <kbd class="keyboard-modal__key-value">d</kbd>
-                </div>
-              </div>
-              <div class="keyboard-modal__row">
-                <img width="75" loading="lazy" data-src="./assets/images/cube_moves/D!.gif" />
-                <div class="keyboard-modal__key">
-                  <kbd class="keyboard-modal__key-value">shift + d </kbd>
-                </div>
-              </div>
-            </div>
-
-            <div class="keyboard-modal__keyboards">
-              <div class="keyboard-modal__row">
-                <img width="75" loading="lazy" data-src="./assets/images/cube_moves/R.gif" />
-                <div class="keyboard-modal__key">
-                  <kbd class="keyboard-modal__key-value">r</kbd>
-                </div>
-              </div>
-              <div class="keyboard-modal__row">
-                <img width="75" loading="lazy" data-src="./assets/images/cube_moves/R!.gif" />
-                <div class="keyboard-modal__key">
-                  <kbd class="keyboard-modal__key-value">shift + r </kbd>
-                </div>
-              </div>
-            </div>
-
-            <div class="keyboard-modal__keyboards">
-              <div class="keyboard-modal__row">
-                <img width="75" loading="lazy" data-src="./assets/images/cube_moves/M.gif" />
-                <div class="keyboard-modal__key">
-                  <kbd class="keyboard-modal__key-value">m</kbd>
-                </div>
-              </div>
-              <div class="keyboard-modal__row">
-                <img width="75" loading="lazy" data-src="./assets/images/cube_moves/M!.gif" />
-                <div class="keyboard-modal__key">
-                  <kbd class="keyboard-modal__key-value">shift + m </kbd>
-                </div>
-              </div>
-            </div>
-
-            <div class="keyboard-modal__keyboards">
-              <div class="keyboard-modal__row">
-                <img width="75" loading="lazy" data-src="./assets/images/cube_moves/L.gif" />
-                <div class="keyboard-modal__key">
-                  <kbd class="keyboard-modal__key-value">l</kbd>
-                </div>
-              </div>
-              <div class="keyboard-modal__row">
-                <img width="75" loading="lazy" data-src="./assets/images/cube_moves/L!.gif" />
-                <div class="keyboard-modal__key">
-                  <kbd class="keyboard-modal__key-value">shift + l </kbd>
-                </div>
-              </div>
-            </div>
-
-            <div class="keyboard-modal__keyboards">
-              <div class="keyboard-modal__row">
-                <img width="75" loading="lazy" data-src="./assets/images/cube_moves/F.gif" />
-                <div class="keyboard-modal__key">
-                  <kbd class="keyboard-modal__key-value">f</kbd>
-                </div>
-              </div>
-              <div class="keyboard-modal__row">
-                <img width="75" loading="lazy" data-src="./assets/images/cube_moves/F!.gif" />
-                <div class="keyboard-modal__key">
-                  <kbd class="keyboard-modal__key-value">shift + f </kbd>
-                </div>
-              </div>
-            </div>
-
-            <div class="keyboard-modal__keyboards">
-              <div class="keyboard-modal__row">
-                <img width="75" loading="lazy" data-src="./assets/images/cube_moves/S.gif" />
-                <div class="keyboard-modal__key">
-                  <kbd class="keyboard-modal__key-value">s</kbd>
-                </div>
-              </div>
-              <div class="keyboard-modal__row">
-                <img width="75" loading="lazy" data-src="./assets/images/cube_moves/S!.gif" />
-                <div class="keyboard-modal__key">
-                  <kbd class="keyboard-modal__key-value">shift + s </kbd>
-                </div>
-              </div>
-            </div>
-
-            <div class="keyboard-modal__keyboards">
-              <div class="keyboard-modal__row">
-                <img width="75" loading="lazy" data-src="./assets/images/cube_moves/B.gif" />
-                <div class="keyboard-modal__key">
-                  <kbd class="keyboard-modal__key-value">b</kbd>
-                </div>
-              </div>
-              <div class="keyboard-modal__row">
-                <img width="75" loading="lazy" data-src="./assets/images/cube_moves/B!.gif" />
-                <div class="keyboard-modal__key">
-                  <kbd class="keyboard-modal__key-value">shift + b </kbd>
-                </div>
-              </div>
-            </div>
-          </div>
+            <tr>
+              <td> shift + m, e, s</td>
+              <td>Rotate middles inverse</td>
+            </tr>
+            
+          </table>
         </div>
       </div>
     </div>

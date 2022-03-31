@@ -46,3 +46,16 @@ const getProximityMovements = (cubeId, face) => {
 
   return miniCubeManualMovement.proximityMoves[face];
 };
+
+const setIntervalX = (callback, delay, repetitions, callbackFinish = () => {}) => {
+  let x = 0;
+  if (repetitions === 0) return;
+  const intervalID = window.setInterval(function () {
+    callback();
+    if (x === repetitions) {
+      window.clearInterval(intervalID);
+      callbackFinish();
+    }
+    x++;
+  }, delay);
+};

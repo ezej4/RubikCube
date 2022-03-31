@@ -65,7 +65,7 @@ const rotateFaces = (miniCubeFaces, movement) => {
   return miniCubeFacesCopy;
 };
 
-const moveCube = (movement, animationDuration, isAutomatic = false) => {
+const moveCube = (movement, animationDuration, isAutomatic = false, countMove = true) => {
   if (isCubeMoving) {
     return;
   }
@@ -90,12 +90,14 @@ const moveCube = (movement, animationDuration, isAutomatic = false) => {
     });
 
     ACTUAL_MOVEMENT = movement;
-    USER_MOVES.push({...MOVES[movement], isAuto: false});
+    if (countMove) {
+      USER_MOVES.push({ ...MOVES[movement], isAuto: false });
+    }
 
     if (isAutomatic) {
       COUNT_MOVES = 0;
-    }else {
-        COUNT_MOVES++;
+    } else {
+      COUNT_MOVES++;
     }
     rePaintCube(animationDuration);
   }

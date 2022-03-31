@@ -83,11 +83,6 @@ const rotate = (direction) => {
     }
   }
 
- /*  console.log({ newRotationY, newRotationX });
-  gsap.to($cubic, {
-    rotationY: newRotationY,
-    rotationX: newRotationX,
-  });
- */
+
   $cubic.style.transform = rotationStyle;
 };

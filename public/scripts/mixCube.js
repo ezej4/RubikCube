@@ -8,29 +8,23 @@ const getRandomMove = () => {
   return result;
 };
 
-const setIntervalX = (callback, delay, repetitions, callbackFinish = () => {}) => {
-  let x = 0;
-  const intervalID = window.setInterval(function () {
-    callback();
-
-    if (x === repetitions) {
-      window.clearInterval(intervalID);
-      callbackFinish();
-    }
-    x++;
-  }, delay);
-};
-
 const handleMixCubeClick = () => {
   const amountOfMixins = 20;
+
+  if (isCubeMoving || IsCubeAnimating) return;
+  
+
   setIntervalX(
     () => {
       const aleatoryMove = getRandomMove();
       moveCube(aleatoryMove, 0.08, true);
-      USER_MOVES.push({ ...MOVES[aleatoryMove], isAuto: true });
+      isCubeMoving = true;
     },
     100,
     amountOfMixins,
+    () => {
+      isCubeMoving = false;
+    }
   );
 };
 

@@ -136,4 +136,26 @@
   .keyboard-modal__keyboards--first {
     flex-direction: row;
   }
+
+  .keyboard-modal__rotation-table {
+    margin: 0 auto;
+    width: 80%;
+    padding: 24px;
+  }
+  .keyboard-modal__rotation-table td{
+    text-align: center;
+  }
+
+  .keyboard-modal__rotation-table tr:nth-child(even) {
+    background-color: #2e2e2e;
+  }
+
+  .keyboard-modal__rotation-table td {
+    padding: 12px;
+  }
+
+  .keyboard-modal__rotation-table tr,
+  .keyboard-modal__rotation-table td {
+    border: 2px solid black;
+  }
 }

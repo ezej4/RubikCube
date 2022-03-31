@@ -25,8 +25,6 @@ const buildCube = () => {
 
     const { x: xTranf, y: yTranf, z: zTranf } = curMiniCube.position;
 
-    miniCube.style.transform = `translate3d(${xTranf}px,${yTranf}px,${zTranf}px)`;
-
     curMiniCube.faces.forEach((currentface, index) => {
       const face = document.createElement("div");
       face.id = currentface.id;
@@ -38,27 +36,46 @@ const buildCube = () => {
           face.innerHTML = indexs[0] + "-" + indexs[1] + " " + currentface.label;
         }
         face.classList.add(`cubic__face--${currentface.value}`);
-        face.classList.add('cubic__face--colored');
-      }else {
-        face.classList.add('cubic__face--uncolored');
+        face.classList.add("cubic__face--colored");
+      } else {
+        face.classList.add("cubic__face--uncolored");
       }
 
       miniCube.appendChild(face);
     });
 
     $cubic.appendChild(miniCube);
+
+    gsap.set(`#${miniCube.id}`, {
+      x: xTranf,
+      y: yTranf,
+      z: zTranf,
+    });
+    
+    // this option is valid to
+    /*   miniCube.style.transform = `translate3d(${xTranf}px,${yTranf}px,${zTranf}px)`; */
   });
 };
 
 buildCube();
 
 const restoreCube = () => {
-  USER_MOVES.forEach((moves) => {
-    setTimeout(() => {
-      moveCube(moves.inverse, 0.08);
-      console.log("muevo el cubo a ", moves.inverse)
-    }, 100);
-  });
+  let index = USER_MOVES.length - 1;
+  const iteraionCount = USER_MOVES.length - 1;
+
+  if (isCubeMoving) return;
+  setIntervalX(
+    () => {
+      const { inverse } = USER_MOVES[index];
+      moveCube(inverse, 0.08, true, false);
+      index--;
+    },
+    100,
+    iteraionCount,
+    () => {
+      USER_MOVES = [];
+    }
+  );
 };
 
 restoreButton.addEventListener("click", restoreCube);

@@ -22,6 +22,7 @@ let COUNT_MOVES = 0;
 let USER_MOVES = [];
 let ACTUAL_MOVEMENT;
 let isCubeMoving = false;
+let IsCubeAnimating = false;
 let isCubeInvertedX = false;
 let isCubeInvertedY = false;
 let cubePosition = {

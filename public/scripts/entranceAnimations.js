@@ -1,5 +1,8 @@
 const entranceAnim = () => {
+  isCubeMoving = true;
+
   const entranceAnimationTL = gsap.timeline({ repeatDelay: 1 });
+  const animationDistance = IS_MOBILE ? 3000 : 10000;
 
   entranceAnimationTL
     .from(".header__icon .face-front, .face-right, .face-top", 0.5, {
@@ -17,26 +20,28 @@ const entranceAnim = () => {
       },
       "<"
     )
-
+    .from(".cubic__mini", 0.1, {
+      opacity: 0,
+    })
     .from(
       ".cubic__mini",
-      2,
+      3,
       {
-        rotationX: 1200,
-        rotationY: 1200,
-        x: -4000,
-        z: -500,
-        y: -4000,
-        stagger: 0.05,
-        background: "transparent",
+        rotationX: 360 * 5,
+        rotationY: 360 * 5,
+        rotationZ: 360 * 5,
+        x: `random(-${animationDistance}, ${animationDistance})`,
+        z: `random(-${animationDistance}, ${animationDistance})`,
+        y: `random(-${animationDistance}, ${animationDistance})`,
+        backgroundColor: "transparent",
+        stagger: 0.02,
         ease: "back",
+        onComplete: () => {
+          isCubeMoving = false;
+        },
       },
       0.9
     )
-
-    /*  .to(".cubic__face--uncolored", 0.4, {
-      background: "black",
-    }) */
 
     .from(".action-bar", 0.5, {
       y: 1000,

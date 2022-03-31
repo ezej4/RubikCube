@@ -1,9 +1,8 @@
 const handleKeyDown = (event) => {
   const keyPressed = event.key;
-  const animationVelocity = 1.08;
+  const animationVelocity = 0.2;
   const keyCases = {
     ArrowUp: () => rotate("top"),
-    //'ArrowDown': rotate('top'),
     ArrowLeft: () => rotate("left"),
     ArrowRight: () => rotate("right"),
     u: () => moveCube("U", animationVelocity),
@@ -24,6 +23,10 @@ const handleKeyDown = (event) => {
     S: () => moveCube("S!", animationVelocity),
     b: () => moveCube("B", animationVelocity),
     B: () => moveCube("B!", animationVelocity),
+    q: () => handleMixCubeClick(),
+    w: () => restoreCube(),
+    t: () => showTimer(),
+    c: () => animate(),
   };
 
   const caseToExect = keyCases[keyPressed];

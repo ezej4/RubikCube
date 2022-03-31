@@ -21,15 +21,21 @@ const updateCube = (miniCubesToUpdate) => {
     miniCube.hasToRePaint = false;
 
     const $miniCubeElement = document.getElementById(miniCube.name);
-    const newTransformStyle = `translate3d(${xTranf}px,${yTranf}px,${zTranf}px)`;
-    $miniCubeElement.style.transform = newTransformStyle;
+    
+    gsap.set(`#${miniCube.name}`, {
+      x: xTranf,
+      y: yTranf,
+      z: zTranf,
+    });
+
+    // this option is valid to
+    //const newTransformStyle = `translate3d(${xTranf}px,${yTranf}px,${zTranf}px)`;
+    //  $miniCubeElement.style.transform = newTransformStyle; //
 
     while ($miniCubeElement.firstChild) $miniCubeElement.removeChild($miniCubeElement.firstChild);
     miniCube.faces.forEach((currentface, index) => {
       const face = document.createElement("div");
       face.className = `cubic__face cubic__face--${currentface.label}`;
-
-      //face.innerHTML = miniCube.name.replace(/^\D+/g, '');
 
       if (currentface.value) {
         const indexs = getMiniCubeIndexsById(miniCube.name);
@@ -38,7 +44,6 @@ const updateCube = (miniCubesToUpdate) => {
         }
         face.classList.add(`cubic__face--${currentface.value}`);
         face.classList.add("cubic__face--colored");
-        // face.innerHTML = currentface.id.split('-')[1] + " " + currentface.label ;
       } else {
         face.classList.add("cubic__face--uncolored");
       }
