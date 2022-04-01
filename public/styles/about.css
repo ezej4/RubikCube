@@ -1,14 +1,14 @@
 @keyframes gradient {
   0% {
-    background-position: 0% 0%;
+    background-position: 0%;
   }
 
   50% {
-    background-position: 50% 100%;
+    background-position: 100%;
   }
 
   100% {
-    background-position: 100% 0%;
+    background-position: 0%;
   }
 }
 
@@ -18,10 +18,10 @@
   min-height: calc(100vh - 100px);
   display: flex;
   flex-direction: column;
-  font-family: nunito-regular;
-  background: linear-gradient(0deg, rgba(4, 129, 158, 1) 0%, rgba(20, 116, 147, 1) 23%, rgba(23, 116, 148, 1) 35%, rgba(16, 54, 26, 1) 79%);
+  font-family: roboto-regular;
+  background: linear-gradient(90deg, rgb(0, 0, 0) 0%, rgb(2, 49, 68) 25%, rgb(5, 125, 155) 35%, rgb(2, 68, 167) 75%, rgb(0, 0, 0) 100%);
   background-size: 400% 400%;
-  animation: gradient 20s ease infinite;
+  animation: gradient 40s infinite forwards;
 }
 
 .about__title {
@@ -34,6 +34,7 @@
   margin: auto;
   padding: 0 12px;
   padding-bottom: 24px;
+  z-index: 1;
 }
 
 .about__texts {
@@ -41,32 +42,50 @@
   grid-template-columns: repeat(1fr);
   justify-items: stretch;
   margin-top: 24px;
-  width: 280px;
   margin: auto;
 }
 
 .about__text {
-  max-width: 400px;
-  text-align: center;
-  padding: 40px 20px;
+  width: 250px;
+  text-align: left;
+  padding: 24px 20px;
   margin: 8px;
   background: white;
   color: black;
-  font-size: 16px;
-  font-weight: 600;
-  border-radius: 8px;
-  box-shadow: 11px 11px 3px -10px rgba(0, 0, 0, 0.77);
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 15px;
+  /*  text-shadow: 0px 0px 12px black; */
+  /* box-shadow: 11px 11px 3px -10px rgba(0, 0, 0, 0.77); */
+}
+
+.about__text a {
+  color: seagreen;
+}
+
+.about__text-trillons {
+  font-weight: bold;
+  background: #ffc107;
+  padding: 2px;
+  border-radius: 5px;
 }
 
 .about__footer {
   margin-top: 140px;
   text-align: left;
 }
+.about__rubik-logo-container {
+  position: absolute;
+  width: 100%;
+  min-height: calc(100vh - 100px);
+}
 
-@media (min-width: 480px) {
-  .about__texts {
-    width: 400px;
-  }
+.about__rubik-logo-container svg {
+  display: none;
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  width: 200px;
 }
 
 @media (min-width: 780px) {
@@ -74,8 +93,8 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     justify-items: stretch;
+    align-items: stretch;
     margin-top: 24px;
-    width: 700px;
     margin: auto;
   }
 
@@ -89,5 +108,15 @@
   .about__text {
     text-align: left;
     margin: 12px;
+    width: 350px;
+    padding: 40px 24px;
+    font-size: 17px;
+  }
+
+  .about__rubik-logo-container svg {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    width: 100px;
   }
 }

@@ -3,7 +3,7 @@ const $cubic = document.getElementById("cubic");
 const $cubicPlain = document.getElementById("cubic-plain");
 const selectedArea = document.getElementById("cubic-selected-area");
 
-const DEBUG_MODE = false;
+const DEBUG_MODE = true;
 const IS_MOBILE = mobileAndTabletCheck();
 const COLORS = ["blue", "red", "orange", "green", "white", "yellow"];
 const AMOUNT_MINI_CUBES = 27;

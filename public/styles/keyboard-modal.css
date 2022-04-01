@@ -142,8 +142,12 @@
     width: 80%;
     padding: 24px;
   }
-  .keyboard-modal__rotation-table td{
+  .keyboard-modal__rotation-table td {
     text-align: center;
+  }
+
+  .keyboard-modal__rotation-table th {
+    padding: 12px;
   }
 
   .keyboard-modal__rotation-table tr:nth-child(even) {
