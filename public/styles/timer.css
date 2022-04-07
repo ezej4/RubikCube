@@ -17,11 +17,10 @@
   20% {
     transform: scale(1);
   }
-  100%{
+  100% {
     transform: scale(1);
   }
 }
-
 
 #timer_arrow {
   transform-origin: 255px 280px;
@@ -31,7 +30,7 @@
 .timer_arrow--animated {
   animation: rotate360 60s linear infinite;
 }
-.timer__logo--animated{
+.timer__logo--animated {
   animation: skewXTimerLogo 10s ease infinite;
 }
 
@@ -40,7 +39,7 @@
   top: 12vh;
   left: 4px;
   padding: 4px 8px;
-  background: seagreen;
+  background: var(--secondary-color);
   border-radius: 30px;
   display: flex;
   align-items: center;
@@ -59,7 +58,6 @@
   width: 60px;
   height: 60px;
 }
-
 
 .timer__fields {
   width: 100%;
@@ -144,6 +142,6 @@
 
   .timer__buttons i:hover {
     transform: translateY(-5px);
-    color: #940303;
+    color: var(--cta-color);
   }
 }

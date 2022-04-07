@@ -1,15 +1,8 @@
 .section-cubic {
   display: flex;
   flex-direction: column;
- /*  background-image: url("../assets/images/background.png");
-  background-size: 600px
-  */
-/*   animation: backgroundAnimation 20s linear infinite;  */
   background-color: rgb(41 38 47 / 20%);
-  background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(5,34,13,1) 30%, rgb(38 117 9) 57%, rgba(0,0,0,1) 84%, rgba(0,0,0,1) 100%);
-  background: rgb(2,0,36);
-  background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(1,65,18,1) 25%, rgba(0,56,28,1) 50%, rgba(0,25,19,1) 75%, rgba(0,0,0,1) 100%);background: rgb(16,116,16);
-  background: radial-gradient(circle, rgba(16,116,16,1) 15%, rgba(8,0,0,1) 50%, rgba(21,22,21,1) 73%, rgba(4,20,0,1) 100%);
+  background: radial-gradient(circle, rgba(16, 116, 16, 1) 40%, rgba(8, 0, 0, 1) 70%, rgba(21, 22, 21, 1) 80%, rgba(4, 20, 0, 1) 100%);
   background-size: 100%;
 }
 
@@ -17,12 +10,11 @@
   width: 100%;
   perspective: 2000px;
   backdrop-filter: blur(7px) brightness(100%) grayscale(0.7);
-
 }
 
 .section-cubic__main {
   width: 100%;
-  height: calc(80vh - 100px);
+  height: calc(100vh - (74px + 64px));
   transform: rotateX(-22deg) rotateY(60deg);
   transform-style: preserve-3d;
   display: flex;
@@ -45,6 +37,9 @@
 }
 
 @media (min-width: 780px) {
+  .section-cubic {
+    background: radial-gradient(circle, rgba(16, 116, 16, 1) 15%, rgba(8, 0, 0, 1) 50%, rgba(21, 22, 21, 1) 73%, rgba(4, 20, 0, 1) 100%);
+  }
   .section-cubic__cubic {
     position: relative;
     transform-style: preserve-3d;
@@ -59,6 +54,6 @@
     height: 295px;
   }
   .section-cubic__main {
-    height: calc(90vh - 100px);
+    height: calc(90vh);
   }
 }

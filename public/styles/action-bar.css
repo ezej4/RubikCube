@@ -6,7 +6,7 @@
   justify-content: center;
   padding: 12px 0;
   border-radius: 5px;
-  background: seagreen;
+  background: var(--main-bg-color);
   z-index: 2;
 }
 
@@ -17,7 +17,7 @@
 
 .action-bar__rotating-buttons i {
   font-size: 40px;
-  color: rgb(0, 0, 0);
+  color: var(--secondary-color);
   transition: color 0.5s;
 }
 
@@ -47,6 +47,7 @@
 @media screen and (min-width: 768px) {
   .action-bar {
     height: 10vh;
+    padding-top: 0;
   }
   .action-bar__rotating-buttons i {
     font-size: 60px;
@@ -54,6 +55,6 @@
 
   .action-bar__rotating-buttons i:hover {
     cursor: pointer;
-    color: #940303;
+    color: var(--cta-color);
   }
 }

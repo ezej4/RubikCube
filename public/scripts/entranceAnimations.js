@@ -1,7 +1,18 @@
+const isPageOnTheTop = !window.pageYOffset || window.pageYOffset < 200;
+
 const entranceAnim = () => {
   isCubeMoving = true;
 
-  const entranceAnimationTL = gsap.timeline({ repeatDelay: 1 });
+  const entranceAnimationTL = gsap.timeline({
+    repeatDelay: 1,
+  });
+
+  entranceAnimationTL.eventCallback("onComplete", () => {
+    gsap.set("body", { overflow: "visible" });
+  });
+
+  gsap.set("body", { overflow: "hidden" });
+
   const animationDistance = IS_MOBILE ? 3000 : 10000;
 
   entranceAnimationTL
@@ -15,14 +26,14 @@ const entranceAnim = () => {
       0.5,
       {
         y: -100,
-        opacity: 1,
         ease: Power4.easeOuteaseOut,
       },
       "<"
     )
-    .from(".cubic__mini", 0.1, {
-      opacity: 0,
+    .to(".cubic__mini", 0.1, {
+      opacity: 1,
     })
+
     .from(
       ".cubic__mini",
       3,
@@ -45,21 +56,26 @@ const entranceAnim = () => {
 
     .from(".action-bar", 0.5, {
       y: 1000,
-      opacity: 1,
+      opacity: 0,
       overflox: "hidden",
     })
+
     .from(
       ".flows-buttons",
       0.5,
       {
         x: 1000,
-        opacity: 1,
+        opacity: 0,
         overflox: "hidden",
       },
       "<"
     );
 };
 
-if (!DEBUG_MODE) {
+if (!DEBUG_MODE && isPageOnTheTop) {
   entranceAnim();
+} else {
+  gsap.set(".cubic__mini", {
+    opacity: 1,
+  });
 }

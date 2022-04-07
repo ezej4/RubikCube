@@ -1,11 +1,11 @@
 @font-face {
   font-family: roboto-regular;
-  src: url('../../assets/fonts/Roboto-Regular.ttf');
+  src: url("../../assets/fonts/Roboto-Regular.ttf");
 }
 
 @font-face {
   font-family: nunito-regular;
-  src: url('../../assets/fonts/Nunito-Regular.ttf');
+  src: url("../../assets/fonts/Nunito-Regular.ttf");
 }
 
 @keyframes backgroundAnimation {
@@ -16,8 +16,6 @@
     background-position: 200%;
   }
 }
-  
-
 
 @keyframes rotate {
   0% {
@@ -43,47 +41,46 @@
   }
 }
 
-
 @keyframes entrance-left {
   0% {
-      transform: translateX(-100vw);
-      opacity: 0;
+    transform: translateX(-100vw);
+    opacity: 0;
   }
 
   100% {
-      transform: translateX(0vw);
-      opacity: 1;
+    transform: translateX(0vw);
+    opacity: 1;
   }
 }
 
 @keyframes exit-left {
   0% {
-      transform: translateX(0vw);
-      opacity: 1;
+    transform: translateX(0vw);
+    opacity: 1;
   }
 
   100% {
-      transform: translateX(-100vw);
-      opacity: 0;
+    transform: translateX(-100vw);
+    opacity: 0;
   }
 }
-
-
+:root {
+  --main-bg-color: #272727;
+  --secondary-color: seagreen;
+  --cta-color: rgba(63, 119, 87, 0.6);
+}
 
 body {
   margin: 0;
   padding: 0;
   width: 100%;
-  font-family: roboto-regular, 'Open Sans', serif;
-  background: #272727;
+  font-family: roboto-regular, "Open Sans", serif;
+  background: var(--main-bg-color);
   overflow-x: hidden;
-  /* display: grid; */
-  /*  grid-template-columns: 1fr 200px;
-  grid-template-rows: 40px 640px 40px 200px; */
 }
 
 .interactive-background {
   top: 0;
   position: absolute;
-  backdrop-filter: blur(50px)
+  backdrop-filter: blur(50px);
 }

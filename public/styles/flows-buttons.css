@@ -1,9 +1,9 @@
 .flows-buttons {
   display: block;
   position: absolute;
-  top: calc(80vh - 70px);
+  top: calc(100vh - 110px);
   left: 0px;
-  background: black;
+  background: var(--main-bg-color);
   padding: 4px;
   border-radius: 15px;
 }
@@ -32,7 +32,7 @@
   height: 20px;
   border-radius: 50%;
   padding: 4px;
-  background: seagreen;
+  background: var(--secondary-color);
 }
 .flows-buttons__item--keyboard {
   display: none;
@@ -106,7 +106,7 @@
   .flows-buttons__button:hover {
     color: white;
     transform: translateY(-10px);
-    background: #940303;
+    background: var(--cta-color);
   }
 
   .flows-buttons__button--text {
