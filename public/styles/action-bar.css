@@ -21,6 +21,12 @@
   transition: color 0.5s;
 }
 
+i.action-bar__icon-down{
+  position: absolute;
+  left: 14px;
+  font-size: 15px;
+}
+
 .action-bar__extra-buttons {
   position: absolute;
   left: 0;
@@ -51,6 +57,11 @@
   }
   .action-bar__rotating-buttons i {
     font-size: 60px;
+  }
+
+  i.action-bar__icon-down{
+    left: 30px;
+    font-size: 30px;
   }
 
   .action-bar__rotating-buttons i:hover {

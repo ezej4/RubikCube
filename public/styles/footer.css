@@ -1,5 +1,5 @@
 .footer {
-  background: black;
+  color: var(--main-bg-color);
   width: 100%;
   min-height: 100px;
   bottom: 0;
@@ -21,5 +21,26 @@
 }
 
 .footer__social-icon i:hover {
-  color:  var(--secondary-color);;
+  color: var(--secondary-color);
+}
+
+i.footer__social-up-icon{
+  position: absolute;
+  right: 15px;
+  font-size: 15px;
+  color: var(--secondary-color);
+}
+
+@media screen and (min-width: 768px) {
+  i.footer__social-up-icon{
+    position: absolute;
+    right: 30px;
+    font-size: 30px;
+    color: var(--secondary-color);
+  }
+
+  i.footer__social-up-icon:hover {
+    cursor: pointer;
+    color: var(--cta-color);
+  }
 }
