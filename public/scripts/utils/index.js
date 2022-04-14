@@ -61,10 +61,8 @@ const setIntervalX = (callback, delay, repetitions, callbackFinish = () => {}) =
 };
 
 const scrollDown = () => {
-  window.scrollTo({
-    top:document.body.scrollHeight,
-    behavior: "smooth",
-  });
+  const element = document.getElementById("about");
+  element.scrollIntoView(({block: "start", behavior: "smooth"}));
 };
 
 const scollUp = () => {

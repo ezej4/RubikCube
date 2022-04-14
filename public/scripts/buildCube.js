@@ -51,7 +51,7 @@ const buildCube = () => {
       y: yTranf,
       z: zTranf,
     });
-    
+
     // this option is valid to
     /*   miniCube.style.transform = `translate3d(${xTranf}px,${yTranf}px,${zTranf}px)`; */
   });
@@ -60,22 +60,23 @@ const buildCube = () => {
 buildCube();
 
 const restoreCube = () => {
-  let index = USER_MOVES.length - 1;
-  const iteraionCount = USER_MOVES.length - 1;
+  miniCubeModel = JSON.parse(JSON.stringify(originalMiniCubeModel));
 
-  if (isCubeMoving) return;
-  setIntervalX(
-    () => {
-      const { inverse } = USER_MOVES[index];
-      moveCube(inverse, 0.08, true, false);
-      index--;
-    },
-    100,
-    iteraionCount,
-    () => {
-      USER_MOVES = [];
-    }
-  );
+  const paras = document.getElementsByClassName("cubic__mini");
+
+  while (paras[0]) {
+    paras[0].parentNode.removeChild(paras[0]);
+  }
+
+  USER_MOVES = [];
+  COUNT_MOVES = 0;
+  updateTimerMoves();
+
+  buildCube();
+
+  gsap.set(".cubic__mini", {
+    opacity: 1,
+  });
 };
 
 restoreButton.addEventListener("click", restoreCube);

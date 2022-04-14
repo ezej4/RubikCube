@@ -410,38 +410,33 @@
     <div class="flows-buttons">
       <ul class="flows-buttons__list">
         <li id="keyboard-modal-trigger" class="flows-buttons__item flows-buttons__item--keyboard">
-          <span class="flows-buttons__button">
+          <span class="flows-buttons__button" aria-label="keyboard">
             <i class="fas fa-keyboard"></i>
           </span>
-          <span class="flows-buttons__label">keyboard</span>
         </li>
 
         <li class="flows-buttons__item">
-          <span class="flows-buttons__button" id="animate_button">
+          <span class="flows-buttons__button"  aria-label="Cool Animation" id="animate_button">
             <i class="fas fa-cube"></i>
           </span>
-          <span class="flows-buttons__label">Cool Animation</span>
         </li>
 
         <li class="flows-buttons__item">
-          <span class="flows-buttons__button flows-buttons__button--text" id="mix-button">
+          <span class="flows-buttons__button flows-buttons__button--text" aria-label="Mix the cube" id="mix-button">
             <span class="flows-buttons__mix">Mix</span>
           </span>
-          <span class="flows-buttons__label">Mix the cube</span>
         </li>
 
         <li class="flows-buttons__item">
-          <span class="flows-buttons__button" id="restore_button">
+          <span class="flows-buttons__button" aria-label="Restore" id="restore_button">
             <i class="fa fa-rotate-left"></i>
           </span>
-          <span class="flows-buttons__label">Restore</span>
         </li>
 
         <li class="flows-buttons__item">
-          <span class="flows-buttons__button" id="timer_trigger">
+          <span class="flows-buttons__button" aria-label="Show Timer" id="timer_trigger">
             <i class="fas fa-stopwatch-20"></i>
           </span>
-          <span class="flows-buttons__label" id="label_timer">Show Timer</span>
         </li>
       </ul>
     </div>
@@ -502,7 +497,7 @@
       </div>
     </div>
 
-    <article class="about">
+    <article id="about" class="about">
       <div class="about__content">
         <div class="about__title">About this</div>
         <div class="about__texts">
@@ -695,8 +690,8 @@
 
     <footer class="footer">
       <div class="footer__social-icon">
-        <i class="fab fa-linkedin" id="linkedin_button"></i>
-        <i class="fas fa-envelope"></i>
+        <a href="https://www.linkedin.com/in/ezequiel-fabbroni-b59536120" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:ezequieljfabbroni@gmail.com"> <i class="fas fa-envelope"></i></a>
         <i class="fa fa-chevron-up footer__social-up-icon" onclick="scollUp()"></i>
       </div>
     </footer>
@@ -829,7 +824,6 @@
   <script src="./scripts/handleMovements/shared.js"></script>
   <script src="./scripts/handleMovements/index.js"></script>
   <script src="./scripts/keyBindings.js"></script>
-  <script src="./scripts/footerButtonActions.js"></script>
   <script src="./scripts/mixCube.js"></script>
   <script src="./scripts/entranceAnimations.js"></script>
   <script src="./scripts/loadCubesImagesLazy.js"></script>

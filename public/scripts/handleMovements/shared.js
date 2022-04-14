@@ -23,6 +23,10 @@ const getMouseDirection = ({ originPosition, currentPosition }) => {
     } else direction = "top";
   }
 
+  if (Math.abs(xDisplacement) < 20 && Math.abs(yDisplacement) < 20) {
+    return { direction: null, xDisplacement: null, yDisplacement: null };
+  }
+
   return { direction, xDisplacement, yDisplacement };
 };
 

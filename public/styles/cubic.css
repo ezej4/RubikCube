@@ -1,7 +1,7 @@
 .cubic__mini,
 .cubic__face {
-  width: 70px;
-  height: 70px;
+  width: 75px;
+  height: 75px;
 }
 
 .cubic__mini {
@@ -31,41 +31,35 @@
 }
 
 .cubic__face--colored {
-  border: 1px solid rgb(0, 0, 0);
+  border: 3px solid rgb(0, 0, 0);
 }
 
 .cubic__face--uncolored {
-  border: 1px solid rgb(36, 36, 36);
+  border: 3px solid rgb(36, 36, 36);
 }
 
 .cubic__face--white {
   background: white;
-  /*  border: 1px solid black; */
 }
 
 .cubic__face--red {
   background: red;
-  /*  border: 1px solid black; */
 }
 
 .cubic__face--yellow {
   background: yellow;
-  /*  border: 1px solid black; */
 }
 
 .cubic__face--green {
   background: green;
-  /*  border: 1px solid black; */
 }
 
 .cubic__face--orange {
   background: orange;
-  /*  border: 1px solid black; */
 }
 
 .cubic__face--blue {
   background: blue;
-  /*  border: 1px solid black; */
 }
 
 .cubic__face--front {

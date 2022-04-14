@@ -5,7 +5,7 @@ const originMousePosition = {
 };
 
 const getRotations = ({ pageX, pageY }) => {
-  const aceleration =  100;
+  const aceleration = 100;
   const results = { x: 0, y: 0, z: 0 };
   let xRotation = 0;
   let yRotation = 0;
@@ -96,6 +96,8 @@ const mouseMoveHandler = (event) => {
       originPosition,
       currentPosition,
     });
+
+    if (!detectedDirection) return;
 
     direction = detectedDirection;
 

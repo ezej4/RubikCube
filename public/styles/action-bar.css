@@ -53,7 +53,7 @@ i.action-bar__icon-down{
 @media screen and (min-width: 768px) {
   .action-bar {
     height: 10vh;
-    padding-top: 0;
+    padding: 0;
   }
   .action-bar__rotating-buttons i {
     font-size: 60px;

@@ -1,4 +1,8 @@
-// elements
+// First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+let vh = window.innerHeight * 0.01;
+// Then we set the value in the --vh custom property to the root of the document
+document.documentElement.style.setProperty('--vh', `${vh}px`);
+
 const $cubic = document.getElementById("cubic");
 const $cubicPlain = document.getElementById("cubic-plain");
 const selectedArea = document.getElementById("cubic-selected-area");
@@ -552,6 +556,8 @@ let miniCubeModel = [
     },
   ],
 ];
+
+const originalMiniCubeModel = JSON.parse(JSON.stringify(miniCubeModel));
 
 const MOVES = {
   U: {

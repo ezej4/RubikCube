@@ -77,10 +77,25 @@ body {
   font-family: roboto-regular, "Open Sans", serif;
   background: var(--main-bg-color);
   overflow-x: hidden;
+  min-height: 100vh;
+  min-height: fill-available;
+  min-height: -webkit-fill-available;
 }
 
-.interactive-background {
-  top: 0;
-  position: absolute;
-  backdrop-filter: blur(50px);
+html {
+  height: fill-available;
+  height: -webkit-fill-available;
+}
+
+body::-webkit-scrollbar {
+  width: 3px;
+  border-radius: 5px;
+}
+
+body::-webkit-scrollbar-track {
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color:var(--secondary-color);
+  outline: 1px solid var(--main-bg-color);
 }

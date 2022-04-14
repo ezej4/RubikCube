@@ -2,6 +2,7 @@
   display: block;
   position: absolute;
   top: calc(100vh - 110px);
+  top: calc((var(--vh, 1vh) * 100) - (64px + 40px + 2px));
   left: 0px;
   background: var(--main-bg-color);
   padding: 4px;

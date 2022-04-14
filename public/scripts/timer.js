@@ -5,7 +5,6 @@ const timerTime = document.getElementById("timer_time");
 const timerStartTrigger = document.getElementById("play_timer");
 const timerPauseTrigger = document.getElementById("pause_timer");
 const timerStopTrigger = document.getElementById("stop_timer");
-const timerLabel = document.getElementById("label_timer");
 const timmerLogo = document.getElementById("timer_logo");
 const timmerArrow = document.getElementById("timer_arrow");
 
@@ -26,8 +25,6 @@ const clearTimeVariables = () => {
 const showTimer = () => {
   timerContainer.classList.toggle("timer--show", TIMER_VISIBLE);
   TIMER_VISIBLE = !TIMER_VISIBLE;
-  const label = TIMER_VISIBLE ? "Show timer" : "Hide timer";
-  timerLabel.innerHTML = label;
   clearTimeVariables();
 };
 

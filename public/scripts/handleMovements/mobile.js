@@ -23,7 +23,6 @@ const getRotations = ({ pageX, pageY }) => {
     }
 
     return { ...results, x: yRotation };
-
   } else if (move.rotation.y !== 0) {
     xRotation = ((pageX - originFingerPosition.pageX) / $cubicPlain.offsetWidth) * aceleration;
 
@@ -32,7 +31,6 @@ const getRotations = ({ pageX, pageY }) => {
     }
 
     return { ...results, y: xRotation };
-
   } else if (move.rotation.z !== 0) {
     zRotation = ((originFingerPosition.pageY - pageY) / $cubicPlain.offsetHeight) * aceleration;
 
@@ -53,9 +51,9 @@ const setOriginPosition = (event) => {
 };
 
 const registerEvents = () => {
-  selectedArea.addEventListener("touchmove", mouseMoveHandler);
-  selectedArea.addEventListener("touchend", mouseUpHandler);
-  selectedArea.addEventListener("touchcancel", mouseUpHandler);
+  selectedArea.addEventListener("touchmove", mouseMoveHandler, { passive: false });
+  selectedArea.addEventListener("touchend", mouseUpHandler, { passive: false });
+  selectedArea.addEventListener("touchcancel", mouseUpHandler, { passive: false });
 };
 
 const removeEvents = () => {
@@ -106,6 +104,7 @@ const mouseMoveHandler = (event) => {
       currentPosition,
     });
 
+    if (!detectedDirection) return;
     direction = detectedDirection;
 
     if (!proximityMoves) {
