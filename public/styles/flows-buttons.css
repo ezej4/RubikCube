@@ -54,7 +54,7 @@
 @media (min-width: 780px) {
   .flows-buttons {
     display: block;
-    top: 98px;
+    top: 10%;
     right: 0px;
     left: auto;
     padding: 16px 4px;

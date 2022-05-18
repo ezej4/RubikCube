@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
-    <title>Funny Rubik cubic game</title>
+    <title>Funny Rubik's Cubic Game</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <meta charset="UTF-8" />
     <meta name="description" content="Small demo of the cube Rubik" />
@@ -385,7 +385,7 @@
           />
         </g>
       </svg>
-      <h1 class="header__title">The Rubik Cube</h1>
+      <h1 class="header__title">The Rubik's Cube</h1>
     </header>
 
     <section class="section-cubic">
@@ -416,12 +416,6 @@
         </li>
 
         <li class="flows-buttons__item">
-          <span class="flows-buttons__button"  aria-label="Cool Animation" id="animate_button">
-            <i class="fas fa-cube"></i>
-          </span>
-        </li>
-
-        <li class="flows-buttons__item">
           <span class="flows-buttons__button flows-buttons__button--text" aria-label="Mix the cube" id="mix-button">
             <span class="flows-buttons__mix">Mix</span>
           </span>
@@ -436,6 +430,12 @@
         <li class="flows-buttons__item">
           <span class="flows-buttons__button" aria-label="Show Timer" id="timer_trigger">
             <i class="fas fa-stopwatch-20"></i>
+          </span>
+        </li>
+
+        <li class="flows-buttons__item">
+          <span class="flows-buttons__button" aria-label="Cool Animation" id="animate_button">
+            <i class="fas fa-cube"></i>
           </span>
         </li>
       </ul>
@@ -515,8 +515,8 @@
           </p>
           <p class="about__text">
             <a target="_blank" href="https://en.wikipedia.org/wiki/Ern%C5%91_Rubik">Erno Rubik</a> made the
-            <a target="_blank" href="https://en.wikipedia.org/wiki/Rubik%27s_Cube">Rubik cube</a> in the may 19 of 1974. <br />
-            The cube is made of 27 pieces or small cubes, and it has 6 faces each has a different color.
+            <a target="_blank" href="https://en.wikipedia.org/wiki/Rubik%27s_Cube">Rubik's Cube</a> on May 19, 1974. <br />
+            The cube is made of 27 pieces or small cubes, and it has 6 faces (each of a different color).
           </p>
         </div>
       </div>
@@ -737,7 +737,7 @@
             </tr>
             <tr>
               <td>t</td>
-              <td>show / hide the cube</td>
+              <td>show / hide the timer</td>
             </tr>
             <tr>
               <td>c</td>
@@ -818,7 +818,7 @@
   <script src="./scripts/buildCube.js"></script>
   <script src="./scripts/updateCube.js"></script>
   <script src="./scripts/rotateCube.js"></script>
-  <script src="./scripts/spiningAnimations.js"></script>
+  <script src="./scripts/coolAnimations.js"></script>
   <script src="./scripts/moves.js"></script>
   <script src="./scripts/mouseMovementsDefinitions.js"></script>
   <script src="./scripts/handleMovements/shared.js"></script>

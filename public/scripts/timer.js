@@ -49,7 +49,12 @@ const starTimer = () => {
       clearTimeVariables();
     }
 
-    if (timeSeconds >= 9999) {
+    const lastTwoDigits = timeSeconds % 100;
+    if (lastTwoDigits === 60) {
+      timeSeconds += 40;
+    }
+
+    if (timeSeconds >= 6000) {
       timeSeconds = 0;
     }
     updateTimerTime();
@@ -73,18 +78,18 @@ const stopTimer = () => {
   clearTimeVariables();
   updateTimerMoves();
   updateTimerTime();
-}
+};
 
 const pauseTimer = () => {
   isTimerPaused = true;
   isTimerRunning = false;
-  timmerArrow.style.animationPlayState = 'paused';
-  timmerLogo.style.animationPlayState = 'paused';
+  timmerArrow.style.animationPlayState = "paused";
+  timmerLogo.style.animationPlayState = "paused";
 };
 
 const initAnimation = () => {
-  timmerArrow.style.animationPlayState = 'running';
-  timmerLogo.style.animationPlayState = 'running';
+  timmerArrow.style.animationPlayState = "running";
+  timmerLogo.style.animationPlayState = "running";
 
   timmerArrow.classList.add("timer_arrow--animated");
   timmerLogo.classList.add("timer__logo--animated");

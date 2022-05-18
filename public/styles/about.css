@@ -25,6 +25,7 @@
 .about__title {
   margin: 20px 0 24px 0;
   font-size: 24px;
+  text-shadow: 6px 5px 10px rgb(255 255 255 / 25%);
   font-weight: bold;
 }
 
@@ -32,7 +33,6 @@
   margin: 24px auto;
   padding: 0 12px;
   padding-bottom: 24px;
-  z-index: 1;
 }
 
 .about__texts {

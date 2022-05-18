@@ -55,6 +55,6 @@
     height: 295px;
   }
   .section-cubic__main {
-    height: calc(100vh - 96px);
+    height: calc(90vh);
   }
 }

@@ -33,12 +33,6 @@
   align-items: center;
 }
 
-.section-movements__moves {
- /*  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px; */
-}
-
 .section-movements__button-move {
   padding: 6px 10px;
   color: white;

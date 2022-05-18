@@ -33,7 +33,16 @@ const entranceAnim = () => {
     .to(".cubic__mini", 0.1, {
       opacity: 1,
     })
-
+    .from(
+      ".section-cubic__main",
+      3,
+      {
+        rotationY: 360 ,
+        rotationX: 120 ,
+        rotationZ: 120 ,
+      },
+      "<"
+    )
     .from(
       ".cubic__mini",
       3,
@@ -53,6 +62,7 @@ const entranceAnim = () => {
       },
       0.9
     )
+   
 
     .from(".action-bar", 0.5, {
       y: 1000,

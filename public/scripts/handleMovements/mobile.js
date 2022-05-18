@@ -202,4 +202,4 @@ const mouseUpHandler = (event) => {
   }, animationDuration * 1000);
 };
 
-selectedArea.addEventListener("touchstart", mouseDownHandler);
+selectedArea.addEventListener("touchstart", mouseDownHandler, { passive: false });
