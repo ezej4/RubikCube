@@ -30,6 +30,7 @@
 }
 
 .about__content {
+  z-index: 1;
   margin: 24px auto;
   padding: 0 12px;
   padding-bottom: 24px;
