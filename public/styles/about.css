@@ -33,6 +33,7 @@
   margin: 24px auto;
   padding: 0 12px;
   padding-bottom: 24px;
+  z-index: 1;
 }
 
 .about__texts {
