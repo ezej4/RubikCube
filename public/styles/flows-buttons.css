@@ -36,6 +36,7 @@
   padding: 4px;
   background: var(--secondary-color);
 }
+
 .flows-buttons__item--keyboard {
   display: none;
 }
