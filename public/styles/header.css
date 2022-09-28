@@ -5,6 +5,7 @@
   justify-content: center;
   text-align: center;
   padding: 12px;
+  opacity: 0;
 }
 
 .header__title {
@@ -13,7 +14,6 @@
   color: white;
   margin-left: -4px;
   text-shadow: 3px 2px 8px rgba(255, 255, 255, 0.25);
-
 }
 
 @media screen and (min-width: 768px) {

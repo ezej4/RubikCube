@@ -12,11 +12,14 @@ const entranceAnim = () => {
   });
 
   gsap.set("body", { overflow: "hidden" });
+  gsap.set(".header", { opacity: "1" });
+  gsap.set(".flows-buttons", { opacity: "1" });
+  
 
   const animationDistance = IS_MOBILE ? 3000 : 10000;
 
   entranceAnimationTL
-    .from(".header__icon .face-front, .face-right, .face-top", 0.5, {
+    .from(".header, .header__icon .face-front, .face-right, .face-top", 0.5, {
       fill: "transparent",
       opacity: 0,
       stagger: 0.05,
