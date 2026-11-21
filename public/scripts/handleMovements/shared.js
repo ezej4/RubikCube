@@ -4,6 +4,14 @@ let direction = "";
 let move = null;
 let isMovingNow = false;
 
+const getTargetFace = (event) => {
+  const pointer = event.changedTouches ? event.changedTouches[0] : event;
+
+  return document
+    .elementsFromPoint(pointer.clientX, pointer.clientY)
+    .find((element) => element.classList.contains("cubic__face--colored"));
+};
+
 const getMouseDirection = ({ originPosition, currentPosition }) => {
   const { pageX: xOrigin, pageY: yOrigin } = originPosition;
   const { pageX: xCurrent, pageY: yCurrent } = currentPosition;

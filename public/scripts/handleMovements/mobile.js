@@ -65,14 +65,14 @@ const removeEvents = () => {
 const mouseDownHandler = (event) => {
   event.preventDefault();
 
-  const { target } = event;
+  const target = getTargetFace(event);
 
   if (isMovingNow) {
     resetVariables();
     return;
   }
 
-  if (!target.classList.contains("cubic__face")) {
+  if (!target) {
     resetVariables();
     return;
   }

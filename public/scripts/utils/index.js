@@ -44,7 +44,7 @@ const getProximityMovements = (cubeId, face) => {
     return miniCube.miniCube[0] === cubeIndexs[0] && miniCube.miniCube[1] === cubeIndexs[1];
   });
 
-  return miniCubeManualMovement.proximityMoves[face];
+  return miniCubeManualMovement?.proximityMoves?.[face];
 };
 
 const setIntervalX = (callback, delay, repetitions, callbackFinish = () => {}) => {

@@ -9,6 +9,7 @@
   font-size: 25px;
   font-weight: bold;
   touch-action: none;
+  pointer-events: none;
   transform-style: preserve-3d;
   opacity: 0;
 }
@@ -19,6 +20,7 @@
 
 .cubic__face {
   position: absolute;
+  pointer-events: auto;
   display: flex;
   align-items: center;
   justify-content: center;
